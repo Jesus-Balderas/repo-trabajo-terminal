@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="combo_especialidad">
+        <item>ING. EN SISTEMAS COMPUTACIONALES</item>
+        <item>ING. EN INTELIGENCIA ARTIFICIAL</item>
+        <item>LIC. EN CIENCIA DE DATOS</item>
+        <item>ING. EN SISTEMAS AUTOMOTICES</item>
+        <item>M. EN C. EN SISTEMAS COMPUTACIONALES MÓVILES</item>
+    </string-array>
+    <string-array name="combo_laboratorios">
+        <item>LABORATORIO DE PROGRAMACIÓN 1</item>
+        <item>LABORATORIO DE PROGRAMACIÓN 2</item>
+        <item>LABORATORIO DE REDES</item>
+        <item>LABORATORIO DE SISTEMAS 1</item>
+        <item>LABORATORIO DE SISTEMAS 2</item>
+        <item>LABORATORIO DE SISTEMAS 3</item>
+        <item>LABORATORIO DE SISTEMAS 4</item>
+        <item>LABORATORIO DE SISTEMAS 5</item>
+    </string-array>
+</resources>

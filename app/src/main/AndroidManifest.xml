@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.prototipo2tt">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name=".App.MyApp"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/icon_app_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Prototipo2tt"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".Activities.registrar_encargado"></activity>
+        <activity
+            android:name=".Activities.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Splash.SplashActivity"
+            android:theme="@style/SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Activities.login"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.registrar_alumno"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.alumno_home"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.login_profesor"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.profesor_home"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.invitado_home"
+            android:screenOrientation="portrait" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+
+</manifest>
