@@ -4,15 +4,18 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/XMX1283/AndroidStudioProjects/TT/repo-trabajo-terminal/app/src/main/res/layout/activity_invitado_home.xml" value="0.25" />
-        <entry key="..\:/Users/XMX1283/AndroidStudioProjects/TT/repo-trabajo-terminal/app/src/main/res/layout/activity_main.xml" value="0.12771739130434784" />
+        <entry key="..\:/Users/XMX1283/AndroidStudioProjects/TT/repo-trabajo-terminal/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/XMX1283/AndroidStudioProjects/TT/repo-trabajo-terminal/app/src/main/res/layout/activity_registrar_encargado.xml" value="0.192481884057971" />
         <entry key="..\:/Users/XMX1283/AndroidStudioProjects/TT/repo-trabajo-terminal/app/src/main/res/layout/alumno_home.xml" value="0.192481884057971" />
         <entry key="..\:/Users/XMX1283/AndroidStudioProjects/TT/repo-trabajo-terminal/app/src/main/res/layout/header.xml" value="0.192481884057971" />
         <entry key="..\:/Users/XMX1283/AndroidStudioProjects/TT/repo-trabajo-terminal/app/src/main/res/layout/login_alumno.xml" value="0.192481884057971" />
+        <entry key="..\:/Users/XMX1283/AndroidStudioProjects/TT/repo-trabajo-terminal/app/src/main/res/layout/login_profesor.xml" value="0.25" />
+        <entry key="..\:/Users/XMX1283/AndroidStudioProjects/TT/repo-trabajo-terminal/app/src/main/res/layout/profesor_home.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/XMX1283/AndroidStudioProjects/TT/repo-trabajo-terminal/app/src/main/res/layout/registrar_alumno.xml" value="0.25" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
