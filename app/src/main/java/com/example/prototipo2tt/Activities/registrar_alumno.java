@@ -31,7 +31,7 @@ public class registrar_alumno extends AppCompatActivity {
         //Spinner
         se = (Spinner) findViewById(R.id.idspinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.combo_especialidad, android.R.layout.simple_spinner_item);
+                R.array.combo_especialidad, R.layout.spinner_item_design);
         se.setAdapter(adapter);
         se.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
