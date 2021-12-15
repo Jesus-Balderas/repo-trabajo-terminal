@@ -26,7 +26,7 @@ public class registrar_encargado extends AppCompatActivity {
         bindUI();
         Spinner spinner = (Spinner)findViewById(R.id.SpinnerLaboratorios);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.combo_laboratorios, android.R.layout.simple_spinner_item);
+                R.array.combo_laboratorios, R.layout.spinner_item_design);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
