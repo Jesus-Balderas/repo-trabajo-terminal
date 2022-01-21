@@ -28,11 +28,9 @@ public class login_profesor extends AppCompatActivity {
 
         btnLoginEncargado.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                String numEmpleado = editTextNumEmpleado.getText().toString();
-                String password = editTextPasswordEncargado.getText().toString();
-                if (loginEncargado(numEmpleado, password)){
-                    goToHomeProfesor();
-                }
+                Intent intent1 = new Intent(login_profesor.this, profesor_home.class);
+                startActivity(intent1);
+                finish();
             }
         });
 
@@ -52,36 +50,6 @@ public class login_profesor extends AppCompatActivity {
         editTextNumEmpleado = (EditText) findViewById(R.id.editTextNumEmpleado);
         editTextPasswordEncargado = (EditText) findViewById(R.id.editTextPasswordEncargado);
 
-    }
-
-    private boolean loginEncargado(String numEmpleado, String password){
-        if (!isValidNumEncargado(numEmpleado)){
-            Toast.makeText(this,"El numero de Empleado es invalido, Intente de nuevo", Toast.LENGTH_LONG).show();
-            return false;
-        } else if (!isValidPassword(password)){
-            Toast.makeText(this,"La contraseña es invalida, Intente de nuevo", Toast.LENGTH_LONG).show();
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-    private boolean isValidNumEncargado(String numEmpleado){
-        if (numEmpleado.length() >= 4){
-            return true;
-        } else {
-            return false;
-        }
-    }
-    private boolean isValidPassword(String password){
-
-        return password.length() >= 4;
-    }
-
-    private void goToHomeProfesor(){
-        Intent intent1 = new Intent(this, profesor_home.class);
-        intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent1);
     }
 
 }

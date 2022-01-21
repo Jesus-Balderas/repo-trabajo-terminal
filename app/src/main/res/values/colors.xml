@@ -16,5 +16,7 @@
     <color name="colorPrimaryDarkProfesor">#001c32</color>
     <color name="colorPrimaryLightProfesor">#4c6d89</color>
 
+    <color name="colorBlack">#000000</color>
+    <color name="colorWhite">#FFFFFF</color>
 
 </resources>

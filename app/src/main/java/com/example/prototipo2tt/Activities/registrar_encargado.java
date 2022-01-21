@@ -1,6 +1,8 @@
 package com.example.prototipo2tt.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -18,6 +20,7 @@ public class registrar_encargado extends AppCompatActivity {
     EditText editTextSecondNameEncargado, editTextEmailEncargado, editTextPassEncargado;
     EditText editTextConfPassEncargado;
     Button buttonRegisterEncargado;
+    Button buttonGoToLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,16 @@ public class registrar_encargado extends AppCompatActivity {
             }
         });
 
+        buttonGoToLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(registrar_encargado.this, login_profesor.class);
+                startActivity(intent1);
+
+            }
+        });
+
+
     }
 
     private void bindUI(){
@@ -54,6 +67,7 @@ public class registrar_encargado extends AppCompatActivity {
         editTextPassEncargado = (EditText) findViewById(R.id.editTextPassEncargado);
         editTextConfPassEncargado = (EditText) findViewById(R.id.editTextConfPassEncargado);
         buttonRegisterEncargado = (Button) findViewById(R.id.btnRegistrarEncargado);
+        buttonGoToLogin = (Button) findViewById(R.id.btnBackToLogin);
     }
 
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.prototipo2tt">
+    package="com.example.prototipo2tt" >
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -12,14 +12,22 @@
         android:roundIcon="@mipmap/icon_app_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Prototipo2tt"
-        android:usesCleartextTraffic="true">
-        <activity android:name=".Activities.registrar_encargado"></activity>
+        android:usesCleartextTraffic="true" >
+        <activity
+            android:name=".Activities.DescriptionReservationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.AttendantReservationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.registrar_encargado"
+            android:launchMode="singleInstance" />
         <activity
             android:name=".Activities.MainActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Splash.SplashActivity"
-            android:theme="@style/SplashScreen">
+            android:theme="@style/SplashScreen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -37,6 +45,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activities.login_profesor"
+            android:launchMode="singleInstance"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activities.profesor_home"

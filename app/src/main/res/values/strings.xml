@@ -2,4 +2,24 @@
     <string name="app_name">LABSCOM</string>
     <string name="navigation_drawer_open">open navigation drawer</string>
     <string name="navigation_drawer_close">close navigation drawer</string>
+    <string name="label_crear_cuenta_encargado">Registro Encargado</string>
+    <string name="label_forget_password">Olvidé mi contraseña</string>
+    <string name="text_login">Iniciar sesión</string>
+    <string name="hint_num_empleado">Número de Empleado</string>
+    <string name="text_Back_To_Login">Regresar al inicio</string>
+    <string name="label_reservation">Historial de Reservaciones</string>
+
+    <string name="item_reservation_id">Reservación %1$d</string>
+    <string name="item_reservation_alumno">Alumno: %1$s</string>
+    <string name="item_reservation_status">Estado: %1$s</string>
+
+    <string name="description_reservation_id">Reservación: %1$d</string>
+    <string name="description_reservation_alumno">Alumno: %1$s</string>
+    <string name="description_reservation_laboratorio">Laboratorio: %1$s</string>
+    <string name="description_reservation_computadora">Computadora: %1$d</string>
+    <string name="description_reservation_horaInicio">Hora Inicio: %1$s</string>
+    <string name="description_reservation_horaFin">Hora Fin: %1$s</string>
+    <string name="description_reservation_Fecha">Fecha: %1$s</string>
+    <string name="description_reservation_estado">Estado: %1$s</string>
+
 </resources>
