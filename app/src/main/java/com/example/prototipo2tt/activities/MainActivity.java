@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnEncargado.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                itn2 = new Intent(MainActivity.this, login_profesor.class);
+                itn2 = new Intent(MainActivity.this, LoginEncargadoActivity.class);
                 startActivity(itn2);
             }
         });

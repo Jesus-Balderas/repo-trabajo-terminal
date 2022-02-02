@@ -10,7 +10,7 @@ import android.widget.EditText;
 
 import com.example.prototipo2tt.R;
 
-public class login_profesor extends AppCompatActivity {
+public class LoginEncargadoActivity extends AppCompatActivity {
 
     EditText editTextNumEmpleado, editTextPasswordEncargado;
     Button btnLoginEncargado, btnRegisterEncargado, btnForgetPasswordEncargado;
@@ -19,7 +19,7 @@ public class login_profesor extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login_profesor);
+        setContentView(R.layout.activity_login_encargado);
         bindUi();
 
         toolb = (Toolbar) findViewById(R.id.toolbarmain);
@@ -27,7 +27,7 @@ public class login_profesor extends AppCompatActivity {
 
         btnLoginEncargado.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                Intent intent1 = new Intent(login_profesor.this, profesor_home.class);
+                Intent intent1 = new Intent(LoginEncargadoActivity.this, HomeEncargadoActivity.class);
                 startActivity(intent1);
                 finish();
             }
@@ -36,7 +36,7 @@ public class login_profesor extends AppCompatActivity {
         btnRegisterEncargado.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent2 = new Intent(login_profesor.this, registrar_encargado.class);
+                Intent intent2 = new Intent(LoginEncargadoActivity.this, RegistrarEncargadoActivity.class);
                 startActivity(intent2);
             }
         });

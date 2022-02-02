@@ -7,7 +7,7 @@
     android:background="@drawable/background_gradient"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context=".activities.login_profesor"
+    tools:context=".activities.LoginEncargadoActivity"
     tools:openDrawer="start">
 
     <LinearLayout
@@ -20,10 +20,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
-            android:elevation="4dp"
             android:minHeight="?attr/actionBarSize"
             android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:title="@string/app_name"/>
 
         <ImageView
             android:id="@+id/imageView2"
@@ -54,7 +54,7 @@
                     android:layout_marginTop="15dp"
                     android:text="Ingresar"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="40dp"
+                    android:textSize="30sp"
                     android:textStyle="bold" />
 
                 <EditText
@@ -65,7 +65,6 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginEnd="32dp"
                     android:layout_marginBottom="16dp"
-                    android:background="@drawable/forget"
                     android:ems="10"
                     android:hint="@string/hint_num_empleado"
                     android:inputType="text"
@@ -80,7 +79,6 @@
                     android:layout_marginStart="32dp"
                     android:layout_marginEnd="32dp"
                     android:layout_marginBottom="16dp"
-                    android:background="@drawable/forget"
                     android:ems="10"
                     android:hint="Contraseña"
                     android:inputType="textPassword"

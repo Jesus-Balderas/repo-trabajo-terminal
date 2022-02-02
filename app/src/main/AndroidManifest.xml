@@ -23,14 +23,16 @@
             android:name=".activities.AttendantReservationActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.registrar_encargado"
+            android:name=".activities.RegistrarEncargadoActivity"
             android:launchMode="singleInstance" />
         <activity
             android:name=".activities.MainActivity"
             android:screenOrientation="fullSensor" />
         <activity
             android:name=".splash.SplashActivity"
-            android:theme="@style/SplashScreen">
+            android:theme="@style/SplashScreen"
+            android:launchMode="singleTask"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -47,11 +49,11 @@
             android:name=".activities.alumno_home"
             android:screenOrientation="fullSensor" />
         <activity
-            android:name=".activities.login_profesor"
+            android:name=".activities.LoginEncargadoActivity"
             android:launchMode="singleInstance"
             android:screenOrientation="fullSensor" />
         <activity
-            android:name=".activities.profesor_home"
+            android:name=".activities.HomeEncargadoActivity"
             android:screenOrientation="fullSensor" />
         <activity
             android:name=".activities.invitado_home"

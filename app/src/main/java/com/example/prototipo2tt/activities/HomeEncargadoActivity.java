@@ -22,7 +22,7 @@ import android.widget.Toast;
 
 import com.example.prototipo2tt.R;
 
-public class profesor_home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class HomeEncargadoActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout dl;
     NavigationView nv;
     Toolbar toolb;
@@ -31,7 +31,7 @@ public class profesor_home extends AppCompatActivity implements NavigationView.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.profesor_home);
+        setContentView(R.layout.activity_home_encargado);
         dl = findViewById(R.id.drawer_layout_profesor);
         nv = findViewById(R.id.nav_view_profesor);
 
@@ -54,14 +54,14 @@ public class profesor_home extends AppCompatActivity implements NavigationView.O
         nv.setCheckedItem(R.id.id_menuhorarioprofesor);
 
         cardViewReservation.setOnClickListener(v -> {
-            Intent intent1 = new Intent(profesor_home.this, AttendantReservationActivity.class);
+            Intent intent1 = new Intent(HomeEncargadoActivity.this, AttendantReservationActivity.class);
             startActivity(intent1);
         });
 
         cardViewNotification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent2 = new Intent(profesor_home.this, CloseLaboratoryActivity.class);
+                Intent intent2 = new Intent(HomeEncargadoActivity.this, CloseLaboratoryActivity.class);
                 startActivity(intent2);
             }
         });
@@ -83,7 +83,7 @@ public class profesor_home extends AppCompatActivity implements NavigationView.O
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.id_menuhorarioprofesor:
-                Intent intentScheduleLaboratory = new Intent(profesor_home.this, ScheduleLaboratoryActivity.class);
+                Intent intentScheduleLaboratory = new Intent(HomeEncargadoActivity.this, ScheduleLaboratoryActivity.class);
                 startActivity(intentScheduleLaboratory);
                 break;
             case R.id.id_menubuzon:

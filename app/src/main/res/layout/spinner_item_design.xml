@@ -5,6 +5,5 @@
     android:padding="10sp"
     android:layout_marginLeft="32dp"
     android:layout_marginRight="32dp"
-    android:minHeight="48dp"
     android:textColor="@color/colorPrimaryDark"
     />

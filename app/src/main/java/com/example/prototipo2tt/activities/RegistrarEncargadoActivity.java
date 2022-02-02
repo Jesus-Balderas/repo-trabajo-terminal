@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import com.example.prototipo2tt.R;
 
-public class registrar_encargado extends AppCompatActivity {
+public class RegistrarEncargadoActivity extends AppCompatActivity {
 
     EditText editTextNumeroEncargado, editTextNombresEncargado, editTextFirsNameEncargado;
     EditText editTextSecondNameEncargado, editTextEmailEncargado, editTextPassEncargado;
@@ -49,7 +49,7 @@ public class registrar_encargado extends AppCompatActivity {
         buttonGoToLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1 = new Intent(registrar_encargado.this, login_profesor.class);
+                Intent intent1 = new Intent(RegistrarEncargadoActivity.this, LoginEncargadoActivity.class);
                 startActivity(intent1);
 
             }
