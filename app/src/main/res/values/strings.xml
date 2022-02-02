@@ -7,11 +7,17 @@
     <string name="text_login">Iniciar sesión</string>
     <string name="hint_num_empleado">Número de Empleado</string>
     <string name="text_Back_To_Login">Regresar al inicio</string>
+
     <string name="label_reservation">Historial de Reservaciones</string>
+    <string name="label_schedule_laboratory">Horarios de los Laboratorios</string>
 
     <string name="item_reservation_id">Reservación %1$d</string>
     <string name="item_reservation_alumno">Alumno: %1$s</string>
     <string name="item_reservation_status">Estado: %1$s</string>
+
+    <string name="item_laboratory_classroom">Salón: %1$s</string>
+    <string name="item_laboratory_edifice">Edificio: %1$s</string>
+    <string name="item_laboratory_status">Estado: %1$s</string>
 
     <string name="description_reservation_id">Reservación: %1$d</string>
     <string name="description_reservation_alumno">Alumno: %1$s</string>
@@ -21,5 +27,16 @@
     <string name="description_reservation_horaFin">Hora Fin: %1$s</string>
     <string name="description_reservation_Fecha">Fecha: %1$s</string>
     <string name="description_reservation_estado">Estado: %1$s</string>
+
+
+
+
+    <string name="label_send_notification">Enviar notificación</string>
+    <string name="text_message_notiification">Mensaje:</string>
+    <string name="text_title_notification">Título:</string>
+    <string name="label_send_users_notification">Enviar a todos lo usuarios</string>
+    <string name="title_layout_close_lab_notification">Notificación Cierre de Laboratorio</string>
+    <string name="texto_ver_reporte">Ver Reporte</string>
+    <string name="text_ver_horario">Ver Horario</string>
 
 </resources>

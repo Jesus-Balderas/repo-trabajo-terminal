@@ -7,7 +7,7 @@
     android:background="@drawable/background_gradient"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context=".activities.AttendantReservationActivity"
+    tools:context=".activities.ScheduleLaboratoryActivity"
     tools:openDrawer="start">
 
     <LinearLayout
@@ -24,13 +24,14 @@
             android:minHeight="?attr/actionBarSize"
             android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:title="@string/label_reservation"/>
+            app:title="@string/label_schedule_laboratory"/>
+
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/reservationRecyclerView"
+            android:id="@+id/laboratoryRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="2dp"
-            tools:listitem="@layout/item_attendant_reservation" />
+            tools:listitem="@layout/item_laboratory" />
 
     </LinearLayout>
 </androidx.drawerlayout.widget.DrawerLayout>

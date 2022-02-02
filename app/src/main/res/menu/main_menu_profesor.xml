@@ -4,15 +4,15 @@
         <item
             android:id="@+id/id_menuhorarioprofesor"
             android:icon="@drawable/ic_baseline_schedule_24"
-            android:title="Horarios" />
+            android:title="Ver Horarios" />
         <item
             android:id="@+id/id_menubuzon"
             android:icon="@drawable/ic_baseline_notifications_none_24"
-            android:title="Buzón" />
+            android:title="Notificaciones" />
         <item
             android:id="@+id/id_menubitacora"
-            android:icon="@drawable/ic_baseline_report_24"
-            android:title="Bitacora" />
+            android:icon="@drawable/ic_baseline_data_exploration_24"
+            android:title="Ver Reportes" />
 
     </group>
     <item android:title="PERFIL">

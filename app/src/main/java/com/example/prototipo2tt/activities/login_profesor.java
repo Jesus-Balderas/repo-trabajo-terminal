@@ -1,4 +1,4 @@
-package com.example.prototipo2tt.Activities;
+package com.example.prototipo2tt.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,7 +7,6 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.prototipo2tt.R;
 

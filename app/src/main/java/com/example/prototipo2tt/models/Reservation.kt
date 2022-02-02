@@ -1,9 +1,9 @@
-package com.example.prototipo2tt.Models
+package com.example.prototipo2tt.models
 
 import java.io.Serializable
 
 data class Reservation(
-    var idReservation: Int,
+    var id: Int,
     var student: String,
     var laboratory: String,
     var computer: Int,

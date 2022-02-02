@@ -1,8 +1,11 @@
-package com.example.prototipo2tt.Activities;
+package com.example.prototipo2tt.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+
 import androidx.annotation.NonNull;
+
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.cardview.widget.CardView;
@@ -11,6 +14,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,17 +26,20 @@ public class profesor_home extends AppCompatActivity implements NavigationView.O
     DrawerLayout dl;
     NavigationView nv;
     Toolbar toolb;
-    CardView cardViewReservation;
+    CardView cardViewReservation, cardViewNotification;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profesor_home);
         dl = findViewById(R.id.drawer_layout_profesor);
         nv = findViewById(R.id.nav_view_profesor);
-        toolb = findViewById(R.id.toolbar_profesor);
-        cardViewReservation = findViewById(R.id.cvReservations);
 
+        toolb = findViewById(R.id.toolbar_profesor);
         setSupportActionBar(toolb);
+
+        cardViewReservation = findViewById(R.id.cvReservations);
+        cardViewNotification = findViewById(R.id.cvCloseLaboratory);
 
         //hide and show items
         Menu menu = nv.getMenu();
@@ -51,23 +58,33 @@ public class profesor_home extends AppCompatActivity implements NavigationView.O
             startActivity(intent1);
         });
 
+        cardViewNotification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent2 = new Intent(profesor_home.this, CloseLaboratoryActivity.class);
+                startActivity(intent2);
+            }
+        });
+
     }
 
     @Override
-    public void onBackPressed(){
-        if(dl.isDrawerOpen(GravityCompat.START)){
+    public void onBackPressed() {
+        if (dl.isDrawerOpen(GravityCompat.START)) {
             dl.closeDrawer(GravityCompat.START);
-        }else{
+        } else {
             super.onBackPressed();
         }
     }
 
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-        switch (menuItem.getItemId()){
+        switch (menuItem.getItemId()) {
             case R.id.id_menuhorarioprofesor:
-                Toast.makeText(this, "Horarios de laboratorios", Toast.LENGTH_LONG).show();
+                Intent intentScheduleLaboratory = new Intent(profesor_home.this, ScheduleLaboratoryActivity.class);
+                startActivity(intentScheduleLaboratory);
                 break;
             case R.id.id_menubuzon:
                 Toast.makeText(this, "Buzón", Toast.LENGTH_LONG).show();

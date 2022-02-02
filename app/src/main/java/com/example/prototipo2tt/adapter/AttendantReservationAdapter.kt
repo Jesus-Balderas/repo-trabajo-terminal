@@ -1,4 +1,4 @@
-package com.example.prototipo2tt.Adapter
+package com.example.prototipo2tt.adapter
 
 import android.content.Context
 
@@ -12,7 +12,7 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 
 import androidx.recyclerview.widget.RecyclerView
-import com.example.prototipo2tt.Models.Reservation
+import com.example.prototipo2tt.models.Reservation
 import com.example.prototipo2tt.R
 
 class AttendantReservationAdapter(
@@ -36,7 +36,7 @@ class AttendantReservationAdapter(
 
         fun bind(reservation: Reservation) {
             reservationId.text =
-                itemView.context.getString(R.string.item_reservation_id, reservation.idReservation)
+                itemView.context.getString(R.string.item_reservation_id, reservation.id)
             student.text =
                 itemView.context.getString(R.string.item_reservation_alumno, reservation.student)
             laboratory.text = reservation.laboratory

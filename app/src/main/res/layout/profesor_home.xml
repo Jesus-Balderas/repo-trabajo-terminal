@@ -5,11 +5,11 @@
     android:id="@+id/drawer_layout_profesor"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_gradient"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context=".Activities.profesor_home"
-    tools:openDrawer="start"
-    android:background="@drawable/background_gradient">
+    tools:context=".activities.profesor_home"
+    tools:openDrawer="start">
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view_profesor"
@@ -29,13 +29,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
-            android:elevation="4dp"
             android:minHeight="?attr/actionBarSize"
             android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -47,60 +46,57 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="190dp"
-                app:cardCornerRadius="25dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp">
+                android:layout_marginBottom="10dp"
+                app:cardCornerRadius="25dp">
 
                 <ImageView
-                    android:layout_width="139dp"
+                    android:layout_width="120dp"
                     android:layout_height="169dp"
-                    android:layout_marginLeft="230dp"
-                    android:layout_marginRight="50dp"
                     android:layout_gravity="center_vertical"
+                    android:layout_marginStart="230dp"
+                    android:layout_marginLeft="230dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginRight="50dp"
                     android:src="@drawable/icon_perfil_encargado">
-
                 </ImageView>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent">
-                    <LinearLayout
+                    android:layout_height="126dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginBottom="25dp"
+                    android:orientation="vertical"
+                    app:cardCornerRadius="25dp">
+
+                    <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="126dp"
-                        android:layout_marginLeft="25dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
                         android:layout_marginTop="25dp"
-                        android:layout_marginRight="25dp"
-                        android:layout_marginBottom="25dp"
-                        app:cardCornerRadius="25dp"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="25dp"
-                            android:text="Encargado Test "
-                            android:textStyle="bold"
-                            android:textSize="20dp"
-                            android:textAlignment="center"
-                            android:textColor="@color/colorBlack" />
+                        android:text="Encargado Test "
+                        android:textAlignment="center"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/colorBlack"
-                            android:text="Laboratorio de Sistemas 1"
-                            android:layout_gravity="center_horizontal"
-                            android:textAlignment="center"
-                            />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="Laboratorio de Sistemas 1"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorBlack" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:textColor="@color/colorBlack"
-                            android:textAlignment="center"
-                            android:text="Tiempo Libre" />
-                    </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="Tiempo Libre"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorBlack" />
                 </LinearLayout>
 
 
@@ -153,8 +149,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:padding="5dp"
-                            android:text="Ver Reservaciones "
-                            android:textColor="@color/cardview_dark_background" />
+                            android:text="Ver Reservaciones"/>
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -214,10 +209,12 @@
                 android:orientation="horizontal">
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cvCloseLaboratory"
                     android:layout_width="340dp"
                     android:layout_height="180dp"
                     android:layout_margin="10dp"
                     android:clickable="true"
+                    android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
                     app:cardCornerRadius="25dp">
 

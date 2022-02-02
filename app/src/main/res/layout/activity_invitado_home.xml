@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context=".Activities.alumno_home"
+    tools:context=".activities.alumno_home"
     tools:openDrawer="start">
 
     <com.google.android.material.navigation.NavigationView

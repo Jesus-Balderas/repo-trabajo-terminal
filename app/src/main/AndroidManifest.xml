@@ -1,33 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.prototipo2tt" >
+    package="com.example.prototipo2tt">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".App.MyApp"
+        android:name=".app.MyApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/icon_app_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Prototipo2tt"
-        android:usesCleartextTraffic="true" >
+        android:usesCleartextTraffic="true">
         <activity
-            android:name=".Activities.DescriptionReservationActivity"
+            android:name=".activities.CloseLaboratoryActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.AttendantReservationActivity"
+            android:name=".activities.DescriptionReservationActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.registrar_encargado"
+            android:name=".activities.AttendantReservationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.registrar_encargado"
             android:launchMode="singleInstance" />
         <activity
-            android:name=".Activities.MainActivity"
-            android:screenOrientation="portrait" />
+            android:name=".activities.MainActivity"
+            android:screenOrientation="fullSensor" />
         <activity
-            android:name=".Splash.SplashActivity"
-            android:theme="@style/SplashScreen" >
+            android:name=".splash.SplashActivity"
+            android:theme="@style/SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,25 +38,27 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activities.login"
-            android:screenOrientation="portrait" />
+            android:name=".activities.login"
+            android:screenOrientation="fullSensor" />
         <activity
-            android:name=".Activities.registrar_alumno"
-            android:screenOrientation="portrait" />
+            android:name=".activities.registrar_alumno"
+            android:screenOrientation="fullSensor" />
         <activity
-            android:name=".Activities.alumno_home"
-            android:screenOrientation="portrait" />
+            android:name=".activities.alumno_home"
+            android:screenOrientation="fullSensor" />
         <activity
-            android:name=".Activities.login_profesor"
+            android:name=".activities.login_profesor"
             android:launchMode="singleInstance"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="fullSensor" />
         <activity
-            android:name=".Activities.profesor_home"
-            android:screenOrientation="portrait" />
+            android:name=".activities.profesor_home"
+            android:screenOrientation="fullSensor" />
         <activity
-            android:name=".Activities.invitado_home"
-            android:screenOrientation="portrait" />
-
+            android:name=".activities.invitado_home"
+            android:screenOrientation="fullSensor" />
+        <activity
+            android:name=".activities.ScheduleLaboratoryActivity"
+            android:screenOrientation="fullSensor"/>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

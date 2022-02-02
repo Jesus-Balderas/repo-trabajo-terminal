@@ -1,4 +1,4 @@
-package com.example.prototipo2tt.Activities;
+package com.example.prototipo2tt.activities;
 
 import android.content.Intent;
 import android.os.Bundle;

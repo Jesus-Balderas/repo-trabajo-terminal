@@ -1,12 +1,12 @@
-package com.example.prototipo2tt.Activities
+package com.example.prototipo2tt.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.prototipo2tt.Adapter.AttendantReservationAdapter
-import com.example.prototipo2tt.Models.Reservation
+import com.example.prototipo2tt.adapter.AttendantReservationAdapter
+import com.example.prototipo2tt.models.Reservation
 import com.example.prototipo2tt.R
 import java.io.Serializable
 
@@ -16,16 +16,17 @@ class AttendantReservationActivity : AppCompatActivity(),
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_attendant_reservation)
 
+        //Configuración del RecyclerView
         val recyclerView: RecyclerView = findViewById(R.id.reservationRecyclerView)
 
         //Configuracion del Adapter
-        val adapter: AttendantReservationAdapter =
-            AttendantReservationAdapter(this, reservations(), this)
+        val adapter = AttendantReservationAdapter(this, reservations(), this)
 
-        //Configuración del RecyclerView
+
         recyclerView.hasFixedSize()
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
+
     }
 
     private fun reservations(): MutableList<Reservation> {

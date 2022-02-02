@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardViewLaboratory"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/cardViewReservation"
     android:animateLayoutChanges="true"
     app:cardCornerRadius="20dp"
     app:cardElevation="4dp"
@@ -16,6 +15,7 @@
         android:layout_height="wrap_content"
         android:animateLayoutChanges="true"
         android:orientation="vertical">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -28,14 +28,11 @@
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
                 android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
                 android:paddingLeft="14dp"
                 android:paddingRight="14dp"
-                android:src="@drawable/ic_reservation_mail"
-                android:contentDescription="imageReservation"
-                android:tint="@color/colorPrimaryDark">
-            </ImageView>
+                android:src="@drawable/ic_baseline_desktop_windows_24"></ImageView>
 
             <LinearLayout
                 android:id="@+id/linearLayout"
@@ -50,52 +47,53 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/idTextViewReservation"
+                    android:id="@+id/textViewLaboratorio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
                     android:textColor="@color/colorBlack"
                     android:textSize="15sp"
-                    tools:text="Reservación #1" />
+                    tools:text="Laboratorio Test" />
 
                 <TextView
-                    android:id="@+id/alumnoTextViewReservation"
+                    android:id="@+id/textViewLabSalon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorBlack"
                     android:textSize="15sp"
-                    tools:text="Alumno: Alumno Test" />
+                    tools:text="Salon: 1001" />
 
                 <TextView
-                    android:id="@+id/labTextViewReservation"
+                    android:id="@+id/textViewLabEdificio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorBlack"
-                    tools:text="Laboratorio: Laboratorio Test" />
+                    android:textSize="15sp"
+                    tools:text="Edificio: 1" />
 
                 <TextView
-                    android:id="@+id/statusTextViewReservation"
+                    android:id="@+id/textViewLabEstado"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
-                    tools:text="Estado: Reservada" />
+                    android:textColor="@color/colorBlack"
+                    tools:text="Estado: Abierto" />
             </LinearLayout>
 
 
         </RelativeLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btnDetailsReservation"
+                android:id="@+id/btnVerHorarioLab"
                 style="@style/Widget.AppCompat.Button.Borderless.Colored"
-                android:textColor="@color/colorPrimary"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/texto_ver_reporte" />
+                android:text="@string/text_ver_horario" />
         </LinearLayout>
     </LinearLayout>
-</androidx.cardview.widget.CardView>
+</androidx.cardview.widget.CardView><?xml version="1.0" encoding="utf-8"?>
