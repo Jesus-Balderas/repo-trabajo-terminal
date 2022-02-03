@@ -90,7 +90,8 @@ public class HomeEncargadoActivity extends AppCompatActivity implements Navigati
                 Toast.makeText(this, "Buzón", Toast.LENGTH_LONG).show();
                 break;
             case R.id.id_menubitacora:
-                Toast.makeText(this, "Bitacora", Toast.LENGTH_SHORT).show();
+                Intent intentGraphReservation = new Intent(HomeEncargadoActivity.this, GraphReservationActivity.class);
+                startActivity(intentGraphReservation);
                 break;
             case R.id.id_menulogoutprofesor:
                 Toast.makeText(this, "Cerrar Sesión", Toast.LENGTH_SHORT).show();

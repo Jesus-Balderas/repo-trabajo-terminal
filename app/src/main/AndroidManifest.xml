@@ -14,25 +14,34 @@
         android:theme="@style/Theme.Prototipo2tt"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activities.GraphReservationActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
             android:name=".activities.CloseLaboratoryActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.DescriptionReservationActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.AttendantReservationActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.RegistrarEncargadoActivity"
+            android:screenOrientation="portrait"
             android:launchMode="singleInstance" />
         <activity
             android:name=".activities.MainActivity"
-            android:screenOrientation="fullSensor" />
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".splash.SplashActivity"
-            android:theme="@style/SplashScreen"
+            android:exported="true"
             android:launchMode="singleTask"
-            android:exported="true">
+            android:theme="@style/SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -41,26 +50,27 @@
         </activity>
         <activity
             android:name=".activities.login"
-            android:screenOrientation="fullSensor" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.registrar_alumno"
-            android:screenOrientation="fullSensor" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.alumno_home"
-            android:screenOrientation="fullSensor" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.LoginEncargadoActivity"
             android:launchMode="singleInstance"
-            android:screenOrientation="fullSensor" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.HomeEncargadoActivity"
-            android:screenOrientation="fullSensor" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.invitado_home"
-            android:screenOrientation="fullSensor" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.ScheduleLaboratoryActivity"
-            android:screenOrientation="fullSensor"/>
+            android:screenOrientation="portrait" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

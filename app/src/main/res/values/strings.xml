@@ -29,8 +29,6 @@
     <string name="description_reservation_estado">Estado: %1$s</string>
 
 
-
-
     <string name="label_send_notification">Enviar notificación</string>
     <string name="text_message_notiification">Mensaje:</string>
     <string name="text_title_notification">Título:</string>

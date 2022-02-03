@@ -32,7 +32,8 @@
                 android:layout_centerVertical="true"
                 android:paddingLeft="14dp"
                 android:paddingRight="14dp"
-                android:src="@drawable/ic_baseline_desktop_windows_24"></ImageView>
+                android:src="@drawable/ic_baseline_desktop_windows_24">
+            </ImageView>
 
             <LinearLayout
                 android:id="@+id/linearLayout"
@@ -96,4 +97,4 @@
                 android:text="@string/text_ver_horario" />
         </LinearLayout>
     </LinearLayout>
-</androidx.cardview.widget.CardView><?xml version="1.0" encoding="utf-8"?>
+</androidx.cardview.widget.CardView>
