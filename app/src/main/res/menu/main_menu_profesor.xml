@@ -2,19 +2,28 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/id_menuhorarioprofesor"
+            android:id="@+id/menuScheduleLaboratories"
             android:icon="@drawable/ic_baseline_schedule_24"
-            android:title="Ver Horarios" />
+            android:title="Horarios Laboratorios" />
         <item
-            android:id="@+id/id_menubuzon"
+            android:id="@+id/menuNotifications"
             android:icon="@drawable/ic_baseline_notifications_none_24"
             android:title="Notificaciones" />
-        <item
-            android:id="@+id/id_menubitacora"
-            android:icon="@drawable/ic_baseline_data_exploration_24"
-            android:title="Ver Reportes" />
-
     </group>
+    <item android:title="RESERVACIONES">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/menuConfirmedReservations"
+                    android:icon="@drawable/ic_baseline_event_available"
+                    android:title="Reservaciones Confirmadas" />
+                <item
+                    android:id="@+id/menuRefusedReservations"
+                    android:icon="@drawable/ic_baseline_event_busy"
+                    android:title="Reservaciones Rechazadas" />
+            </group>
+        </menu>
+    </item>
     <item android:title="PERFIL">
         <menu>
             <group android:checkableBehavior="single">

@@ -26,7 +26,7 @@ public class HomeEncargadoActivity extends AppCompatActivity implements Navigati
     DrawerLayout dl;
     NavigationView nv;
     Toolbar toolb;
-    CardView cardViewReservation, cardViewNotification;
+    CardView cardViewReservation, cardViewNotification, cardViewGraphReservation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +40,7 @@ public class HomeEncargadoActivity extends AppCompatActivity implements Navigati
 
         cardViewReservation = findViewById(R.id.cvReservations);
         cardViewNotification = findViewById(R.id.cvCloseLaboratory);
+        cardViewGraphReservation = findViewById(R.id.cvGraphReservations);
 
         //hide and show items
         Menu menu = nv.getMenu();
@@ -51,7 +52,7 @@ public class HomeEncargadoActivity extends AppCompatActivity implements Navigati
         tg.syncState();
 
         nv.setNavigationItemSelectedListener(this);
-        nv.setCheckedItem(R.id.id_menuhorarioprofesor);
+        //nv.setCheckedItem(R.id.menuScheduleLaboratories);
 
         cardViewReservation.setOnClickListener(v -> {
             Intent intent1 = new Intent(HomeEncargadoActivity.this, AttendantReservationActivity.class);
@@ -63,6 +64,14 @@ public class HomeEncargadoActivity extends AppCompatActivity implements Navigati
             public void onClick(View v) {
                 Intent intent2 = new Intent(HomeEncargadoActivity.this, CloseLaboratoryActivity.class);
                 startActivity(intent2);
+            }
+        });
+
+        cardViewGraphReservation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentGraphReservation = new Intent(HomeEncargadoActivity.this, GraphReservationActivity.class);
+                startActivity(intentGraphReservation);
             }
         });
 
@@ -82,16 +91,18 @@ public class HomeEncargadoActivity extends AppCompatActivity implements Navigati
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
-            case R.id.id_menuhorarioprofesor:
+            case R.id.menuScheduleLaboratories:
                 Intent intentScheduleLaboratory = new Intent(HomeEncargadoActivity.this, ScheduleLaboratoryActivity.class);
                 startActivity(intentScheduleLaboratory);
                 break;
-            case R.id.id_menubuzon:
-                Toast.makeText(this, "Buzón", Toast.LENGTH_LONG).show();
+            case R.id.menuNotifications:
+                Toast.makeText(this, "Notificaciones", Toast.LENGTH_LONG).show();
                 break;
-            case R.id.id_menubitacora:
-                Intent intentGraphReservation = new Intent(HomeEncargadoActivity.this, GraphReservationActivity.class);
-                startActivity(intentGraphReservation);
+            case R.id.menuConfirmedReservations:
+                Toast.makeText(this, "Reservaciones Confirmadas", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.menuRefusedReservations:
+                Toast.makeText(this, "Reservaciones Rechazadas", Toast.LENGTH_LONG).show();
                 break;
             case R.id.id_menulogoutprofesor:
                 Toast.makeText(this, "Cerrar Sesión", Toast.LENGTH_SHORT).show();

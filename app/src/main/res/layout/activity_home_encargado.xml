@@ -129,7 +129,7 @@
                             android:layout_height="64dp"
                             android:background="@drawable/circulobackground3"
                             android:padding="10dp"
-                            android:src="@drawable/ic_baseline_notifications_none_24" />
+                            android:src="@drawable/ic_baseline_event" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -155,6 +155,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cvGraphReports"
                     android:layout_width="160dp"
                     android:layout_height="190dp"
                     android:layout_margin="10dp"
@@ -173,7 +174,7 @@
                             android:layout_height="64dp"
                             android:background="@drawable/circulobackground3"
                             android:padding="10dp"
-                            android:src="@drawable/ic_baseline_report_24" />
+                            android:src="@drawable/ic_baseline_data_exploration_24" />
 
                         <TextView
                             android:layout_width="wrap_content"
