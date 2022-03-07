@@ -65,13 +65,13 @@ class registrar_alumno : AppCompatActivity() {
                 if(str_carrera=="M. EN C. EN SISTEMAS COMPUTACIONALES MÓVILES"){
                     carrer_id=5;
                 }
-
+/*
                 Toast.makeText(
                     parent.context,
                     "Id selecionado: " + carrer_id,
                     Toast.LENGTH_LONG
                 ).show()
-
+*/
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {}
