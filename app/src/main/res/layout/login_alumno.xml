@@ -62,6 +62,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="32dp"
                 android:background="@drawable/custom_button_login"
+                android:onClick="clickbtnIngresar"
                 android:text="Iniciar sesión"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
