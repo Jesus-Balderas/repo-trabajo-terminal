@@ -7,6 +7,10 @@ import android.widget.*
 import com.example.prototipo2tt.R
 import android.widget.AdapterView.OnItemSelectedListener
 import androidx.appcompat.widget.Toolbar
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 
 class registrar_alumno : AppCompatActivity() {
     var buttonRegister: Button? = null
@@ -19,13 +23,9 @@ class registrar_alumno : AppCompatActivity() {
     var editTextConfPasswordAlumno: EditText? = null
     var toolb: Toolbar? = null
     var se: Spinner? = null
-    var str_boleta: String? = null
-    var str_nombre: String? = null
-    var str_primerAp: String? = null
-    var str_segundoAp: String? = null
     var str_carrera: String? = null
-    var str_email: String? = null
-    var str_contrasena: String? = null
+    var carrer_id: Int? = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.registrar_alumno)
@@ -47,16 +47,38 @@ class registrar_alumno : AppCompatActivity() {
                 position: Int,
                 id: Long
             ) {
+
+                str_carrera = parent.getItemAtPosition(position).toString()
+
+                if(str_carrera=="ING. EN SISTEMAS COMPUTACIONALES"){
+                    carrer_id=1;
+                }else
+                if(str_carrera=="ING. EN INTELIGENCIA ARTIFICIAL"){
+                    carrer_id=2;
+                }else
+                if(str_carrera=="LIC. EN CIENCIA DE DATOS"){
+                    carrer_id=3;
+                }else
+                if(str_carrera=="ING. EN SISTEMAS AUTOMOTRICES"){
+                    carrer_id=4;
+                }else
+                if(str_carrera=="M. EN C. EN SISTEMAS COMPUTACIONALES MÓVILES"){
+                    carrer_id=5;
+                }
+
                 Toast.makeText(
                     parent.context,
-                    "Selecionado: " + parent.getItemAtPosition(position).toString(),
+                    "Id selecionado: " + carrer_id,
                     Toast.LENGTH_LONG
                 ).show()
-                str_carrera = parent.getItemAtPosition(position).toString()
+
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
+
+
+
     }
 
     private fun bindUI() {
@@ -70,5 +92,30 @@ class registrar_alumno : AppCompatActivity() {
         editTextEmailAlumno = findViewById<View>(R.id.editTextEmailAlumno) as EditText
         editTextPasswordAlumno = findViewById<View>(R.id.editTextPass) as EditText
         editTextConfPasswordAlumno = findViewById<View>(R.id.editTextConfPassword) as EditText
+    }
+    fun clickbtnInsertar(view: View){
+
+
+        var url="http://192.168.1.72/labscom/insertar.php"
+        val queue=Volley.newRequestQueue(this)
+        var resultadoPost = object : StringRequest(Request.Method.POST,url,
+            Response.Listener<String> { response ->
+                Toast.makeText(this,"Usuario insertado exitosamente",Toast.LENGTH_LONG).show()
+            },Response.ErrorListener { error ->
+                Toast.makeText(this,"Error $error ",Toast.LENGTH_LONG).show()
+            }){
+            override fun getParams(): MutableMap<String, String> {
+                val parametros=HashMap<String,String>()
+                parametros.put("num_boleta",editTextNumBoleta?.text.toString())
+                parametros.put("name",editTextNombres?.text.toString())
+                parametros.put("first_name",editTextFirstName?.text.toString())
+                parametros.put("second_name",editTextSecondName?.text.toString())
+                parametros.put("email",editTextEmailAlumno?.text.toString())
+                parametros.put("password",editTextPasswordAlumno?.text.toString())
+                parametros.put("career_id", carrer_id.toString())
+                return parametros
+            }
+        }
+        queue.add(resultadoPost)
     }
 }
