@@ -95,7 +95,6 @@ class registrar_alumno : AppCompatActivity() {
     }
     fun clickbtnInsertar(view: View){
 
-
         var url="http://192.168.1.72/labscom/insertar.php"
         val queue=Volley.newRequestQueue(this)
         var resultadoPost = object : StringRequest(Request.Method.POST,url,
