@@ -42,8 +42,13 @@
         <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/layout/toolbar.xml" value="0.2504528985507246" />
         <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/menu/main_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/menu/main_menu_profesor.xml" value="0.25416666666666665" />
+<<<<<<< HEAD
         <entry key="..\:/Users/XMX1283/AndroidStudioProjects/TT - copia/repo-trabajo-terminal/app/src/main/res/layout/login_alumno.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/XMX1283/AndroidStudioProjects/TT - copia/repo-trabajo-terminal/app/src/main/res/layout/registrar_alumno.xml" value="0.20416666666666666" />
+=======
+        <entry key="..\:/Users/XMX1283/AndroidStudioProjects/TT - copia/repo-trabajo-terminal/app/src/main/res/layout/login_alumno.xml" value="0.2" />
+        <entry key="..\:/Users/XMX1283/AndroidStudioProjects/TT - copia/repo-trabajo-terminal/app/src/main/res/layout/registrar_alumno.xml" value="0.22" />
+>>>>>>> 6d47b02
         <entry key="..\:/Users/XMX1283/AndroidStudioProjects/TT/repo-trabajo-terminal/app/src/main/res/layout/activity_invitado_home.xml" value="0.25" />
         <entry key="..\:/Users/XMX1283/AndroidStudioProjects/TT/repo-trabajo-terminal/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/XMX1283/AndroidStudioProjects/TT/repo-trabajo-terminal/app/src/main/res/layout/activity_registrar_encargado.xml" value="0.192481884057971" />
