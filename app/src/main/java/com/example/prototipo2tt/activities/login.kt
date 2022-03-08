@@ -7,10 +7,12 @@ import com.example.prototipo2tt.R
 import android.content.Intent
 import android.view.View
 import android.widget.Button
-import com.example.prototipo2tt.activities.registrar_alumno
-import com.example.prototipo2tt.activities.alumno_home
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.Volley
 
 class login : AppCompatActivity() {
     var btnRegister: Button? = null
@@ -19,6 +21,7 @@ class login : AppCompatActivity() {
     var editTextBoleta: EditText? = null
     var editTextPassword: EditText? = null
     var toolb: Toolbar? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login_alumno)
@@ -61,5 +64,55 @@ class login : AppCompatActivity() {
         startActivity(intent1)
     }
 
+    fun clickbtnIngresar(view: View) {
+        var num_boleta: String? = editTextBoleta?.text.toString()
+        var contrasena: String? = editTextPassword?.text.toString()
+        var contrasenaDevuelta: String? = null
+
+        /*
+        Toast.makeText(
+            this,
+            "num_boleta: " + num_boleta + "\ncontrasena: " + contrasena,
+            Toast.LENGTH_LONG
+        ).show()
+        */
+
+        val queue = Volley.newRequestQueue(this)
+        val url = "http://192.168.1.72/labscom/consulta.php?num_boleta=$num_boleta"
+        val jsonObjectRequest = JsonObjectRequest(Request.Method.GET, url, null,
+            Response.Listener { response ->
+                //Toast.makeText(this, "Response:\n"+response, Toast.LENGTH_LONG).show()
+                contrasenaDevuelta = response.getString("password")
+                //Toast.makeText(this, "Contraseña devuelta: "+contrasenaDevuelta, Toast.LENGTH_LONG).show()
+                if (contrasena == contrasenaDevuelta) {
+                    goToAlumnoHome()
+                } else {
+                    Toast.makeText(
+                        this,
+                        "Usuario o contraseña no valido\nIntente de nuevo",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            }, Response.ErrorListener { error ->
+                Toast.makeText(this, error.toString(), Toast.LENGTH_LONG).show()
+            }
+        )
+        queue.add(jsonObjectRequest)
+        //Toast.makeText(this, "Contraseña devuelta: "+contrasenaDevuelta, Toast.LENGTH_LONG).show()
+
+    }
+
+    fun validacionContrasena(contrasena: String, contrasenaDevuelta: String) { //contrasena y contrasena devuelta
+        if (contrasena == contrasenaDevuelta) {
+            goToAlumnoHome()
+        } else {
+            Toast.makeText(
+                this,
+                "Usuario o contraseña no valido\nIntente de nuevo",
+                Toast.LENGTH_LONG
+            ).show()
+        }
+
+    }
 
 }
