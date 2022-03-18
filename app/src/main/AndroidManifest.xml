@@ -14,25 +14,28 @@
         android:theme="@style/Theme.Prototipo2tt"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activities.Lab_Alumno"
+            android:exported="false" />
+        <activity
             android:name=".activities.GraphReservationActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.CloseLaboratoryActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.DescriptionReservationActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.AttendantReservationActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.RegistrarEncargadoActivity"
-            android:screenOrientation="portrait"
-            android:launchMode="singleInstance" />
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.MainActivity"
             android:launchMode="singleInstance"
