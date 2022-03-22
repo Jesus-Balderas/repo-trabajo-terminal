@@ -50,21 +50,21 @@ class registrar_alumno : AppCompatActivity() {
 
                 str_carrera = parent.getItemAtPosition(position).toString()
 
-                if(str_carrera=="ING. EN SISTEMAS COMPUTACIONALES"){
-                    carrer_id=1;
-                }else
-                if(str_carrera=="ING. EN INTELIGENCIA ARTIFICIAL"){
-                    carrer_id=2;
-                }else
-                if(str_carrera=="LIC. EN CIENCIA DE DATOS"){
-                    carrer_id=3;
-                }else
-                if(str_carrera=="ING. EN SISTEMAS AUTOMOTRICES"){
-                    carrer_id=4;
-                }else
-                if(str_carrera=="M. EN C. EN SISTEMAS COMPUTACIONALES MÓVILES"){
-                    carrer_id=5;
-                }
+                if (str_carrera == "ING. EN SISTEMAS COMPUTACIONALES") {
+                    carrer_id = 1;
+                } else
+                    if (str_carrera == "ING. EN INTELIGENCIA ARTIFICIAL") {
+                        carrer_id = 2;
+                    } else
+                        if (str_carrera == "LIC. EN CIENCIA DE DATOS") {
+                            carrer_id = 3;
+                        } else
+                            if (str_carrera == "ING. EN SISTEMAS AUTOMOTRICES") {
+                                carrer_id = 4;
+                            } else
+                                if (str_carrera == "M. EN C. EN SISTEMAS COMPUTACIONALES MÓVILES") {
+                                    carrer_id = 5;
+                                }
 /*
                 Toast.makeText(
                     parent.context,
@@ -76,7 +76,6 @@ class registrar_alumno : AppCompatActivity() {
 
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
-
 
 
     }
@@ -93,24 +92,25 @@ class registrar_alumno : AppCompatActivity() {
         editTextPasswordAlumno = findViewById<View>(R.id.editTextPass) as EditText
         editTextConfPasswordAlumno = findViewById<View>(R.id.editTextConfPassword) as EditText
     }
-    fun clickbtnInsertar(view: View){
 
-        var url="http://192.168.1.72/labscom/insertar.php"
-        val queue=Volley.newRequestQueue(this)
-        var resultadoPost = object : StringRequest(Request.Method.POST,url,
+    fun clickbtnInsertar(view: View) {
+    /*Consultar primero si la boleta no ha sido registrada*/
+        var url = "http://192.168.1.72/labscom/insertar.php"
+        val queue = Volley.newRequestQueue(this)
+        var resultadoPost = object : StringRequest(Request.Method.POST, url,
             Response.Listener<String> { response ->
-                Toast.makeText(this,"Usuario insertado exitosamente",Toast.LENGTH_LONG).show()
-            },Response.ErrorListener { error ->
-                Toast.makeText(this,"Error $error ",Toast.LENGTH_LONG).show()
-            }){
+                Toast.makeText(this, "Usuario insertado exitosamente", Toast.LENGTH_LONG).show()
+            }, Response.ErrorListener { error ->
+                Toast.makeText(this, "Error $error ", Toast.LENGTH_LONG).show()
+            }) {
             override fun getParams(): MutableMap<String, String> {
-                val parametros=HashMap<String,String>()
-                parametros.put("num_boleta",editTextNumBoleta?.text.toString())
-                parametros.put("name",editTextNombres?.text.toString())
-                parametros.put("first_name",editTextFirstName?.text.toString())
-                parametros.put("second_name",editTextSecondName?.text.toString())
-                parametros.put("email",editTextEmailAlumno?.text.toString())
-                parametros.put("password",editTextPasswordAlumno?.text.toString())
+                val parametros = HashMap<String, String>()
+                parametros.put("num_boleta", editTextNumBoleta?.text.toString())
+                parametros.put("name", editTextNombres?.text.toString())
+                parametros.put("first_name", editTextFirstName?.text.toString())
+                parametros.put("second_name", editTextSecondName?.text.toString())
+                parametros.put("email", editTextEmailAlumno?.text.toString())
+                parametros.put("password", editTextPasswordAlumno?.text.toString())
                 parametros.put("career_id", carrer_id.toString())
                 return parametros
             }

@@ -39,7 +39,6 @@
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
         <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -55,6 +54,7 @@
                 android:orientation="horizontal">
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cardViewHorariosAlumno"
                     android:layout_width="160dp"
                     android:layout_height="190dp"
                     android:layout_margin="10dp"
@@ -101,6 +101,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cardViewAgendarAlumno"
                     android:layout_width="160dp"
                     android:layout_height="190dp"
                     android:layout_margin="10dp"
@@ -156,13 +157,13 @@
                 android:orientation="horizontal">
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cardViewReservaAlumno"
                     android:layout_width="340dp"
                     android:layout_height="170dp"
                     android:layout_margin="10dp"
                     android:clickable="true"
                     android:foreground="?android:attr/selectableItemBackground"
-                    app:cardCornerRadius="25dp"
-                    >
+                    app:cardCornerRadius="25dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
