@@ -41,8 +41,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Fecha"
+                android:textColor="@color/colorPrimary"
                 android:textSize="20sp"
-                android:textColor="@color/colorPrimaryDark"/>
+                android:textStyle="bold" />
 
             <CalendarView
                 android:id="@+id/calendarView"
@@ -54,8 +55,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Hora"
+                android:textColor="@color/colorPrimary"
                 android:textSize="20sp"
-                android:textColor="@color/colorPrimaryDark"/>
+                android:textStyle="bold" />
 
             <Spinner
                 android:id="@+id/spinner"
@@ -71,8 +73,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Computadoras disponibles:"
+                android:textColor="@color/colorPrimary"
                 android:textSize="20sp"
-                android:textColor="@color/colorPrimaryDark"/>
+                android:textStyle="bold" />
 
             <Spinner
                 android:id="@+id/spinner2"

@@ -96,9 +96,9 @@ public class alumno_home extends AppCompatActivity implements NavigationView.OnN
     public void onClick(View view) {
         Intent i;
         switch (view.getId()){
-            case R.id.cardViewHorariosAlumno: i = new Intent(this, Lab_Alumno.class);startActivity(i); break;
-            case R.id.cardViewAgendarAlumno: i = new Intent(this, Lab_Alumno.class);startActivity(i); break;
-            case R.id.cardViewReservaAlumno: i = new Intent(this, Lab_Alumno.class);startActivity(i); break;
+            //case R.id.cardViewHorariosAlumno: i = new Intent(this, Lab_Alumno.class);startActivity(i); break;
+            case R.id.cardViewAgendarAlumno: i = new Intent(this, laboratorios_Alumno.class);startActivity(i); break;
+            case R.id.cardViewReservaAlumno: i = new Intent(this, laboratorios_Alumno.class);startActivity(i); break;
             default:break;
         }
     }
