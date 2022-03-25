@@ -57,6 +57,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:clickable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
                     app:cardCornerRadius="20dp"
                     app:cardElevation="4dp">
 
@@ -133,6 +134,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:clickable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
                     app:cardCornerRadius="20dp"
                     app:cardElevation="4dp">
 
@@ -209,6 +211,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:clickable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
                     app:cardCornerRadius="20dp"
                     app:cardElevation="4dp">
 
@@ -285,6 +288,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:clickable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
                     app:cardCornerRadius="20dp"
                     app:cardElevation="4dp">
 
@@ -361,6 +365,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:clickable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
                     app:cardCornerRadius="20dp"
                     app:cardElevation="4dp">
 
@@ -437,6 +442,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:clickable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
                     app:cardCornerRadius="20dp"
                     app:cardElevation="4dp">
 
@@ -513,6 +519,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:clickable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
                     app:cardCornerRadius="20dp"
                     app:cardElevation="4dp">
 
