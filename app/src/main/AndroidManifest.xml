@@ -14,6 +14,9 @@
         android:theme="@style/Theme.Prototipo2tt"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activities.ReservaAlumno"
+            android:exported="false" />
+        <activity
             android:name=".activities.Lab_Alumno"
             android:exported="false" />
         <activity
