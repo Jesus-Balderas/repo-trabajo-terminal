@@ -6,16 +6,10 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.android.volley.DefaultRetryPolicy
-import com.android.volley.Request
-import com.android.volley.toolbox.StringRequest
-import com.android.volley.toolbox.Volley
 import com.example.prototipo2tt.R
 import com.example.prototipo2tt.adapter.ScheduleLaboratoryAdapter
 import com.example.prototipo2tt.io.ApiService
 import com.example.prototipo2tt.models.Laboratory
-import org.json.JSONArray
-import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

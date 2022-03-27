@@ -17,7 +17,6 @@ import com.example.prototipo2tt.R
 
 class AttendantReservationAdapter(
     private val context: Context,
-    private val reservation: ArrayList<Reservation>,
     private val itemClickListener: OnReservationClickListener
 ) : RecyclerView.Adapter<AttendantReservationAdapter.ViewHolder>() {
 
@@ -25,14 +24,13 @@ class AttendantReservationAdapter(
         fun onItemClick(reservation: Reservation)
     }
 
+    var reservation = ArrayList<Reservation>()
+
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         private val reservationId = view.findViewById(R.id.tvReservation) as TextView
         private val student = view.findViewById(R.id.tvStudentReservation) as TextView
         private val boleta = view.findViewById<TextView>(R.id.tvStudentBoleta)
-        private val status = view.findViewById(R.id.tvStatusReservation) as TextView
-        private val date = view.findViewById<TextView>(R.id.tvDateReservation)
-        private val hour = view.findViewById<TextView>(R.id.tvTimeReservation)
         val cardView = view.findViewById(R.id.cardViewReservation) as CardView
         val context = view.context
 
@@ -42,10 +40,6 @@ class AttendantReservationAdapter(
             student.text =
                 itemView.context.getString(R.string.item_reservation_alumno, reservation.student)
             boleta.text = itemView.context.getString(R.string.item_reservation_boleta, reservation.boleta)
-            status.text =
-                itemView.context.getString(R.string.item_reservation_status, reservation.status)
-            date.text = itemView.context.getString(R.string.item_reservation_date, reservation.date)
-            hour.text = itemView.context.getString(R.string.item_reservation_hour, reservation.hour)
             itemView.findViewById<Button>(R.id.btnDetailsReservation).setOnClickListener {
                 itemClickListener.onItemClick(reservation)
             }

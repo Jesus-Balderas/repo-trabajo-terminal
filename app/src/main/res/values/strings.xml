@@ -24,10 +24,9 @@
 
     <string name="description_reservation_id">Reservación: %1$d</string>
     <string name="description_reservation_alumno">Alumno: %1$s</string>
-    <string name="description_reservation_laboratorio">Laboratorio: %1$s</string>
+    <string name="description_reservation_boleta">Boleta: %1$s</string>
     <string name="description_reservation_computadora">Computadora: %1$d</string>
-    <string name="description_reservation_horaInicio">Hora Inicio: %1$s</string>
-    <string name="description_reservation_horaFin">Hora Fin: %1$s</string>
+    <string name="description_reservation_hora">Hora Inicio: %1$s</string>
     <string name="description_reservation_Fecha">Fecha: %1$s</string>
     <string name="description_reservation_estado">Estado: %1$s</string>
 

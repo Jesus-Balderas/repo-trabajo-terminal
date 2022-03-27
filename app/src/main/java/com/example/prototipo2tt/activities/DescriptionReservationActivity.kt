@@ -25,10 +25,9 @@ class DescriptionReservationActivity : AppCompatActivity() {
 
         val reservationId = findViewById<TextView>(R.id.txtViewIdReservacion)
         val student = findViewById<TextView>(R.id.txtViewAlumnoReservacion)
-        val laboratory = findViewById<TextView>(R.id.txtViewLabReservacion)
+        val boleta = findViewById<TextView>(R.id.txtViewBoletaReservacion)
         val computer = findViewById<TextView>(R.id.txtViewComputadoraReservacion)
-        val hourStart = findViewById<TextView>(R.id.txtViewHoraInicioReservacion)
-        val hourEnd = findViewById<TextView>(R.id.txtViewHoraFinReservacion)
+        val hour= findViewById<TextView>(R.id.txtViewHoraReservacion)
         val date = findViewById<TextView>(R.id.txtViewFechaReservacion)
         val status = findViewById<TextView>(R.id.txtViewEstadoReservacion)
 
@@ -69,10 +68,9 @@ class DescriptionReservationActivity : AppCompatActivity() {
             reservation = intent.getSerializableExtra("Reservation") as Reservation
             reservationId.text = getString(R.string.description_reservation_id, reservation.id)
             student.text = getString(R.string.description_reservation_alumno, reservation.student)
-            laboratory.text = getString(R.string.description_reservation_laboratorio, reservation.laboratory)
+            boleta.text = getString(R.string.description_reservation_boleta, reservation.boleta)
             computer.text = getString(R.string.description_reservation_computadora, reservation.computer)
-            hourStart.text = getString(R.string.description_reservation_horaInicio, reservation.hourStart)
-            hourEnd.text = getString(R.string.description_reservation_horaFin, reservation.hourEnd)
+            hour.text = getString(R.string.description_reservation_hora, reservation.hour)
             date.text = getString(R.string.description_reservation_Fecha, reservation.date)
             status.text = getString(R.string.description_reservation_estado, reservation.status)
         }
