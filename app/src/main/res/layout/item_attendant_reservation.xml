@@ -50,7 +50,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/idTextViewReservation"
+                    android:id="@+id/tvReservation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
@@ -59,7 +59,7 @@
                     tools:text="Reservación #1" />
 
                 <TextView
-                    android:id="@+id/alumnoTextViewReservation"
+                    android:id="@+id/tvStudentReservation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorBlack"
@@ -67,18 +67,36 @@
                     tools:text="Alumno: Alumno Test" />
 
                 <TextView
-                    android:id="@+id/labTextViewReservation"
+                    android:id="@+id/tvStudentBoleta"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorBlack"
-                    tools:text="Laboratorio: Laboratorio Test" />
+                    android:textSize="15sp"
+                    tools:text="Boleta: 123456789" />
 
                 <TextView
-                    android:id="@+id/statusTextViewReservation"
+                    android:id="@+id/tvStatusReservation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/colorBlack"
                     android:textSize="15sp"
                     tools:text="Estado: Reservada" />
+
+                <TextView
+                    android:id="@+id/tvDateReservation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15sp"
+                    tools:text="Fecha: 26-03-2022" />
+
+                <TextView
+                    android:id="@+id/tvTimeReservation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15sp"
+                    tools:text="Hora: 13:30:00" />
             </LinearLayout>
 
 

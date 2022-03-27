@@ -7,5 +7,5 @@ data class Laboratory (
     var name: String,
     var classroom: String,
     var edifice: String,
-    var status: String,
+    var status: String
 ): Serializable

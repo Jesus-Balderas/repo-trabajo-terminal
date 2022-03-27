@@ -26,7 +26,7 @@ public class HomeEncargadoActivity extends AppCompatActivity implements Navigati
     DrawerLayout dl;
     NavigationView nv;
     Toolbar toolb;
-    CardView cardViewReservation, cardViewNotification, cardViewGraphReservation;
+    CardView cardViewReservation, cardViewNotification, cardViewGraphReports;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +40,7 @@ public class HomeEncargadoActivity extends AppCompatActivity implements Navigati
 
         cardViewReservation = findViewById(R.id.cvReservations);
         cardViewNotification = findViewById(R.id.cvCloseLaboratory);
-        cardViewGraphReservation = findViewById(R.id.cvGraphReservations);
+        cardViewGraphReports = findViewById(R.id.cvGraphReports);
 
         //hide and show items
         Menu menu = nv.getMenu();
@@ -67,7 +67,7 @@ public class HomeEncargadoActivity extends AppCompatActivity implements Navigati
             }
         });
 
-        cardViewGraphReservation.setOnClickListener(new View.OnClickListener() {
+        cardViewGraphReports.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intentGraphReservation = new Intent(HomeEncargadoActivity.this, GraphReservationActivity.class);

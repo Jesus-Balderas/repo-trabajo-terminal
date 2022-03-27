@@ -13,7 +13,10 @@
 
     <string name="item_reservation_id">Reservación %1$d</string>
     <string name="item_reservation_alumno">Alumno: %1$s</string>
+    <string name="item_reservation_boleta">Boleta: %1$s</string>
     <string name="item_reservation_status">Estado: %1$s</string>
+    <string name="item_reservation_date">Fecha: %1$s</string>
+    <string name="item_reservation_hour">Hora: %1$s</string>
 
     <string name="item_laboratory_classroom">Salón: %1$s</string>
     <string name="item_laboratory_edifice">Edificio: %1$s</string>

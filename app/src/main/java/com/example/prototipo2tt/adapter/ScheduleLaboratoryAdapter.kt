@@ -15,7 +15,6 @@ import com.example.prototipo2tt.models.Laboratory
 class ScheduleLaboratoryAdapter(
 
     private val context: Context,
-    private val laboratory: MutableList<Laboratory>,
     private val itemClickListener: OnLaboratoryClickListener
 
 ): RecyclerView.Adapter<ScheduleLaboratoryAdapter.ViewHolder>() {
@@ -24,14 +23,16 @@ class ScheduleLaboratoryAdapter(
         fun onItemClick(laboratory: Laboratory)
     }
 
+    var laboratory = ArrayList<Laboratory>()
+
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         private val name = view.findViewById<TextView>(R.id.textViewLaboratorio)
         private val classroom = view.findViewById<TextView>(R.id.textViewLabSalon)
         private val status = view.findViewById<TextView>(R.id.textViewLabEstado)
         private val edifice = view.findViewById<TextView>(R.id.textViewLabEdificio)
-        val cardView = view.findViewById<CardView>(R.id.cardViewLaboratory)
-        val context = view.context
+        val cardView: CardView = view.findViewById<CardView>(R.id.cardViewLaboratory)
+        val context: Context = view.context
 
         fun bind(laboratory: Laboratory){
 
