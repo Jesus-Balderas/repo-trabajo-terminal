@@ -3,10 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/drawable/background_alum_home.xml" value="0.24027777777777778" />
         <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/drawable/background_gradient.xml" value="0.2703125" />
         <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/drawable/custom_button_login.xml" value="0.2703125" />
         <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/drawable/custom_button_olvidecontrasena.xml" value="0.2712962962962963" />
         <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/drawable/custom_button_registrar.xml" value="0.2712962962962963" />
+        <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/drawable/forget.xml" value="0.24027777777777778" />
+        <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/drawable/ic_baseline_add_circle_outline_24.xml" value="0.24027777777777778" />
+        <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/drawable/ic_baseline_calendar_today_24.xml" value="0.24027777777777778" />
+        <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/drawable/ic_baseline_cancel_presentation_24.xml" value="0.24027777777777778" />
         <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/drawable/ic_baseline_data_exploration_24.xml" value="0.24027777777777778" />
         <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/drawable/ic_baseline_desktop_windows_24.xml" value="0.24027777777777778" />
         <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/drawable/ic_baseline_event.xml" value="0.1412037037037037" />

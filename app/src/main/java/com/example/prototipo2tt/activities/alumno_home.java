@@ -1,5 +1,6 @@
 package com.example.prototipo2tt.activities;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import com.google.android.material.navigation.NavigationView;
@@ -33,7 +34,7 @@ public class alumno_home extends AppCompatActivity implements NavigationView.OnN
 
         //hide and show items
         Menu menu = nv.getMenu();
-        menu.findItem(R.id.id_menulogin).setVisible(false);
+        //menu.findItem(R.id.id_menuloginAlumno).setVisible(false);
 
         nv.bringToFront();
         ActionBarDrawerToggle tg = new ActionBarDrawerToggle(this, dl, toolb, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -41,9 +42,10 @@ public class alumno_home extends AppCompatActivity implements NavigationView.OnN
         tg.syncState();
 
         nv.setNavigationItemSelectedListener(this);
-        nv.setCheckedItem(R.id.id_menuhorario);
+        //nv.setCheckedItem(R.id.id_menuhorario);
 
     }
+
     @Override
     public void onBackPressed(){
         if(dl.isDrawerOpen(GravityCompat.START)){
@@ -54,21 +56,19 @@ public class alumno_home extends AppCompatActivity implements NavigationView.OnN
     }
 
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()){
-            case R.id.id_menuhorario:
+            case R.id.id_menuLaboratoriosAlumno:
+                Toast.makeText(this, "Laboratorios", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.id_menuagendar:
-                /*
-                Intent i = new Intent(MainActivity.this, Bus.class);
-                startActivity(i);
-                */
+            case R.id.id_menuMisReservasAlumnoCanceladas:
+                Toast.makeText(this, "Canceladas", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.id_menureserva:
-                Toast.makeText(this, "hola mundo bonito uwu", Toast.LENGTH_SHORT).show();
+            case R.id.id_menuMisReservasAlumnoAceptadas:
+                Toast.makeText(this, "Aceptadas", Toast.LENGTH_SHORT).show();
                 break;
-
         }
         dl.closeDrawer(GravityCompat.START);
         return true;

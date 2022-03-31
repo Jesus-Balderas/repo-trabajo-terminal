@@ -32,7 +32,7 @@ public class invitado_home extends AppCompatActivity implements NavigationView.O
 
         //hide and show items
         Menu menu = nv.getMenu();
-        menu.findItem(R.id.id_menulogin).setVisible(false);
+        //menu.findItem(R.id.id_menulogin).setVisible(false);
 
         nv.bringToFront();
         ActionBarDrawerToggle tg = new ActionBarDrawerToggle(this, dl, toolb, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -40,7 +40,7 @@ public class invitado_home extends AppCompatActivity implements NavigationView.O
         tg.syncState();
 
         nv.setNavigationItemSelectedListener(this);
-        nv.setCheckedItem(R.id.id_menuhorario);
+        //nv.setCheckedItem(R.id.id_menuhorario);
     }
 
     @Override
@@ -55,17 +55,17 @@ public class invitado_home extends AppCompatActivity implements NavigationView.O
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()){
-            case R.id.id_menuhorario:
-                break;
-            case R.id.id_menuagendar:
+            //case R.id.id_menuhorario:
+                //break;
+            //case R.id.id_menuagendar:
                 /*
                 Intent i = new Intent(MainActivity.this, Bus.class);
                 startActivity(i);
                 */
-                break;
-            case R.id.id_menureserva:
-                Toast.makeText(this, "hola mundo bonito uwu", Toast.LENGTH_SHORT).show();
-                break;
+                //break;
+            //case R.id.id_menureserva:
+                //Toast.makeText(this, "hola mundo bonito uwu", Toast.LENGTH_SHORT).show();
+                //break;
 
         }
         dl.closeDrawer(GravityCompat.START);

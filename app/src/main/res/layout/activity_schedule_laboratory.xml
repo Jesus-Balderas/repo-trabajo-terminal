@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_gradient"
+    android:background="@drawable/background_profesor_gradient"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context=".activities.ScheduleLaboratoryActivity"
@@ -31,6 +31,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="2dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             tools:listitem="@layout/item_laboratory" />
 
     </LinearLayout>

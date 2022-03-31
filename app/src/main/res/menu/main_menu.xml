@@ -2,31 +2,40 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/id_menuhorario"
+            android:id="@+id/id_menuInicioAlumno"
+            android:icon="@drawable/ic_baseline_home"
+            android:title="Inicio" />
+        <item
+            android:id="@+id/id_menuLaboratoriosAlumno"
             android:icon="@drawable/ic_baseline_schedule_24"
-            android:title="Ver Horarios" />
-        <item
-            android:id="@+id/id_menuagendar"
-            android:icon="@drawable/ic_baseline_calendar_today_24"
-            android:title="Agendar" />
-        <item
-            android:id="@+id/id_menumisreservas"
-            android:icon="@drawable/ic_baseline_library_add_check_24"
-            android:title="Mis reservaciones" />
-        <item
-            android:id="@+id/id_menureserva"
-            android:icon="@drawable/ic_baseline_add_circle_outline_24"
-            android:title="Reserva rápida" />
+            android:title="Laboratorios" />
+
+        <item android:title="MIS RESERVACIONES">
+            <menu>
+                <group android:checkableBehavior="single">
+                    <item
+                        android:id="@+id/id_menuMisReservasAlumnoCanceladas"
+                        android:icon="@drawable/ic_baseline_auto_delete"
+                        android:title="Canceladas"/>
+                    <item
+                        android:id="@+id/id_menuMisReservasAlumnoAceptadas"
+                        android:icon="@drawable/ic_baseline_event_available"
+                        android:title="Aceptadas"/>
+                    <item
+                        android:id="@+id/id_menuMisReservasAlumnoRechazadas"
+                        android:icon="@drawable/ic_baseline_event_busy"
+                        android:title="Rechazadas"/>
+
+                </group>
+            </menu>
+        </item>
     </group>
+
     <item android:title="PERFIL">
         <menu>
             <group android:checkableBehavior="single">
                 <item
-                    android:id="@+id/id_menulogin"
-                    android:icon="@drawable/ic_baseline_login_24"
-                    android:title="Ingresar" />
-                <item
-                    android:id="@+id/id_menulogout"
+                    android:id="@+id/id_menuLogoutAlumno"
                     android:icon="@drawable/ic_baseline_logout_24"
                     android:title="Salir" />
             </group>

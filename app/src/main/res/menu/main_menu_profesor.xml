@@ -4,7 +4,7 @@
         <item
             android:id="@+id/menuScheduleLaboratories"
             android:icon="@drawable/ic_baseline_schedule_24"
-            android:title="Horarios Laboratorios" />
+            android:title="Laboratorios" />
         <item
             android:id="@+id/menuNotifications"
             android:icon="@drawable/ic_baseline_notifications_none_24"
@@ -16,11 +16,11 @@
                 <item
                     android:id="@+id/menuConfirmedReservations"
                     android:icon="@drawable/ic_baseline_event_available"
-                    android:title="Reservaciones Confirmadas" />
+                    android:title="Aceptadas" />
                 <item
                     android:id="@+id/menuRefusedReservations"
                     android:icon="@drawable/ic_baseline_event_busy"
-                    android:title="Reservaciones Rechazadas" />
+                    android:title="Rechazadas" />
             </group>
         </menu>
     </item>

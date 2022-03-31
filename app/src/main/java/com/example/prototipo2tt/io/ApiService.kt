@@ -17,7 +17,7 @@ interface ApiService {
     fun getAttendantReservations(@Query("attendant_id") id: Int): Call<ArrayList<Reservation>>
 
     companion object Factory{
-        private const val BASE_URL = "http://10.0.0.50/api/"
+        private const val BASE_URL = "https://labscom.herokuapp.com/api/"
 
         fun create():ApiService{
             val retrofit = Retrofit.Builder()

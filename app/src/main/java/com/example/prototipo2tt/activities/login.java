@@ -37,12 +37,7 @@ public class login extends AppCompatActivity {
         //BOTÓN INGRESAR
         btnLogin.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                String boleta = editTextBoleta.getText().toString();
-                String password = editTextPassword.getText().toString();
-                if (login(boleta, password)){
-                    goToAlumnoHome();
-                }
-
+                goToAlumnoHome();
             }
         });
     }
@@ -54,29 +49,6 @@ public class login extends AppCompatActivity {
         editTextBoleta = (EditText) findViewById(R.id.editTextBoleta);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
 
-    }
-
-    private boolean login(String boleta, String password){
-        if (!isValidBoleta(boleta)){
-            Toast.makeText(this, "Numero de boleta no es valida, Intenta de nuevo", Toast.LENGTH_LONG).show();
-            return false;
-        } else if (!isValidPassword(password)){
-            Toast.makeText(this, "La contraseña no es valida, Intenta de nuevo", Toast.LENGTH_LONG).show();
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-    private boolean isValidBoleta(String boleta){
-        if (boleta.length() > 0 && boleta.length() <= 10) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-    private boolean isValidPassword(String password){
-        return password.length() >= 4;
     }
 
     private void goToAlumnoHome(){

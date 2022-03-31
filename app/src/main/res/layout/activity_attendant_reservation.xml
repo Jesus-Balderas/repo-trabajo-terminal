@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_gradient"
+    android:background="@drawable/background_profesor_gradient"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context=".activities.AttendantReservationActivity"
@@ -25,11 +25,14 @@
             android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:title="@string/label_reservation"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/reservationRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="2dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
             tools:listitem="@layout/item_attendant_reservation" />
 
     </LinearLayout>

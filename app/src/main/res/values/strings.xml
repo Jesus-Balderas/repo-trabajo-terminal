@@ -8,7 +8,7 @@
     <string name="hint_num_empleado">Número de Empleado</string>
     <string name="text_Back_To_Login">Regresar al inicio</string>
 
-    <string name="label_reservation">Historial de Reservaciones</string>
+    <string name="label_reservation">Solicitudes de Reservaciones</string>
     <string name="label_schedule_laboratory">Horarios de los Laboratorios</string>
 
     <string name="item_reservation_id">Reservación %1$d</string>
