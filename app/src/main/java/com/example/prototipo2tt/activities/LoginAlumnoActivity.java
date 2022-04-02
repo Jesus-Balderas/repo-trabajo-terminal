@@ -8,7 +8,6 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.prototipo2tt.R;
 
@@ -52,7 +51,7 @@ public class login extends AppCompatActivity {
     }
 
     private void goToAlumnoHome(){
-        Intent intent1 = new Intent(login.this, alumno_home.class);
+        Intent intent1 = new Intent(login.this, HomeAlumnoActivity.class);
         intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent1);
     }
