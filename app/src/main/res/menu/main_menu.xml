@@ -37,7 +37,7 @@
                 <item
                     android:id="@+id/id_menuLogoutAlumno"
                     android:icon="@drawable/ic_baseline_logout_24"
-                    android:title="Salir" />
+                    android:title="Cerrar sesión" />
             </group>
         </menu>
     </item>
@@ -45,7 +45,7 @@
         <menu>
             <group android:checkableBehavior="single">
                 <item
-                    android:id="@+id/id_menufooter"
+                    android:id="@+id/id_menuFooterAlumno"
                     android:icon="@drawable/ic_baseline_contact_support_24"
                     android:title="Contacto" />
             </group>

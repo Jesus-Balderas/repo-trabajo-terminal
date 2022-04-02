@@ -23,8 +23,7 @@
             android:elevation="4dp"
             android:minHeight="?attr/actionBarSize"
             android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:title="@string/label_reservation"/>
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/reservationRecyclerView"

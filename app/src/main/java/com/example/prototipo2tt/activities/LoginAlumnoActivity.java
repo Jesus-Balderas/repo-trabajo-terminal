@@ -11,7 +11,7 @@ import android.widget.EditText;
 
 import com.example.prototipo2tt.R;
 
-public class login extends AppCompatActivity {
+public class LoginAlumnoActivity extends AppCompatActivity {
 
     Button btnRegister, btnLogin, btnForgetPassword;
     EditText editTextBoleta, editTextPassword;
@@ -20,7 +20,7 @@ public class login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login_alumno);
+        setContentView(R.layout.activity_login_alumno);
         bindUI();
         toolb = (Toolbar) findViewById(R.id.toolbarmain);
         setSupportActionBar(toolb);
@@ -28,7 +28,7 @@ public class login extends AppCompatActivity {
         //BOTÓN REGISTRAR
         btnRegister.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent2 = new Intent(login.this, registrar_alumno.class);
+                Intent intent2 = new Intent(LoginAlumnoActivity.this, registrar_alumno.class);
                 startActivity(intent2);
             }
         });
@@ -51,7 +51,7 @@ public class login extends AppCompatActivity {
     }
 
     private void goToAlumnoHome(){
-        Intent intent1 = new Intent(login.this, HomeAlumnoActivity.class);
+        Intent intent1 = new Intent(LoginAlumnoActivity.this, HomeAlumnoActivity.class);
         intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent1);
     }

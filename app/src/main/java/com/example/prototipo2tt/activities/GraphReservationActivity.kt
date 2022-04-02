@@ -3,6 +3,7 @@ package com.example.prototipo2tt.activities
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.widget.Toolbar
 import com.example.prototipo2tt.R
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.components.Description
@@ -14,7 +15,15 @@ import com.github.mikephil.charting.data.PieEntry
 class GraphReservationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_grafic_reservations)
+        setContentView(R.layout.activity_graphic_reservations)
+
+        //Agregando el Toolbar
+        val toolbar = findViewById<Toolbar>(R.id.toolbarGraphicReservation)
+        toolbar.setTitle(R.string.app_name)
+        setSupportActionBar(toolbar)
+        //Desplegando el boton hacia atras
+        val actionBar = supportActionBar
+        actionBar?.setDisplayHomeAsUpEnabled(true)
         setPieChart()
     }
     private fun setPieChart(){

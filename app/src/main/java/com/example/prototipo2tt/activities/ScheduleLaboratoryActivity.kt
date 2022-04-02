@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.prototipo2tt.R
@@ -28,12 +29,20 @@ class ScheduleLaboratoryActivity : AppCompatActivity(), ScheduleLaboratoryAdapte
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_schedule_laboratory)
 
-        getJSONLaboratories()
+        //Agregando el Toolbar
+        val toolbar = findViewById<Toolbar>(R.id.toolbarScheduleLaboratories)
+        toolbar.setTitle(R.string.app_name)
+        setSupportActionBar(toolbar)
+        //Desplegando el boton hacia atras
+        val actionBar = supportActionBar
+        actionBar?.setDisplayHomeAsUpEnabled(true)
 
         val recyclerView: RecyclerView = findViewById(com.example.prototipo2tt.R.id.laboratoryRecyclerView)
         recyclerView.hasFixedSize()
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
+
+        getJSONLaboratories()
 
     }
 

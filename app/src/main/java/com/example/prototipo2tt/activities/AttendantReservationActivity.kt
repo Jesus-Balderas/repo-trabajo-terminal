@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.prototipo2tt.adapter.AttendantReservationAdapter
@@ -29,9 +30,16 @@ class AttendantReservationActivity : AppCompatActivity(),
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_attendant_reservation)
 
+        //Agregando el Toolbar
+        val toolbar = findViewById<Toolbar>(R.id.toolbar_profesor)
+        toolbar.setTitle(R.string.app_name)
+        setSupportActionBar(toolbar)
+        //Desplegando el boton hacia atras
+        val actionBar = supportActionBar
+        actionBar?.setDisplayHomeAsUpEnabled(true)
+
         //Configuración del RecyclerView
         val recyclerView: RecyclerView = findViewById(R.id.reservationRecyclerView)
-
 
         recyclerView.hasFixedSize()
         recyclerView.layoutManager = LinearLayoutManager(this)

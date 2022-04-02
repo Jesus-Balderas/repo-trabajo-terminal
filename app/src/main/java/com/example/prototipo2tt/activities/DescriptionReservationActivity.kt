@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
 import com.example.prototipo2tt.models.Reservation
 import com.example.prototipo2tt.R
@@ -22,6 +23,13 @@ class DescriptionReservationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_description_reservation)
+        //Agregando el Toolbar
+        val toolbar = findViewById<Toolbar>(R.id.toolbarDescriptionReservation)
+        toolbar.setTitle(R.string.app_name)
+        setSupportActionBar(toolbar)
+        //Desplegando el boton hacia atras
+        val actionBar = supportActionBar
+        actionBar?.setDisplayHomeAsUpEnabled(true)
 
         val reservationId = findViewById<TextView>(R.id.txtViewIdReservacion)
         val student = findViewById<TextView>(R.id.txtViewAlumnoReservacion)

@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnAlumno.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                itn = new Intent(MainActivity.this, login.class);
+                itn = new Intent(MainActivity.this, LoginAlumnoActivity.class);
                 startActivity(itn);
             }
         });
