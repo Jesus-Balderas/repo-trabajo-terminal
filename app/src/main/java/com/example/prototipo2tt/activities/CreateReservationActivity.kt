@@ -68,7 +68,7 @@ class CreateReservationActivity : AppCompatActivity() {
 
     }
 
-    fun onClickDate (v: View?){
+    fun onClickDate (@Suppress("UNUSED_PARAMETER") v: View?){
 
         val year = selectedCalendar.get(Calendar.YEAR)
         val month = selectedCalendar.get(Calendar.MONTH)

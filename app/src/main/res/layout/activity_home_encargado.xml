@@ -17,7 +17,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:headerLayout="@layout/header_profesor"
+        app:headerLayout="@layout/nav_header_profesor"
         app:menu="@menu/main_menu_profesor" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,7 +25,7 @@
         android:layout_height="match_parent">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_profesor"
+            android:id="@+id/toolbarHomeEncargado"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"

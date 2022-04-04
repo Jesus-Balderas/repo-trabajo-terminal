@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.prototipo2tt">
+    package="com.example.prototipo2tt" >
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -14,25 +14,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Prototipo2tt"
         android:usesCleartextTraffic="true"
-        tools:targetApi="m">
+        tools:targetApi="m" >
         <activity
             android:name=".activities.LoginAlumnoActivity"
-            android:screenOrientation="portrait" />
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait"
+            android:exported="false" />
         <activity
             android:name=".activities.registrar_alumno"
+            android:launchMode="singleInstance"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.HomeAlumnoActivity"
+            android:launchMode="singleInstance"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.CreateReservationActivity"
-            android:parentActivityName=".activities.HomeAlumnoActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.RegistrarEncargadoActivity"
-            android:launchMode="singleInstance"
-            android:screenOrientation="portrait" />
-
+            android:exported="false"
+            android:parentActivityName=".activities.HomeAlumnoActivity" />
         <activity
             android:name=".activities.MainActivity"
             android:launchMode="singleInstance"
@@ -41,20 +40,24 @@
             android:name=".splash.SplashActivity"
             android:exported="true"
             android:launchMode="singleTask"
-            android:theme="@style/SplashScreen">
+            android:theme="@style/SplashScreen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".activities.LoginEncargadoActivity"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".activities.RegistrarEncargadoActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".activities.HomeEncargadoActivity"
+            android:launchMode="singleInstance"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.AttendantReservationActivity"
@@ -78,6 +81,7 @@
         <activity
             android:name=".activities.CloseLaboratoryActivity"
             android:exported="false"
+            android:parentActivityName=".activities.HomeEncargadoActivity"
             android:screenOrientation="portrait" />
 
         <meta-data
