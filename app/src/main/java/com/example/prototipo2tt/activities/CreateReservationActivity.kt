@@ -10,6 +10,8 @@ import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
 import com.example.prototipo2tt.R
 import com.example.prototipo2tt.io.ApiService
+import com.example.prototipo2tt.models.Attendant
+import com.example.prototipo2tt.models.Computer
 import com.example.prototipo2tt.models.Laboratory
 import retrofit2.Call
 import retrofit2.Callback
@@ -80,21 +82,79 @@ class CreateReservationActivity : AppCompatActivity() {
         }
 
         loadLaboratories()
+        listenLaboratoriesChanges()
 
-
-        val optionsEncargados = arrayOf("Marco Antonio")
-        val optionsComputers = arrayOf(
-            "1","2", "3", "4", "5", "6", "7", "8", "9", "10",
-            "11","12", "13", "14", "15", "16", "17", "18", "19", "20")
         val optionsHours = arrayOf("07:00","08:30", "10:30", "12:00", "13:30", "15:00", "16:30", "18:30", "20:00")
-
-        spinnerEncargados.adapter = ArrayAdapter<String>(
-            this, android.R.layout.simple_list_item_1, optionsEncargados)
-        spinnerComputers.adapter = ArrayAdapter<String>(
-            this, android.R.layout.simple_list_item_1, optionsComputers)
         spinnerHours.adapter = ArrayAdapter<String>(
             this, android.R.layout.simple_list_item_1, optionsHours)
 
+    }
+
+    private fun listenLaboratoriesChanges() {
+        //Nos va a permitir escuchar cambios por cada item que es seleccionado
+        spinnerLaboratories.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(adapter: AdapterView<*>?, view: View?, position: Int, p3: Long) {
+                val laboratory = adapter?.getItemAtPosition(position) as Laboratory
+                /*Toast.makeText(this@CreateReservationActivity, "id: ${laboratory.id}", Toast.LENGTH_SHORT).show()*/
+                loadAttendants(laboratory.id)
+                loadComputers(laboratory.id)
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+
+            }
+
+        }
+    }
+
+    private fun loadAttendants(laboratoryId: Int) {
+        val call = apiService.getAttendants(laboratoryId)
+        call.enqueue(object: Callback<ArrayList<Attendant>>{
+            override fun onResponse(
+                call: Call<ArrayList<Attendant>>,
+                response: Response<ArrayList<Attendant>>
+            ) {
+                if (response.isSuccessful){
+                    val attendants = response.body()//ArrayList de Attendants
+                    spinnerEncargados.adapter = ArrayAdapter<Attendant>(
+                        this@CreateReservationActivity, android.R.layout.simple_list_item_1,
+                        attendants as MutableList<Attendant>)
+                }
+
+            }
+
+            override fun onFailure(call: Call<ArrayList<Attendant>>, t: Throwable) {
+                Toast.makeText(this@CreateReservationActivity,
+                    "Ocurrió un problema al cargar los encargados", Toast.LENGTH_SHORT).show()
+            }
+
+        })
+
+    }
+
+    private fun loadComputers(laboratoryId: Int){
+
+        val call = apiService.getComputers(laboratoryId)
+        call.enqueue(object : Callback<ArrayList<Computer>>
+        {
+            override fun onResponse(
+                call: Call<ArrayList<Computer>>,
+                response: Response<ArrayList<Computer>>
+            ) {
+                if (response.isSuccessful){
+                    val computers = response.body()
+                    spinnerComputers.adapter = ArrayAdapter<Computer>(
+                        this@CreateReservationActivity, android.R.layout.simple_list_item_1,
+                        computers as MutableList<Computer>)
+                }
+            }
+
+            override fun onFailure(call: Call<ArrayList<Computer>>, t: Throwable) {
+                Toast.makeText(this@CreateReservationActivity,
+                    "Ocurrió un problema al cargar las computadoras", Toast.LENGTH_SHORT).show()
+            }
+
+        })
     }
 
     private fun loadLaboratories() {
@@ -107,17 +167,12 @@ class CreateReservationActivity : AppCompatActivity() {
             ) {
                 if (response.isSuccessful){
                     val laboratories = response.body()//ArrayList de Laboratories
-                    val laboratoriesOptions = ArrayList<String>()
-                    laboratories?.forEach {
-                        laboratoriesOptions.add(it.name)
-                    }
-                    spinnerLaboratories.adapter = ArrayAdapter<String>(
-                        this@CreateReservationActivity, android.R.layout.simple_list_item_1, laboratoriesOptions)
-
+                    spinnerLaboratories.adapter = ArrayAdapter<Laboratory>(
+                        this@CreateReservationActivity, android.R.layout.simple_list_item_1,
+                        laboratories as MutableList<Laboratory>)
                 }
 
             }
-
             override fun onFailure(call: Call<ArrayList<Laboratory>>, t: Throwable) {
                 Toast.makeText(this@CreateReservationActivity,
                     "No se pudieron cargar los laboratorios", Toast.LENGTH_SHORT).show()
@@ -162,7 +217,7 @@ class CreateReservationActivity : AppCompatActivity() {
         val month = selectedCalendar.get(Calendar.MONTH)
         val dayOfMonth = selectedCalendar.get(Calendar.DAY_OF_MONTH)
 
-        val listener = DatePickerDialog.OnDateSetListener { view, y, m, d ->
+        val listener = DatePickerDialog.OnDateSetListener { _, y, m, d ->
             //Toast.makeText(this, "$y-$m-$d", Toast.LENGTH_SHORT).show()
             selectedCalendar.set(y,m,d)
             editTextDate.setText(
