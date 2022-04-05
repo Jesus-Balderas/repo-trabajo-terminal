@@ -28,7 +28,7 @@ class LoginAlumnoActivity : AppCompatActivity() {
         toolbar.setTitle(R.string.app_name)
         setSupportActionBar(toolbar)
         bindUI()
-        
+
         //Accedemos a las Preferencias
         val preferences = PreferenceHelper.defaultPrefs(this)
         //Si la variable session de las Preferencias no es igual a false (valor por defecto)

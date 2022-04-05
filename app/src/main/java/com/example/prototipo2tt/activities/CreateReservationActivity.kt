@@ -1,7 +1,7 @@
 package com.example.prototipo2tt.activities
 
+import android.app.AlertDialog
 import android.app.DatePickerDialog
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -13,10 +13,26 @@ import java.util.*
 
 class CreateReservationActivity : AppCompatActivity() {
 
-    lateinit var editTextDate : EditText
+    private lateinit var editTextDate : EditText
 
     //Nos muestra marcado la fecha seleccionada cuando se abre el calendario
     private val selectedCalendar = Calendar.getInstance()
+    private lateinit var btnStep1 : Button
+    private lateinit var btnStep2 : Button
+    private lateinit var btnCreateReservation : Button
+    private lateinit var cvStep1 : CardView
+    private lateinit var cvStep2 : CardView
+    private lateinit var cvStep3 : CardView
+    private lateinit var spinnerLaboratories : Spinner
+    private lateinit var spinnerEncargados : Spinner
+    private lateinit var spinnerComputers : Spinner
+    private lateinit var spinnerHours : Spinner
+    private lateinit var tvConfirmLaboratory : TextView
+    private lateinit var tvConfirmEncargado : TextView
+    private lateinit var tvConfirmComputer : TextView
+    private lateinit var tvConfirmDate : TextView
+    private lateinit var tvConfirmHour : TextView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,20 +45,30 @@ class CreateReservationActivity : AppCompatActivity() {
         //Desplegando el boton hacia atras
         val actionBar = supportActionBar
         actionBar?.setDisplayHomeAsUpEnabled(true)
+        bindUI()
 
-
-        val btnNext = findViewById<Button>(R.id.btnNext)
-        val cvStep1 = findViewById<CardView>(R.id.cvStep1)
-        val cvStep2 = findViewById<CardView>(R.id.cvStep2)
-        editTextDate = findViewById<EditText>(R.id.editTextDate)
-        btnNext.setOnClickListener {
+        btnStep1.setOnClickListener {
             cvStep1.visibility = View.GONE
             cvStep2.visibility = View.VISIBLE
         }
-        val spinnerLaboratories = findViewById<Spinner>(R.id.spinnerLaboratories)
-        val spinnerEncargados = findViewById<Spinner>(R.id.spinnerEncargados)
-        val spinnerComputers = findViewById<Spinner>(R.id.spinnerComputers)
-        val spinnerHours = findViewById<Spinner>(R.id.spinnerHours)
+        btnStep2.setOnClickListener {
+            if (editTextDate.text.isEmpty()) {
+                val builder = AlertDialog.Builder(this)
+                builder.setTitle("Fecha")
+                builder.setMessage("Es necesario seleccionar una fecha para su reservación")
+                builder.setPositiveButton("Ok") { dialog, _ ->
+                    dialog.dismiss()
+                }
+                val dialog = builder.create()
+                dialog.show()
+            } else {
+                showReservationData()
+                cvStep2.visibility = View.GONE
+                cvStep3.visibility = View.VISIBLE
+            }
+
+        }
+
         val optionsLaboratories = arrayOf(
             "Laboratorio de Programación 1",
             "Laboratorio de Programación 2",
@@ -66,6 +92,34 @@ class CreateReservationActivity : AppCompatActivity() {
         spinnerHours.adapter = ArrayAdapter<String>(
             this, android.R.layout.simple_list_item_1, optionsHours)
 
+    }
+
+    private fun showReservationData() {
+        tvConfirmLaboratory.text = spinnerLaboratories.selectedItem.toString()
+        tvConfirmEncargado.text = spinnerEncargados.selectedItem.toString()
+        tvConfirmComputer.text = spinnerComputers.selectedItem.toString()
+        tvConfirmDate.text = editTextDate.text.toString()
+        tvConfirmHour.text = spinnerHours.selectedItem.toString()
+
+    }
+
+    private fun bindUI (){
+        btnStep1 = findViewById(R.id.btnStep1)
+        btnStep2 = findViewById(R.id.btnStep2)
+        btnCreateReservation = findViewById(R.id.btnCreateReservation)
+        cvStep1 = findViewById(R.id.cvStep1)
+        cvStep2 = findViewById(R.id.cvStep2)
+        cvStep3 = findViewById(R.id.cvStep3)
+        editTextDate = findViewById(R.id.editTextDate)
+        spinnerLaboratories = findViewById(R.id.spinnerLaboratories)
+        spinnerEncargados = findViewById(R.id.spinnerEncargados)
+        spinnerComputers = findViewById(R.id.spinnerComputers)
+        spinnerHours = findViewById(R.id.spinnerHours)
+        tvConfirmLaboratory = findViewById(R.id.tvConfirmLaboratory)
+        tvConfirmEncargado = findViewById(R.id.tvConfirmEncargado)
+        tvConfirmComputer = findViewById(R.id.tvConfirmComputer)
+        tvConfirmDate = findViewById(R.id.tvConfirmDate)
+        tvConfirmHour = findViewById(R.id.tvConfirmHour)
     }
 
     fun onClickDate (@Suppress("UNUSED_PARAMETER") v: View?){
@@ -109,5 +163,35 @@ class CreateReservationActivity : AppCompatActivity() {
     private fun Int.twoDigits(): String {
 
         return if(this>= 10) this.toString() else "0$this"
+    }
+
+    override fun onBackPressed() {
+        when {
+            cvStep3.visibility == View.VISIBLE -> {
+                cvStep3.visibility = View.GONE
+                cvStep2.visibility = View.VISIBLE
+
+            }
+            cvStep2.visibility == View.VISIBLE -> {
+                cvStep2.visibility = View.GONE
+                cvStep1.visibility = View.VISIBLE
+
+            }
+            cvStep1.visibility == View.VISIBLE -> {
+
+                val builder = AlertDialog.Builder(this)
+                builder.setTitle("¿Estas seguro que deseas salir?")
+                builder.setMessage("Si abandonas el registro los datos que habias ingresado se perderán.")
+                builder.setPositiveButton("Sí, salir") { _, _ ->
+                    finish()
+                }
+                builder.setNegativeButton("Continuar registro") { dialog, _ ->
+                    dialog.dismiss()
+                }
+                val dialog = builder.create()
+                dialog.show()
+            }
+        }
+
     }
 }
