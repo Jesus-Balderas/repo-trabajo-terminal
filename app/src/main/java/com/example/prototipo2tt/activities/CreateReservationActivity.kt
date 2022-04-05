@@ -9,9 +9,19 @@ import android.widget.*
 import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
 import com.example.prototipo2tt.R
+import com.example.prototipo2tt.io.ApiService
+import com.example.prototipo2tt.models.Laboratory
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.util.*
+import kotlin.collections.ArrayList
 
 class CreateReservationActivity : AppCompatActivity() {
+
+    private val apiService: ApiService by lazy {
+        ApiService.create()
+    }
 
     private lateinit var editTextDate : EditText
 
@@ -69,28 +79,52 @@ class CreateReservationActivity : AppCompatActivity() {
 
         }
 
-        val optionsLaboratories = arrayOf(
-            "Laboratorio de Programación 1",
-            "Laboratorio de Programación 2",
-            "Laboratorio de Redes",
-            "Laboratorios de Sistemas 1",
-            "Laboratorios de Sistemas 2",
-            "Laboratorios de Sistemas 3",
-            "Laboratorios de Sistemas 4",
-        )
+        loadLaboratories()
+
+
         val optionsEncargados = arrayOf("Marco Antonio")
         val optionsComputers = arrayOf(
             "1","2", "3", "4", "5", "6", "7", "8", "9", "10",
             "11","12", "13", "14", "15", "16", "17", "18", "19", "20")
         val optionsHours = arrayOf("07:00","08:30", "10:30", "12:00", "13:30", "15:00", "16:30", "18:30", "20:00")
-        spinnerLaboratories.adapter = ArrayAdapter<String>(
-            this, android.R.layout.simple_list_item_1, optionsLaboratories)
+
         spinnerEncargados.adapter = ArrayAdapter<String>(
             this, android.R.layout.simple_list_item_1, optionsEncargados)
         spinnerComputers.adapter = ArrayAdapter<String>(
             this, android.R.layout.simple_list_item_1, optionsComputers)
         spinnerHours.adapter = ArrayAdapter<String>(
             this, android.R.layout.simple_list_item_1, optionsHours)
+
+    }
+
+    private fun loadLaboratories() {
+        val call = apiService.getLaboratories()
+        //ObjectExpression
+        call.enqueue(object: Callback<ArrayList<Laboratory>>{
+            override fun onResponse(
+                call: Call<ArrayList<Laboratory>>,
+                response: Response<ArrayList<Laboratory>>
+            ) {
+                if (response.isSuccessful){
+                    val laboratories = response.body()//ArrayList de Laboratories
+                    val laboratoriesOptions = ArrayList<String>()
+                    laboratories?.forEach {
+                        laboratoriesOptions.add(it.name)
+                    }
+                    spinnerLaboratories.adapter = ArrayAdapter<String>(
+                        this@CreateReservationActivity, android.R.layout.simple_list_item_1, laboratoriesOptions)
+
+                }
+
+            }
+
+            override fun onFailure(call: Call<ArrayList<Laboratory>>, t: Throwable) {
+                Toast.makeText(this@CreateReservationActivity,
+                    "No se pudieron cargar los laboratorios", Toast.LENGTH_SHORT).show()
+                finish()
+            }
+
+        })
 
     }
 
