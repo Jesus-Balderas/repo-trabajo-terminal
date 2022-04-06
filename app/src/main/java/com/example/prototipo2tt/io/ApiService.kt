@@ -16,6 +16,9 @@ interface ApiService {
     @GET("laboratories")
     fun getLaboratories(): Call<ArrayList<Laboratory>>
 
+    @GET("careers")
+    fun getCareers(): Call<ArrayList<Career>>
+
     @GET("laboratories/{laboratory}/attendants")
     //Parametro de ruta:laboratory, laboratoryId de Tipo Int:Nombre del parametro que sirve como guía al llamar a esta función
     fun getAttendants(@Path("laboratory") laboratoryId: Int): Call<ArrayList<Attendant>>

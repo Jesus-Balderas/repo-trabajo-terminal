@@ -69,30 +69,34 @@ class CreateReservationActivity : AppCompatActivity() {
             cvStep2.visibility = View.VISIBLE
         }
         btnStep2.setOnClickListener {
-            if (editTextDate.text.isEmpty()) {
-                val builder = AlertDialog.Builder(this)
-                builder.setTitle("Fecha")
-                builder.setMessage("Es necesario seleccionar una fecha para su reservación")
-                builder.setPositiveButton("Ok") { dialog, _ ->
-                    dialog.dismiss()
+            when {
+                editTextDate.text.isEmpty() -> {
+                    val builder = AlertDialog.Builder(this)
+                    builder.setTitle("Fecha")
+                    builder.setMessage("Es necesario seleccionar una fecha para su reservación")
+                    builder.setPositiveButton("Ok") { dialog, _ ->
+                        dialog.dismiss()
+                    }
+                    val dialog = builder.create()
+                    dialog.show()
                 }
-                val dialog = builder.create()
-                dialog.show()
-            } else if (spinnerHours.selectedItem.toString() == "00:00") {
-                val builder = AlertDialog.Builder(this)
-                builder.setTitle("Hora")
-                builder.setMessage("No selecciono una hora valida para su reservación")
-                builder.setPositiveButton("Ok") { dialog, _ ->
-                    dialog.dismiss()
+                spinnerHours.selectedItem.toString() == "00:00" -> {
+                    val builder = AlertDialog.Builder(this)
+                    builder.setTitle("Hora")
+                    builder.setMessage("No selecciono una hora valida para su reservación")
+                    builder.setPositiveButton("Ok") { dialog, _ ->
+                        dialog.dismiss()
+                    }
+                    val dialog = builder.create()
+                    dialog.show()
+
                 }
-                val dialog = builder.create()
-                dialog.show()
+                else -> {
 
-            } else {
-
-                showReservationData()
-                cvStep2.visibility = View.GONE
-                cvStep3.visibility = View.VISIBLE
+                    showReservationData()
+                    cvStep2.visibility = View.GONE
+                    cvStep3.visibility = View.VISIBLE
+                }
             }
 
         }
@@ -150,6 +154,7 @@ class CreateReservationActivity : AppCompatActivity() {
                 }
 
             }
+            //Toast.makeText(this, "laboratory: ${laboratoryId}, date: $date", Toast.LENGTH_SHORT).show()
 
             override fun onFailure(call: Call<ScheduleHour>, t: Throwable) {
                 tvSelectHours.visibility = View.GONE
@@ -161,7 +166,7 @@ class CreateReservationActivity : AppCompatActivity() {
             }
 
         })
-        //Toast.makeText(this, "laboratory: ${laboratoryId}, date: $date", Toast.LENGTH_SHORT).show()
+
     }
 
     private fun listenLaboratoriesChanges() {
