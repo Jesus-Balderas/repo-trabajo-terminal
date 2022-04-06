@@ -4,6 +4,8 @@ import android.app.AlertDialog
 import android.app.DatePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.widget.*
 import androidx.appcompat.widget.Toolbar
@@ -13,6 +15,7 @@ import com.example.prototipo2tt.io.ApiService
 import com.example.prototipo2tt.models.Attendant
 import com.example.prototipo2tt.models.Computer
 import com.example.prototipo2tt.models.Laboratory
+import com.example.prototipo2tt.models.ScheduleHour
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -44,6 +47,8 @@ class CreateReservationActivity : AppCompatActivity() {
     private lateinit var tvConfirmComputer : TextView
     private lateinit var tvConfirmDate : TextView
     private lateinit var tvConfirmHour : TextView
+    private lateinit var tvSelectHours : TextView
+    private lateinit var tvNotFoundHours : TextView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -73,7 +78,18 @@ class CreateReservationActivity : AppCompatActivity() {
                 }
                 val dialog = builder.create()
                 dialog.show()
+            } else if (spinnerHours.selectedItem.toString() == "00:00") {
+                val builder = AlertDialog.Builder(this)
+                builder.setTitle("Hora")
+                builder.setMessage("No selecciono una hora valida para su reservación")
+                builder.setPositiveButton("Ok") { dialog, _ ->
+                    dialog.dismiss()
+                }
+                val dialog = builder.create()
+                dialog.show()
+
             } else {
+
                 showReservationData()
                 cvStep2.visibility = View.GONE
                 cvStep3.visibility = View.VISIBLE
@@ -83,11 +99,69 @@ class CreateReservationActivity : AppCompatActivity() {
 
         loadLaboratories()
         listenLaboratoriesChanges()
+        listenDateChanges()
 
-        val optionsHours = arrayOf("07:00","08:30", "10:30", "12:00", "13:30", "15:00", "16:30", "18:30", "20:00")
-        spinnerHours.adapter = ArrayAdapter<String>(
-            this, android.R.layout.simple_list_item_1, optionsHours)
+    }
 
+    private fun listenDateChanges() {
+        //Escuchamos cambios cuando cambia la seleccion de la fecha
+        editTextDate.addTextChangedListener(object : TextWatcher{
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                val laboratory = spinnerLaboratories.selectedItem as Laboratory
+                loadHours(laboratory.id,editTextDate.text.toString())
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+
+            }
+
+        })
+
+    }
+
+    private fun loadHours(laboratoryId : Int, date : String){
+        if (date.isEmpty()) {
+            return
+        }
+
+        val call = apiService.getHours(laboratoryId, date)
+        call.enqueue(object : Callback<ScheduleHour> {
+            override fun onResponse(call: Call<ScheduleHour>, response: Response<ScheduleHour>) {
+                if (response.isSuccessful && response.body().toString().isNotEmpty()) {
+                    tvSelectHours.visibility = View.GONE
+                    tvNotFoundHours.visibility = View.GONE
+                    val scheduleHours = response.body()
+                    val hoursOptions = arrayOf(
+                        scheduleHours?.one, scheduleHours?.two, scheduleHours?.three,
+                        scheduleHours?.four, scheduleHours?.five, scheduleHours?.six,
+                        scheduleHours?.seven, scheduleHours?.eight, scheduleHours?.nine,
+                    )
+                    spinnerHours.adapter = ArrayAdapter<String>(
+                        this@CreateReservationActivity,
+                        android.R.layout.simple_list_item_1,
+                        hoursOptions
+                    )
+                    spinnerHours.visibility = View.VISIBLE
+                    //Toast.makeText(this@CreateReservationActivity, "horas: $hours", Toast.LENGTH_SHORT).show()
+                }
+
+            }
+
+            override fun onFailure(call: Call<ScheduleHour>, t: Throwable) {
+                tvSelectHours.visibility = View.GONE
+                tvNotFoundHours.visibility = View.VISIBLE
+                spinnerHours.visibility = View.GONE
+
+                /*Toast.makeText(this@CreateReservationActivity,
+                    "Ocurrió un problema al cargar las horas", Toast.LENGTH_SHORT).show()*/
+            }
+
+        })
+        //Toast.makeText(this, "laboratory: ${laboratoryId}, date: $date", Toast.LENGTH_SHORT).show()
     }
 
     private fun listenLaboratoriesChanges() {
@@ -98,6 +172,7 @@ class CreateReservationActivity : AppCompatActivity() {
                 /*Toast.makeText(this@CreateReservationActivity, "id: ${laboratory.id}", Toast.LENGTH_SHORT).show()*/
                 loadAttendants(laboratory.id)
                 loadComputers(laboratory.id)
+                loadHours(laboratory.id, editTextDate.text.toString())
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -209,6 +284,8 @@ class CreateReservationActivity : AppCompatActivity() {
         tvConfirmComputer = findViewById(R.id.tvConfirmComputer)
         tvConfirmDate = findViewById(R.id.tvConfirmDate)
         tvConfirmHour = findViewById(R.id.tvConfirmHour)
+        tvSelectHours = findViewById(R.id.tvSelectHours)
+        tvNotFoundHours = findViewById(R.id.tvNotFoundHours)
     }
 
     fun onClickDate (@Suppress("UNUSED_PARAMETER") v: View?){
@@ -224,7 +301,7 @@ class CreateReservationActivity : AppCompatActivity() {
                 resources.getString(
                     R.string.date_format,
                     y,
-                    m.twoDigits(),
+                    (m+1).twoDigits(),
                     d.twoDigits()
                 )
             )

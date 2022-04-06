@@ -34,10 +34,10 @@ class LoginEncargadoActivity : AppCompatActivity() {
         bindUi()
 
         //Accedemos a las Preferencias
-        val preferences = PreferenceHelper.defaultPrefs(this)
+        val preferences = PreferenceHelper.customPrefs(this, "session-profesor")
         //Si la variable session de las Preferencias no es igual a false (valor por defecto)
         //significa que hay una sesión activa y lo redirige al HomeActivity
-        if (preferences["session", false]){
+        if (preferences["session-profesor", false]){
             goToHomeEncargado()
         }
 
@@ -61,9 +61,9 @@ class LoginEncargadoActivity : AppCompatActivity() {
     private fun createSessionPreference()
     {
         //Accedemos a las Preferencias
-        val preferences = PreferenceHelper.defaultPrefs(this)
+        val preferences = PreferenceHelper.customPrefs(this, "session-profesor")
         //Modificamos la variable session de la Preferencias para guardar la sesion activa del usuario Alumno
-        preferences["session"] = true
+        preferences["session-profesor"] = true
     }
 
     private fun bindUi() {

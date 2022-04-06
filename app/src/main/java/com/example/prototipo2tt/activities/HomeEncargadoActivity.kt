@@ -109,8 +109,8 @@ class HomeEncargadoActivity : AppCompatActivity(), NavigationView.OnNavigationIt
 
     private fun clearSessionPreference() {
         //Accedemos a las Preferencias
-        val preferences = PreferenceHelper.defaultPrefs(this)
+        val preferences = PreferenceHelper.customPrefs(this, "session-profesor")
         //Modificamos la variable session de la Preferencias para desactivar la sesion del usuario Alumno
-        preferences["session"] = false
+        preferences["session-profesor"] = false
     }
 }

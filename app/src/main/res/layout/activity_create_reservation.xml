@@ -34,7 +34,8 @@
             android:layout_marginTop="50dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            app:cardCornerRadius="8dp">
+            app:cardCornerRadius="8dp"
+            android:visibility="visible">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -183,20 +184,46 @@
                     android:layout_marginTop="15dp"
                     android:text="Hora:"/>
 
+                <TextView
+                    android:id="@+id/tvSelectHours"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/colorPrimary"
+                    android:text="Seleccione una fecha para ver las horas disponibles."/>
+
+                <TextView
+                    android:id="@+id/tvNotFoundHours"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/colorRed"
+                    tools:visibility="visible"
+                    android:text="No se encontraron horas disponibles para la fecha seleccionada."
+                    android:visibility="gone"/>
+
                 <Spinner
                     android:id="@+id/spinnerHours"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:layout_marginTop="15dp">
+                    android:layout_marginTop="10dp"
+                    android:visibility="gone"
+                    tools:visibility="visible">
                 </Spinner>
                 <Button
                     android:id="@+id/btnStep2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
-                    android:layout_marginTop="80dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="20dp"
                     android:layout_marginBottom="30dp"
                     android:background="@drawable/custom_button_login"
