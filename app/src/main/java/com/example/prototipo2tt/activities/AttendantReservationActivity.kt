@@ -1,108 +1,80 @@
 package com.example.prototipo2tt.activities
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.prototipo2tt.adapter.AttendantReservationAdapter
 import com.example.prototipo2tt.models.Reservation
 import com.example.prototipo2tt.R
+import com.example.prototipo2tt.io.ApiService
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.io.Serializable
 
 class AttendantReservationActivity : AppCompatActivity(),
     AttendantReservationAdapter.OnReservationClickListener {
+
+    private val apiService: ApiService by lazy {
+        ApiService.create()
+    }
+    //Configuracion del Adapter
+    private val adapter = AttendantReservationAdapter(this, this)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_attendant_reservation)
 
+        //Agregando el Toolbar
+        val toolbar = findViewById<Toolbar>(R.id.toolbar_profesor)
+        toolbar.setTitle(R.string.app_name)
+        setSupportActionBar(toolbar)
+        //Desplegando el boton hacia atras
+        val actionBar = supportActionBar
+        actionBar?.setDisplayHomeAsUpEnabled(true)
+
         //Configuración del RecyclerView
         val recyclerView: RecyclerView = findViewById(R.id.reservationRecyclerView)
-
-        //Configuracion del Adapter
-        val adapter = AttendantReservationAdapter(this, reservations(), this)
-
 
         recyclerView.hasFixedSize()
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
 
+        getJSONReservations()
+
     }
 
-    private fun reservations(): MutableList<Reservation> {
+    private fun getJSONReservations() {
 
-        val reservations: MutableList<Reservation> = ArrayList()
-        reservations.add(
-            Reservation(
-                1, "AlumnoTest",
-                "Laboratorio de Sistemas 1", 1, "08:00",
-                "08:30", "2022-01-15", "Reservada"
-            )
-        )
-        reservations.add(
-            Reservation(
-                2, "AlumnoTest",
-                "Laboratorio de Sistemas 1", 2, "09:00",
-                "09:30", "2022-01-15", "Reservada"
-            )
-        )
-        reservations.add(
-            Reservation(
-                3, "AlumnoTest",
-                "Laboratorio de Sistemas 1", 3, "10:00",
-                "10:30", "2022-01-15", "Reservada"
-            )
-        )
-        reservations.add(
-            Reservation(
-                4, "AlumnoTest",
-                "Laboratorio de Sistemas 1", 4, "11:00",
-                "11:30", "2022-01-15", "Reservada"
-            )
-        )
-        reservations.add(
-            Reservation(
-                5, "AlumnoTest",
-                "Laboratorio de Sistemas 1", 5, "12:00",
-                "12:30", "2022-01-15", "Reservada"
-            )
-        )
-        reservations.add(
-            Reservation(
-                6, "AlumnoTest",
-                "Laboratorio de Sistemas 1", 6, "13:00",
-                "13:30", "2022-01-15", "Reservada"
-            )
-        )
-        reservations.add(
-            Reservation(
-                7, "AlumnoTest",
-                "Laboratorio de Sistemas 1", 7, "08:00",
-                "08:30", "2022-01-15", "Reservada"
-            )
-        )
-        reservations.add(
-            Reservation(
-                8, "AlumnoTest",
-                "Laboratorio de Sistemas 1", 8, "09:00",
-                "09:30", "2022-01-15", "Reservada"
-            )
-        )
-        reservations.add(
-            Reservation(
-                9, "AlumnoTest",
-                "Laboratorio de Sistemas 1", 9, "10:00",
-                "10:30", "2022-01-15", "Reservada"
-            )
-        )
-        reservations.add(
-            Reservation(
-                10, "AlumnoTest",
-                "Laboratorio de Sistemas 1", 10, "11:00",
-                "11:30", "2022-01-15", "Reservada"
-            )
-        )
-        return reservations
+        val attendantId = 1
+        val call = apiService.getAttendantReservations(attendantId)
+        call.enqueue(object : Callback<ArrayList<Reservation>>{
+            @SuppressLint("NotifyDataSetChanged")
+            override fun onResponse(
+                call: Call<ArrayList<Reservation>>,
+                response: Response<ArrayList<Reservation>>
+            ) {
+                if (response.isSuccessful){
+                    response.body()?.let {
+                        adapter.reservation = it
+                        adapter.notifyDataSetChanged()
+                    }
+                }
+
+            }
+
+            override fun onFailure(call: Call<ArrayList<Reservation>>, t: Throwable) {
+                Toast.makeText(this@AttendantReservationActivity, "No se puedieron cargar las reservaciones",
+                    Toast.LENGTH_SHORT).show()
+            }
+
+        })
+
     }
 
     override fun onItemClick(reservation: Reservation) {

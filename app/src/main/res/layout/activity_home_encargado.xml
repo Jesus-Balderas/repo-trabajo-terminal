@@ -5,7 +5,7 @@
     android:id="@+id/drawer_layout_profesor"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_gradient"
+    android:background="@drawable/background_profesor_gradient"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context=".activities.HomeEncargadoActivity"
@@ -17,7 +17,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:headerLayout="@layout/header_profesor"
+        app:headerLayout="@layout/nav_header_profesor"
         app:menu="@menu/main_menu_profesor" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,7 +25,7 @@
         android:layout_height="match_parent">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_profesor"
+            android:id="@+id/toolbarHomeEncargado"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
@@ -46,7 +46,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="190dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginBottom="10dp"
                 app:cardCornerRadius="25dp">
 
@@ -116,7 +116,8 @@
                     android:layout_margin="10dp"
                     android:clickable="true"
                     android:foreground="?android:attr/selectableItemBackground"
-                    app:cardCornerRadius="25dp">
+                    app:cardCornerRadius="25dp"
+                    android:focusable="true">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -149,7 +150,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:padding="5dp"
-                            android:text="Ver Reservaciones"/>
+                            android:text="Ver Solicitudes de Reservaciones"/>
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>

@@ -2,13 +2,10 @@ package com.example.prototipo2tt.models
 
 import java.io.Serializable
 
-data class Laboratory (
+data class Attendant (
     var id: Int,
-    var name: String,
-    var classroom: String,
-    var edifice: String,
-    var status: String
-): Serializable {
+    var name: String
+):Serializable {
     override fun toString(): String {
         return name
     }

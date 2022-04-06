@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.prototipo2tt">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.prototipo2tt" >
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -12,27 +13,25 @@
         android:roundIcon="@mipmap/icon_app_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Prototipo2tt"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        tools:targetApi="m" >
         <activity
-            android:name=".activities.GraphReservationActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".activities.CloseLaboratoryActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".activities.DescriptionReservationActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".activities.AttendantReservationActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".activities.RegistrarEncargadoActivity"
+            android:name=".activities.LoginAlumnoActivity"
+            android:launchMode="singleInstance"
             android:screenOrientation="portrait"
-            android:launchMode="singleInstance" />
+            android:exported="false" />
+        <activity
+            android:name=".activities.registrar_alumno"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.HomeAlumnoActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.CreateReservationActivity"
+            android:exported="false"
+            android:parentActivityName=".activities.HomeAlumnoActivity" />
         <activity
             android:name=".activities.MainActivity"
             android:launchMode="singleInstance"
@@ -41,7 +40,7 @@
             android:name=".splash.SplashActivity"
             android:exported="true"
             android:launchMode="singleTask"
-            android:theme="@style/SplashScreen">
+            android:theme="@style/SplashScreen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -49,26 +48,40 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.login"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".activities.registrar_alumno"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".activities.alumno_home"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".activities.LoginEncargadoActivity"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activities.HomeEncargadoActivity"
+            android:name=".activities.RegistrarEncargadoActivity"
+            android:launchMode="singleInstance"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activities.invitado_home"
+            android:name=".activities.HomeEncargadoActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.AttendantReservationActivity"
+            android:exported="false"
+            android:parentActivityName=".activities.HomeEncargadoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.DescriptionReservationActivity"
+            android:exported="false"
+            android:parentActivityName=".activities.AttendantReservationActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.ScheduleLaboratoryActivity"
+            android:parentActivityName=".activities.HomeEncargadoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.GraphReservationActivity"
+            android:exported="false"
+            android:parentActivityName=".activities.HomeEncargadoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.CloseLaboratoryActivity"
+            android:exported="false"
+            android:parentActivityName=".activities.HomeEncargadoActivity"
             android:screenOrientation="portrait" />
 
         <meta-data

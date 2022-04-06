@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context=".activities.alumno_home"
+    tools:context=".activities.HomeAlumnoActivity"
     tools:openDrawer="start">
 
     <com.google.android.material.navigation.NavigationView
@@ -17,8 +17,8 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:headerLayout="@layout/header"
-        app:menu="@menu/main_menu" />
+        app:headerLayout="@layout/nav_header_alumno"
+        app:menu="@menu/main_menu_alumno" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

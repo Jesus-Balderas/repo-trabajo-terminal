@@ -56,7 +56,7 @@
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
-                android:drawableLeft="@drawable/icon_profile"
+                android:drawableLeft="@drawable/icon_profile_student"
                 />
             <Button
                 android:id="@+id/btnEncargado"
@@ -69,7 +69,7 @@
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
-                android:drawableLeft="@drawable/icon_profile"
+                android:drawableLeft="@drawable/icon_profile_encargado"
                 />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

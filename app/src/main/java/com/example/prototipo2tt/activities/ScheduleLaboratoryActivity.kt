@@ -1,60 +1,74 @@
 package com.example.prototipo2tt.activities
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.prototipo2tt.R
 import com.example.prototipo2tt.adapter.ScheduleLaboratoryAdapter
+import com.example.prototipo2tt.io.ApiService
 import com.example.prototipo2tt.models.Laboratory
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.lang.Exception
+
 
 class ScheduleLaboratoryActivity : AppCompatActivity(), ScheduleLaboratoryAdapter.OnLaboratoryClickListener {
+
+    private val apiService: ApiService by lazy {
+        ApiService.create()
+    }
+
+    private val adapter = ScheduleLaboratoryAdapter(this,this)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_schedule_laboratory)
 
-        val recyclerView: RecyclerView = findViewById(R.id.laboratoryRecyclerView)
+        //Agregando el Toolbar
+        val toolbar = findViewById<Toolbar>(R.id.toolbarScheduleLaboratories)
+        toolbar.setTitle(R.string.app_name)
+        setSupportActionBar(toolbar)
+        //Desplegando el boton hacia atras
+        val actionBar = supportActionBar
+        actionBar?.setDisplayHomeAsUpEnabled(true)
 
-        //Configuración del adaptador
-        val adapter = ScheduleLaboratoryAdapter(this, laboratories(),this)
-
+        val recyclerView: RecyclerView = findViewById(com.example.prototipo2tt.R.id.laboratoryRecyclerView)
         recyclerView.hasFixedSize()
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
 
+        getJSONLaboratories()
+
     }
 
-    private fun laboratories(): MutableList<Laboratory>{
+    private fun getJSONLaboratories(){
 
-        val laboratories: MutableList<Laboratory> = ArrayList()
-        laboratories.add(
-            Laboratory(1, "Laboratorio de Programación 1", "1201", "1", "ABIERTO")
-        )
-        laboratories.add(
-            Laboratory(2, "Laboratorio de Programación 2", "1201", "1", "ABIERTO")
-        )
-        laboratories.add(
-            Laboratory(3, "Laboratorio de Redes", "1202", "1", "ABIERTO")
-        )
-        laboratories.add(
-            Laboratory(4, "Laboratorio de Sistemas 1", "1203", "1", "ABIERTO")
-        )
-        laboratories.add(
-            Laboratory(5, "Laboratorio de Sistemas 2", "1204", "2", "ABIERTO")
-        )
-        laboratories.add(
-            Laboratory(6, "Laboratorio de Sistemas 3", "1205", "2", "ABIERTO")
-        )
-        laboratories.add(
-            Laboratory(7, "Laboratorio de Sistemas 4", "1206", "2", "ABIERTO")
-        )
-        laboratories.add(
-            Laboratory(8, "Laboratorio de Sistemas 5", "1207", "2", "ABIERTO")
-        )
+        val call = apiService.getLaboratories()
+        call.enqueue(object: Callback<ArrayList<Laboratory>>{
+            @SuppressLint("NotifyDataSetChanged")
+            override fun onResponse(
+                call: Call<ArrayList<Laboratory>>,
+                response: Response<ArrayList<Laboratory>>
+            ) {
+                if (response.isSuccessful){
+                    response.body()?.let {
+                        adapter.laboratory = it
+                        adapter.notifyDataSetChanged()
+                    }
+                }
+            }
+            override fun onFailure(call: Call<ArrayList<Laboratory>>, t: Throwable) {
 
-        return laboratories
+                Toast.makeText(this@ScheduleLaboratoryActivity, "No se puedieron cargar los horarios", Toast.LENGTH_SHORT).show()
+            }
+
+        })
+
     }
 
     override fun onItemClick(laboratory: Laboratory) {
