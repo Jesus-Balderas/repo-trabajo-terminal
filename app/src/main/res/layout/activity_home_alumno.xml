@@ -63,8 +63,8 @@
                 </ImageView>
 
                 <LinearLayout
-                    android:layout_width="180dp"
-                    android:layout_height="126dp"
+                    android:layout_width="200dp"
+                    android:layout_height="150dp"
                     android:layout_marginLeft="25dp"
                     android:layout_marginTop="25dp"
                     android:layout_marginRight="25dp"
@@ -73,34 +73,41 @@
                     app:cardCornerRadius="25dp">
 
                     <TextView
+                        android:id="@+id/tvNumBoleta"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center_horizontal"
+                        tools:text="1234567890" />
+
+                    <TextView
                         android:id="@+id/tvNombreAlumno"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="25dp"
-                        android:text="Alumno Test "
-                        android:textAlignment="center"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:gravity="center_horizontal"
+                        tools:text="AlumnoTest" />
 
                     <TextView
-                        android:id="@+id/tvNumBoleta"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/tvPrimerApellidoAlumno"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="2014040126"
-                        android:textAlignment="center"
-                        android:textColor="@color/colorBlack" />
+                        android:gravity="center_horizontal"
+                        tools:text="PrimerApellidoTest" />
+
+                    <TextView
+                        android:id="@+id/tvSegundoApellidoAlumno"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        tools:text="SegundoApellidoTest" />
 
                     <TextView
                         android:id="@+id/tvCarreraAlumno"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="Ing.en Sistemas Computacionales"
-                        android:textAlignment="center"
-                        android:textColor="@color/colorBlack" />
+                        android:gravity="center_horizontal"
+                        tools:text="Ing. En Sistemas Computacionales" />
+
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>

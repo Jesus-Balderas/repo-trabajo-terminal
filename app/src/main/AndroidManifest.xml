@@ -19,6 +19,7 @@
             android:name=".activities.LoginAlumnoActivity"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait"
+            android:parentActivityName=".activities.MainActivity"
             android:exported="false" />
         <activity
             android:name=".activities.RegistrarAlumnoActivity"

@@ -1,14 +1,14 @@
 package com.example.prototipo2tt.io
 
+import com.example.prototipo2tt.io.response.LoginStudentResponse
+import com.example.prototipo2tt.io.response.ProfileStudentResponse
 import com.example.prototipo2tt.models.*
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.GET
-import retrofit2.http.Path
-import retrofit2.http.Query
 import okhttp3.OkHttpClient
+import retrofit2.http.*
 
 
 interface ApiService {
@@ -32,6 +32,16 @@ interface ApiService {
 
     @GET("attendants/reservations")
     fun getAttendantReservations(@Query("attendant_id") id: Int): Call<ArrayList<Reservation>>
+
+    @POST("login/student")
+    fun postLoginStudent(@Query("num_boleta") boleta: String, @Query("password") password: String):
+            Call<LoginStudentResponse>
+
+    @POST("logout/student")
+    fun postLogoutStudent(@Header("Authorization") authHeader: String): Call<Void>
+
+    @GET("user/student")
+    fun profileStudent(@Header("Authorization") authHeader: String): Call<ProfileStudentResponse>
 
     companion object Factory{
         private const val BASE_URL = "https://labscom.herokuapp.com/api/"
