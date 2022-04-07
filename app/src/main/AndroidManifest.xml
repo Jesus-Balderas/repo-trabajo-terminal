@@ -21,8 +21,9 @@
             android:screenOrientation="portrait"
             android:exported="false" />
         <activity
-            android:name=".activities.registrar_alumno"
+            android:name=".activities.RegistrarAlumnoActivity"
             android:launchMode="singleInstance"
+            android:parentActivityName=".activities.LoginAlumnoActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.HomeAlumnoActivity"

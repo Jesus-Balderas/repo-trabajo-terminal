@@ -44,7 +44,7 @@ class LoginAlumnoActivity : AppCompatActivity() {
         }
 
         btnRegisterAlumno.setOnClickListener {
-            val intentRegisterAlumno = Intent(this@LoginAlumnoActivity, registrar_alumno::class.java)
+            val intentRegisterAlumno = Intent(this@LoginAlumnoActivity, RegistrarAlumnoActivity::class.java)
             startActivity(intentRegisterAlumno)
         }
 
