@@ -52,6 +52,7 @@
         <activity
             android:name=".activities.LoginEncargadoActivity"
             android:launchMode="singleInstance"
+            android:parentActivityName=".activities.MainActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.RegistrarEncargadoActivity"

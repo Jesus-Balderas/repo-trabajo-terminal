@@ -1,7 +1,5 @@
 package com.example.prototipo2tt.models
 
-
-
 data class Student(
     var id: Int,
     var num_boleta: String,

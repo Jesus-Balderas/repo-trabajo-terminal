@@ -64,39 +64,50 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="126dp"
-                    android:layout_marginLeft="25dp"
+                    android:layout_marginLeft="15dp"
                     android:layout_marginTop="25dp"
-                    android:layout_marginRight="25dp"
+                    android:layout_marginRight="15dp"
                     android:layout_marginBottom="25dp"
                     android:orientation="vertical"
                     app:cardCornerRadius="25dp">
 
                     <TextView
+                        android:id="@+id/tvNombreEncargado"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="25dp"
-                        android:text="Encargado Test "
-                        android:textAlignment="center"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="Laboratorio de Sistemas 1"
+                        tools:text="Encargado Test "
                         android:textAlignment="center"
                         android:textColor="@color/colorBlack" />
 
                     <TextView
+                        android:id="@+id/tvPrimerApellidoEncargado"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:text="Tiempo Libre"
+                        tools:text="PrimerApellidoEncargadoTest"
                         android:textAlignment="center"
                         android:textColor="@color/colorBlack" />
+
+                    <TextView
+                        android:id="@+id/tvSegundoApellidoEncargado"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        tools:text="SegundoApellidoEncargadoTest"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorBlack" />
+
+                    <TextView
+                        android:id="@+id/tvLaboratorioEncargado"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        tools:text="Laboratorio Test"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorBlack" />
+
                 </LinearLayout>
 
 

@@ -1,6 +1,8 @@
 package com.example.prototipo2tt.io
 
+import com.example.prototipo2tt.io.response.LoginAttendantResponse
 import com.example.prototipo2tt.io.response.LoginStudentResponse
+import com.example.prototipo2tt.io.response.ProfileAttendantResponse
 import com.example.prototipo2tt.io.response.ProfileStudentResponse
 import com.example.prototipo2tt.models.*
 import okhttp3.logging.HttpLoggingInterceptor
@@ -42,6 +44,16 @@ interface ApiService {
 
     @GET("user/student")
     fun profileStudent(@Header("Authorization") authHeader: String): Call<ProfileStudentResponse>
+
+    @POST("login/attendant")
+    fun postLoginAttendant(@Query("num_empleado") numEmpleado: String, @Query("password") password: String):
+            Call<LoginAttendantResponse>
+
+    @POST("logout/attendant")
+    fun postLogoutAttendant(@Header("Authorization") authHeader: String): Call<Void>
+
+    @GET("user/attendant")
+    fun profileAttendant(@Header("Authorization") authHeader: String): Call<ProfileAttendantResponse>
 
     companion object Factory{
         private const val BASE_URL = "https://labscom.herokuapp.com/api/"

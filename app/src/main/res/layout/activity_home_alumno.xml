@@ -73,6 +73,7 @@
                     app:cardCornerRadius="25dp">
 
                     <TextView
+                        android:textColor="@color/colorBlack"
                         android:id="@+id/tvNumBoleta"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -81,6 +82,7 @@
                         tools:text="1234567890" />
 
                     <TextView
+                        android:textColor="@color/colorBlack"
                         android:id="@+id/tvNombreAlumno"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -88,6 +90,7 @@
                         tools:text="AlumnoTest" />
 
                     <TextView
+                        android:textColor="@color/colorBlack"
                         android:id="@+id/tvPrimerApellidoAlumno"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -95,6 +98,7 @@
                         tools:text="PrimerApellidoTest" />
 
                     <TextView
+                        android:textColor="@color/colorBlack"
                         android:id="@+id/tvSegundoApellidoAlumno"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -102,6 +106,7 @@
                         tools:text="SegundoApellidoTest" />
 
                     <TextView
+                        android:textColor="@color/colorBlack"
                         android:id="@+id/tvCarreraAlumno"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

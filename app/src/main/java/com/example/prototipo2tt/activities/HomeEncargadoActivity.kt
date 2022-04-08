@@ -11,19 +11,42 @@ import androidx.core.view.GravityCompat
 import android.annotation.SuppressLint
 import android.view.MenuItem
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import com.example.prototipo2tt.PreferenceHelper
 import com.example.prototipo2tt.PreferenceHelper.set
+import com.example.prototipo2tt.PreferenceHelper.get
+import com.example.prototipo2tt.io.ApiService
+import com.example.prototipo2tt.io.response.ProfileAttendantResponse
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class HomeEncargadoActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
+    private val apiService by lazy {
+
+        ApiService.create()
+    }
+
+    private val preferences by lazy {
+
+        PreferenceHelper.customPrefs(this,"jwt-attendant")
+
+    }
+
     private lateinit var drawer: DrawerLayout
     private lateinit  var navigationView: NavigationView
     private lateinit var toolbar: Toolbar
     private lateinit var cardViewReservation: CardView
     private lateinit var cardViewNotification: CardView
     private lateinit var cardViewGraphReports: CardView
+    private lateinit var tvNombreEncargado: TextView
+    private lateinit var tvPrimerApellidoEncargado : TextView
+    private lateinit var tvSegundoApellidoEncargado: TextView
+    private lateinit var tvLaboratorioEncargado: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,10 +70,9 @@ class HomeEncargadoActivity : AppCompatActivity(), NavigationView.OnNavigationIt
         navigationView.bringToFront()
         navigationView.setNavigationItemSelectedListener(this)
 
-        cardViewReservation = findViewById(R.id.cvReservations)
-        cardViewNotification = findViewById(R.id.cvCloseLaboratory)
-        cardViewGraphReports = findViewById(R.id.cvGraphReports)
+        bindUI()
 
+        getProfileAttendant()
 
         cardViewReservation.setOnClickListener(View.OnClickListener {
             val intent1 =
@@ -66,6 +88,34 @@ class HomeEncargadoActivity : AppCompatActivity(), NavigationView.OnNavigationIt
                 Intent(this@HomeEncargadoActivity, GraphReservationActivity::class.java)
             startActivity(intentGraphReservation)
         })
+    }
+
+    private fun getProfileAttendant(){
+
+        val jwt = preferences["jwt-attendant",""]
+        val call = apiService.profileAttendant("Bearer $jwt")
+        call.enqueue(object : Callback<ProfileAttendantResponse> {
+            override fun onResponse(
+                call: Call<ProfileAttendantResponse>,
+                response: Response<ProfileAttendantResponse>
+            ) {
+                if (response.isSuccessful){
+                    val profileAttendant = response.body()
+                    tvNombreEncargado.text = profileAttendant?.attendant?.name
+                    tvPrimerApellidoEncargado.text = profileAttendant?.attendant?.first_name
+                    tvSegundoApellidoEncargado.text = profileAttendant?.attendant?.second_name
+                    tvLaboratorioEncargado.text = profileAttendant?.attendant?.laboratories?.get(0)?.name
+                }
+            }
+
+            override fun onFailure(call: Call<ProfileAttendantResponse>, t: Throwable) {
+                Toast.makeText(this@HomeEncargadoActivity,
+                    "Error al cargar la información del encargado.",
+                    Toast.LENGTH_SHORT).show()
+            }
+
+        })
+
     }
 
     override fun onBackPressed() {
@@ -97,20 +147,46 @@ class HomeEncargadoActivity : AppCompatActivity(), NavigationView.OnNavigationIt
                 Toast.LENGTH_LONG
             ).show()
             R.id.menuLogoutEncargado -> {
-                clearSessionPreference()
-                val intent = Intent(this, LoginEncargadoActivity::class.java)
-                startActivity(intent)
-                finish()
+                postLogoutAttendant()
             }
         }
         drawer.closeDrawer(GravityCompat.START)
         return true
     }
 
+    private fun postLogoutAttendant(){
+
+        val jwt = preferences["jwt-attendant", ""]
+        val call = apiService.postLogoutAttendant("Bearer $jwt")
+        call.enqueue(object : Callback<Void>{
+            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                clearSessionPreference()
+                val intent = Intent(this@HomeEncargadoActivity, LoginEncargadoActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+
+            override fun onFailure(call: Call<Void>, t: Throwable) {
+                Toast.makeText(this@HomeEncargadoActivity,
+                    t.localizedMessage,
+                    Toast.LENGTH_SHORT).show()
+            }
+
+        })
+    }
+
     private fun clearSessionPreference() {
-        //Accedemos a las Preferencias
-        val preferences = PreferenceHelper.customPrefs(this, "session-profesor")
-        //Modificamos la variable session de la Preferencias para desactivar la sesion del usuario Alumno
-        preferences["session-profesor"] = false
+        //Modificamos la variable session de la Preferencias para desactivar la sesion del usuario Encargado
+        preferences["jwt-attendant"] = ""
+    }
+
+    private fun bindUI() {
+        cardViewReservation = findViewById(R.id.cvReservations)
+        cardViewNotification = findViewById(R.id.cvCloseLaboratory)
+        cardViewGraphReports = findViewById(R.id.cvGraphReports)
+        tvNombreEncargado = findViewById(R.id.tvNombreEncargado)
+        tvPrimerApellidoEncargado = findViewById(R.id.tvPrimerApellidoEncargado)
+        tvSegundoApellidoEncargado = findViewById(R.id.tvSegundoApellidoEncargado)
+        tvLaboratorioEncargado = findViewById(R.id.tvLaboratorioEncargado)
     }
 }
