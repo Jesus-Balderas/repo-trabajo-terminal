@@ -55,6 +55,9 @@ interface ApiService {
     @GET("user/attendant")
     fun profileAttendant(@Header("Authorization") authHeader: String): Call<ProfileAttendantResponse>
 
+    @GET("students/reservations")
+    fun getStudentReservations(@Header("Authorization") authHeader: String): Call<ArrayList<StudentReservation>>
+
     companion object Factory{
         private const val BASE_URL = "https://labscom.herokuapp.com/api/"
         fun create():ApiService{

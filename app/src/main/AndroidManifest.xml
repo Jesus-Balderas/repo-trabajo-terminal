@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.prototipo2tt" >
+    package="com.example.prototipo2tt">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -14,13 +14,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Prototipo2tt"
         android:usesCleartextTraffic="true"
-        tools:targetApi="m" >
+        tools:targetApi="m">
+
         <activity
             android:name=".activities.LoginAlumnoActivity"
+            android:exported="false"
             android:launchMode="singleInstance"
-            android:screenOrientation="portrait"
             android:parentActivityName=".activities.MainActivity"
-            android:exported="false" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.RegistrarAlumnoActivity"
             android:launchMode="singleInstance"
@@ -35,6 +36,10 @@
             android:exported="false"
             android:parentActivityName=".activities.HomeAlumnoActivity" />
         <activity
+            android:name=".activities.StudentReservationActivity"
+            android:exported="false"
+            android:parentActivityName=".activities.HomeAlumnoActivity"/>
+        <activity
             android:name=".activities.MainActivity"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait" />
@@ -42,7 +47,7 @@
             android:name=".splash.SplashActivity"
             android:exported="true"
             android:launchMode="singleTask"
-            android:theme="@style/SplashScreen" >
+            android:theme="@style/SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
