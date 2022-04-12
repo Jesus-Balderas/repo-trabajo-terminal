@@ -25,24 +25,28 @@
         <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/font/aclonica.xml" value="0.284375" />
         <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/font/baloo.xml" value="0.284375" />
         <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/layout-v21/profesor_home.xml" value="0.245018115942029" />
+        <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/layout-v28/activity_registrar_alumno.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/layout/activity_attendant_reservation.xml" value="0.21875" />
         <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/layout/activity_close_laboratory.xml" value="0.264" />
         <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/layout/activity_create_reservation.xml" value="0.264" />
         <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/layout/activity_description_reservation.xml" value="0.264" />
         <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/layout/activity_grafic_reservations.xml" value="0.24259259259259258" />
-        <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/layout/activity_home_alumno.xml" value="0.22592592592592592" />
-        <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/layout/activity_home_encargado.xml" value="0.22592592592592592" />
+        <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/layout/activity_home_alumno.xml" value="0.264" />
+        <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/layout/activity_home_encargado.xml" value="0.4" />
         <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/layout/activity_invitado_home.xml" value="0.2504528985507246" />
         <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/layout/activity_login_alumno.xml" value="0.22592592592592592" />
-        <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/layout/activity_login_encargado.xml" value="0.12638888888888888" />
+        <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/layout/activity_login_encargado.xml" value="0.264" />
         <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/layout/activity_main.xml" value="0.225" />
+        <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/layout/activity_registrar_alumno.xml" value="0.22592592592592592" />
         <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/layout/activity_registrar_encargado.xml" value="0.264" />
         <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/layout/activity_schedule_laboratory.xml" value="0.22592592592592592" />
+        <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/layout/activity_student_reservation.xml" value="0.264" />
         <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/layout/alumno_home.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/layout/header.xml" value="0.2504528985507246" />
         <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/layout/header_profesor.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/layout/item_attendant_reservation.xml" value="0.264" />
         <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/layout/item_laboratory.xml" value="0.22592592592592592" />
+        <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/layout/item_student_reservation.xml" value="0.264" />
         <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/layout/list_element_reservation.xml" value="0.21875" />
         <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/layout/login_alumno.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/layout/login_profesor.xml" value="0.25416666666666665" />

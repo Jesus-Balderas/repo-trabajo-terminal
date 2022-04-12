@@ -4,7 +4,13 @@ import java.io.Serializable
 
 data class Attendant (
     var id: Int,
-    var name: String
+    var num_empleado: String,
+    var name: String,
+    var first_name: String,
+    var second_name: String,
+    var email: String,
+    var laboratories : ArrayList<Laboratory>
+
 ):Serializable {
     override fun toString(): String {
         return name

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context=".activities.registrar_alumno"
+    tools:context=".activities.RegistrarAlumnoActivity"
     tools:openDrawer="start">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,7 +15,7 @@
         android:layout_height="match_parent">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbarregistraralumno"
+            android:id="@+id/toolbarRegistrarAlumno"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
@@ -154,7 +154,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/idspinner" />
+                    app:layout_constraintTop_toBottomOf="@+id/spinnerCarreras" />
 
                 <EditText
                     android:id="@+id/editTextConfPassword"
@@ -194,7 +194,7 @@
                     app:layout_constraintVertical_bias="0.55" />
 
                 <Spinner
-                    android:id="@+id/idspinner"
+                    android:id="@+id/spinnerCarreras"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="32dp"
