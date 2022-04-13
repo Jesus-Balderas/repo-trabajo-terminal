@@ -8,7 +8,7 @@
     android:background="@drawable/background_alumno_gradient"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context=".activities.student.StudentReservationActivity"
+    tools:context=".activities.student.StudentReservationHistoryActivity"
     tools:openDrawer="start">
 
     <LinearLayout
@@ -17,7 +17,7 @@
         android:orientation="vertical">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbarStudentReservation"
+            android:id="@+id/toolbarStudentReservationHistory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
@@ -27,12 +27,12 @@
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvStudentReservation"
+            android:id="@+id/rvStudentReservationHistory"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="2dp"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
-            tools:listitem="@layout/item_student_reservation"/>
+            tools:listitem="@layout/item_student_reservation_history"/>
     </LinearLayout>
 </androidx.drawerlayout.widget.DrawerLayout>

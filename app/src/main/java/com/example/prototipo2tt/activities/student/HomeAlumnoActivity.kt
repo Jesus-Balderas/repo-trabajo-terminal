@@ -136,16 +136,15 @@ class HomeAlumnoActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
                     Intent(this@HomeAlumnoActivity, ScheduleLaboratoryActivity::class.java)
                 startActivity(intentScheduleLaboratory)
             }
-            R.id.menuMisReservasHistorialAlumno -> Toast.makeText(
-                this,
-                "Mi Historial de Reservaciones",
-                Toast.LENGTH_SHORT
-            ).show()
+            R.id.menuMisReservasHistorialAlumno -> {
+                val intentStudentReservationHistory =
+                    Intent(this,StudentReservationHistoryActivity::class.java)
+                startActivity(intentStudentReservationHistory)
+            }
 
             R.id.id_menuLogoutAlumno -> {
+
                 postLogoutStudent()
-
-
             }
         }
         drawer.closeDrawer(GravityCompat.START)

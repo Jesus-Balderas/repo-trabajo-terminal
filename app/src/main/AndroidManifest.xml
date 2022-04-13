@@ -38,7 +38,12 @@
         <activity
             android:name=".activities.student.StudentReservationActivity"
             android:exported="false"
+            android:parentActivityName=".activities.student.HomeAlumnoActivity" />
+        <activity
+            android:name=".activities.student.StudentReservationHistoryActivity"
+            android:exported="false"
             android:parentActivityName=".activities.student.HomeAlumnoActivity"/>
+
         <activity
             android:name=".activities.MainActivity"
             android:launchMode="singleInstance"

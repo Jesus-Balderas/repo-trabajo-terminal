@@ -58,6 +58,9 @@ interface ApiService {
     @GET("students/reservations")
     fun getStudentReservations(@Header("Authorization") authHeader: String): Call<ArrayList<StudentReservation>>
 
+    @GET("students/reservations/history")
+    fun getStudentReservationsHistory(@Header("Authorization") authHeader: String): Call<ArrayList<StudentReservation>>
+
     companion object Factory{
         private const val BASE_URL = "https://labscom.herokuapp.com/api/"
         fun create():ApiService{

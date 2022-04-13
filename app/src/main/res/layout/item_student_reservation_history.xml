@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/cvStudentReservationStatus"
+    android:id="@+id/cvStudentReservationHistory"
     android:animateLayoutChanges="true"
     app:cardElevation="4dp"
     app:cardCornerRadius="3dp"
@@ -18,7 +18,7 @@
         android:orientation="vertical"
         android:padding="9dp">
         <TextView
-            android:id="@+id/tvIdStudentReservationStatus"
+            android:id="@+id/tvIdStudentReservationHistory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="2dp"
@@ -27,7 +27,7 @@
             tools:text="Reservación #1" />
 
         <TextView
-            android:id="@+id/tvLabStudentReservationStatus"
+            android:id="@+id/tvLabStudentReservationHistory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorBlack"
@@ -36,14 +36,14 @@
             tools:text="Laboratorio de Programación 1" />
 
         <TextView
-            android:id="@+id/tvEncargadoStudentReservationStatus"
+            android:id="@+id/tvEncargadoStudentReservationHistory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorBlack"
             android:layout_gravity="center"
             tools:text="Marco Antonio" />
         <TextView
-            android:id="@+id/tvDateStudentReservationStatus"
+            android:id="@+id/tvDateStudentReservationHistory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorBlack"
@@ -51,7 +51,7 @@
             tools:text="Para el día : 2022-04-11" />
 
         <TextView
-            android:id="@+id/tvHourStudentReservationStatus"
+            android:id="@+id/tvHourStudentReservationHistory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorBlack"
@@ -59,7 +59,7 @@
             tools:text="A las : 13:30:00" />
 
         <TextView
-            android:id="@+id/tvStatusStudentReservationStatus"
+            android:id="@+id/tvStatusStudentReservationHistory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -67,7 +67,7 @@
             tools:text="Reservada" />
 
         <TextView
-            android:id="@+id/tvPCStudentReservationStatus"
+            android:id="@+id/tvPCStudentReservationHistory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorBlack"
@@ -75,7 +75,7 @@
             tools:text="No. de PC: 1" />
 
         <TextView
-            android:id="@+id/tvCreatedAtStudentReservationStatus"
+            android:id="@+id/tvCreatedAtStudentReservationHistory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorBlack"
