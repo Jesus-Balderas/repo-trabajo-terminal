@@ -7,7 +7,7 @@
     android:background="@drawable/background_alumno_gradient"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context=".activities.AttendantReservationActivity"
+    tools:context=".activities.attendant.AttendantReservationActivity"
     tools:openDrawer="start">
 
     <LinearLayout

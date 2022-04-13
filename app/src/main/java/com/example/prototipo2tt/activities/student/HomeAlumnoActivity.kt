@@ -1,4 +1,4 @@
-package com.example.prototipo2tt.activities
+package com.example.prototipo2tt.activities.student
 
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.navigation.NavigationView
@@ -18,9 +18,9 @@ import androidx.appcompat.widget.Toolbar
 import com.example.prototipo2tt.PreferenceHelper
 import com.example.prototipo2tt.PreferenceHelper.set
 import com.example.prototipo2tt.PreferenceHelper.get
+import com.example.prototipo2tt.activities.ScheduleLaboratoryActivity
 import com.example.prototipo2tt.io.ApiService
 import com.example.prototipo2tt.io.response.ProfileStudentResponse
-import com.example.prototipo2tt.models.Student
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -136,16 +136,12 @@ class HomeAlumnoActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
                     Intent(this@HomeAlumnoActivity, ScheduleLaboratoryActivity::class.java)
                 startActivity(intentScheduleLaboratory)
             }
-            R.id.id_menuMisReservasAlumnoCanceladas -> Toast.makeText(
+            R.id.menuMisReservasHistorialAlumno -> Toast.makeText(
                 this,
-                "Canceladas",
+                "Mi Historial de Reservaciones",
                 Toast.LENGTH_SHORT
             ).show()
-            R.id.id_menuMisReservasAlumnoAceptadas -> Toast.makeText(
-                this,
-                "Aceptadas",
-                Toast.LENGTH_SHORT
-            ).show()
+
             R.id.id_menuLogoutAlumno -> {
                 postLogoutStudent()
 

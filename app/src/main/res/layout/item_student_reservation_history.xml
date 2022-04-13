@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/cvStudentReservation"
+    android:id="@+id/cvStudentReservationStatus"
     android:animateLayoutChanges="true"
     app:cardElevation="4dp"
     app:cardCornerRadius="3dp"
@@ -18,7 +18,7 @@
         android:orientation="vertical"
         android:padding="9dp">
         <TextView
-            android:id="@+id/tvIdStudentReservation"
+            android:id="@+id/tvIdStudentReservationStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="2dp"
@@ -27,7 +27,7 @@
             tools:text="Reservación #1" />
 
         <TextView
-            android:id="@+id/tvLabStudentReservation"
+            android:id="@+id/tvLabStudentReservationStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorBlack"
@@ -36,14 +36,14 @@
             tools:text="Laboratorio de Programación 1" />
 
         <TextView
-            android:id="@+id/tvEncargadoStudentReservation"
+            android:id="@+id/tvEncargadoStudentReservationStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorBlack"
             android:layout_gravity="center"
             tools:text="Marco Antonio" />
         <TextView
-            android:id="@+id/tvDateStudentReservation"
+            android:id="@+id/tvDateStudentReservationStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorBlack"
@@ -51,7 +51,7 @@
             tools:text="Para el día : 2022-04-11" />
 
         <TextView
-            android:id="@+id/tvHourStudentReservation"
+            android:id="@+id/tvHourStudentReservationStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorBlack"
@@ -59,7 +59,7 @@
             tools:text="A las : 13:30:00" />
 
         <TextView
-            android:id="@+id/tvStatusStudentReservation"
+            android:id="@+id/tvStatusStudentReservationStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -67,7 +67,7 @@
             tools:text="Reservada" />
 
         <TextView
-            android:id="@+id/tvPCStudentReservation"
+            android:id="@+id/tvPCStudentReservationStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorBlack"
@@ -75,23 +75,11 @@
             tools:text="No. de PC: 1" />
 
         <TextView
-            android:id="@+id/tvCreatedAtStudentReservation"
+            android:id="@+id/tvCreatedAtStudentReservationStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorBlack"
             tools:text="Fecha de Creación: 2022-04-11" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <Button
-                android:id="@+id/btnCancelStudentReservation"
-                style="@style/Widget.AppCompat.Button.Borderless.Colored"
-                android:textColor="@color/colorRed"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Cancelar" />
-        </LinearLayout>
+
     </LinearLayout>
 </androidx.cardview.widget.CardView>

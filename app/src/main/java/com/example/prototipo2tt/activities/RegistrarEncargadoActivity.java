@@ -13,6 +13,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.prototipo2tt.R;
+import com.example.prototipo2tt.activities.attendant.LoginEncargadoActivity;
 
 public class RegistrarEncargadoActivity extends AppCompatActivity {
 

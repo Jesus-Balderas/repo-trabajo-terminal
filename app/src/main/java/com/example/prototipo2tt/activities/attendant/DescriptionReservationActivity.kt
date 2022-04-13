@@ -1,15 +1,13 @@
-package com.example.prototipo2tt.activities
+package com.example.prototipo2tt.activities.attendant
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
-import com.example.prototipo2tt.models.Reservation
 import com.example.prototipo2tt.R
 import com.example.prototipo2tt.models.AttendantReservation
 

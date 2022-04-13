@@ -1,4 +1,4 @@
-package com.example.prototipo2tt.activities
+package com.example.prototipo2tt.activities.student
 
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity

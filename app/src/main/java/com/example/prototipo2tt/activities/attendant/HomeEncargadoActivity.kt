@@ -1,4 +1,4 @@
-package com.example.prototipo2tt.activities
+package com.example.prototipo2tt.activities.attendant
 
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.navigation.NavigationView
@@ -18,6 +18,7 @@ import androidx.appcompat.widget.Toolbar
 import com.example.prototipo2tt.PreferenceHelper
 import com.example.prototipo2tt.PreferenceHelper.set
 import com.example.prototipo2tt.PreferenceHelper.get
+import com.example.prototipo2tt.activities.ScheduleLaboratoryActivity
 import com.example.prototipo2tt.io.ApiService
 import com.example.prototipo2tt.io.response.ProfileAttendantResponse
 import retrofit2.Call
@@ -136,14 +137,14 @@ class HomeEncargadoActivity : AppCompatActivity(), NavigationView.OnNavigationIt
             }
             R.id.menuNotifications -> Toast.makeText(this, "Notificaciones", Toast.LENGTH_LONG)
                 .show()
-            R.id.menuConfirmedReservations -> Toast.makeText(
+            R.id.menuReservationsAccepted -> Toast.makeText(
                 this,
                 "Reservaciones Confirmadas",
                 Toast.LENGTH_LONG
             ).show()
-            R.id.menuRefusedReservations -> Toast.makeText(
+            R.id.menuReservationsHistory -> Toast.makeText(
                 this,
-                "Reservaciones Rechazadas",
+                "Historial de Reservaciones",
                 Toast.LENGTH_LONG
             ).show()
             R.id.menuLogoutEncargado -> {

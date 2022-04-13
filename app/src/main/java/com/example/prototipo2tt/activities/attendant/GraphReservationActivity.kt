@@ -1,4 +1,4 @@
-package com.example.prototipo2tt.activities
+package com.example.prototipo2tt.activities.attendant
 
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity

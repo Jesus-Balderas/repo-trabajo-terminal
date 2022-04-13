@@ -11,4 +11,5 @@ data class AttendantReservation(
     @SerializedName("created_at") var createdDate : String,
     var student : Student,
     var computer : Computer
+
 ): Serializable

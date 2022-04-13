@@ -1,4 +1,4 @@
-package com.example.prototipo2tt.activities
+package com.example.prototipo2tt.activities.attendant
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

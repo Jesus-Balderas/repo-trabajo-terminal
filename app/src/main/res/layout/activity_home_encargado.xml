@@ -8,7 +8,7 @@
     android:background="@drawable/background_profesor_gradient"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context=".activities.HomeEncargadoActivity"
+    tools:context=".activities.attendant.HomeEncargadoActivity"
     tools:openDrawer="start">
 
     <com.google.android.material.navigation.NavigationView
