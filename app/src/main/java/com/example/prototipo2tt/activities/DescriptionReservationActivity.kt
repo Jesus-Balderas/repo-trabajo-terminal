@@ -11,10 +11,11 @@ import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
 import com.example.prototipo2tt.models.Reservation
 import com.example.prototipo2tt.R
+import com.example.prototipo2tt.models.AttendantReservation
 
 class DescriptionReservationActivity : AppCompatActivity() {
 
-    private lateinit var reservation: Reservation
+    private lateinit var attendantReservation: AttendantReservation
 
     lateinit var btnRefuseRervation: Button
     lateinit var btnConfirmReservation: Button
@@ -49,8 +50,10 @@ class DescriptionReservationActivity : AppCompatActivity() {
 
         btnConfirmReservation = findViewById(R.id.btnConfirmarReservacion)
         btnConfirmReservation.setOnClickListener {
-            Toast.makeText(this, "¡Reservación confirmada exitosamente!", Toast.LENGTH_SHORT ).show()
-            finish()
+            Toast.makeText(this,
+                "Confirmando Reservacion No: ${attendantReservation.id}",
+                Toast.LENGTH_SHORT ).show()
+
         }
 
         btnConfirmRefuseReservation = findViewById(R.id.btnConfirmRefuseReservation)
@@ -59,28 +62,31 @@ class DescriptionReservationActivity : AppCompatActivity() {
                 refusedReservation.error = "Se requiere un motivo"
             } else {
                 Toast.makeText(this, "¡Reservación rechazada exitosamente!", Toast.LENGTH_SHORT).show()
-                finish()
+
             }
 
         }
 
         btnRefuseRervation = findViewById(R.id.btnRechazarReservacion)
         btnRefuseRervation.setOnClickListener{
-            cvDetailsReservation.visibility = View.GONE
-            cvRefusedReservation.visibility = View.VISIBLE
-            reservationRefusedId.text = getString(R.string.description_reservation_id, reservation.id)
-            studentReservationRefused.text = getString(R.string.description_reservation_alumno, reservation.student)
+            //cvDetailsReservation.visibility = View.GONE
+            //cvRefusedReservation.visibility = View.VISIBLE
+            //reservationRefusedId.text = getString(R.string.description_reservation_id, attendantReservation.id)
+            //studentReservationRefused.text = getString(R.string.description_reservation_alumno, attendantReservation.student.name)
+            Toast.makeText(this,
+                "Rechazando Reservacion No: ${attendantReservation.id}",
+                Toast.LENGTH_SHORT ).show()
         }
 
         if (intent.extras != null){
-            reservation = intent.getSerializableExtra("Reservation") as Reservation
-            reservationId.text = getString(R.string.description_reservation_id, reservation.id)
-            student.text = getString(R.string.description_reservation_alumno, reservation.student)
-            boleta.text = getString(R.string.description_reservation_boleta, reservation.boleta)
-            computer.text = getString(R.string.description_reservation_computadora, reservation.computer)
-            hour.text = getString(R.string.description_reservation_hora, reservation.hour)
-            date.text = getString(R.string.description_reservation_Fecha, reservation.date)
-            status.text = getString(R.string.description_reservation_estado, reservation.status)
+            attendantReservation = intent.getSerializableExtra("Reservation") as AttendantReservation
+            reservationId.text = getString(R.string.description_reservation_id, attendantReservation.id)
+            student.text = getString(R.string.description_reservation_alumno, attendantReservation.student.name)
+            boleta.text = getString(R.string.description_reservation_boleta, attendantReservation.student.num_boleta)
+            computer.text = getString(R.string.description_reservation_computadora, attendantReservation.computer.num_pc)
+            hour.text = getString(R.string.description_reservation_hora, attendantReservation.time)
+            date.text = getString(R.string.description_reservation_Fecha, attendantReservation.date)
+            status.text = getString(R.string.description_reservation_estado, attendantReservation.status)
         }
     }
 

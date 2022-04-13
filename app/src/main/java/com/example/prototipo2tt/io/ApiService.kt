@@ -33,7 +33,7 @@ interface ApiService {
             Call<ScheduleHour>
 
     @GET("attendants/reservations")
-    fun getAttendantReservations(@Query("attendant_id") id: Int): Call<ArrayList<Reservation>>
+    fun getAttendantReservations(@Header("Authorization") authHeader: String): Call<ArrayList<AttendantReservation>>
 
     @POST("login/student")
     fun postLoginStudent(@Query("num_boleta") boleta: String, @Query("password") password: String):

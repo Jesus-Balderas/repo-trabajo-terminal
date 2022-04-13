@@ -11,7 +11,7 @@
     <string name="label_reservation">Solicitudes de Reservaciones</string>
     <string name="label_schedule_laboratory">Horarios de los Laboratorios</string>
 
-    <string name="item_reservation_id">Reservación %1$d</string>
+    <string name="item_reservation_id">Reservación No.%1$d</string>
     <string name="item_reservation_alumno">Alumno: %1$s</string>
     <string name="item_reservation_boleta">Boleta: %1$s</string>
     <string name="item_reservation_status">Estado: %1$s</string>
@@ -22,7 +22,7 @@
     <string name="item_laboratory_edifice">Edificio: %1$s</string>
     <string name="item_laboratory_status">Estado: %1$s</string>
 
-    <string name="description_reservation_id">Reservación: %1$d</string>
+    <string name="description_reservation_id">Reservación No.%1$d</string>
     <string name="description_reservation_alumno">Alumno: %1$s</string>
     <string name="description_reservation_boleta">Boleta: %1$s</string>
     <string name="description_reservation_computadora">Computadora: %1$d</string>
