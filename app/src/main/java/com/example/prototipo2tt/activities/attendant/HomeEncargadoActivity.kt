@@ -135,18 +135,22 @@ class HomeEncargadoActivity : AppCompatActivity(), NavigationView.OnNavigationIt
                     Intent(this@HomeEncargadoActivity, ScheduleLaboratoryActivity::class.java)
                 startActivity(intentScheduleLaboratory)
             }
+
             R.id.menuNotifications -> Toast.makeText(this, "Notificaciones", Toast.LENGTH_LONG)
                 .show()
-            R.id.menuReservationsAccepted -> Toast.makeText(
-                this,
-                "Reservaciones Confirmadas",
-                Toast.LENGTH_LONG
-            ).show()
+
+            R.id.menuReservationsAccepted -> {
+                val intentAttendantReservationAccept =
+                    Intent(this, AttendantReservationAcceptActivity::class.java)
+                startActivity(intentAttendantReservationAccept)
+            }
+
             R.id.menuReservationsHistory -> {
                 val intentAttendantReservationHistory =
                     Intent(this, AttendantReservationHistoryActivity::class.java)
                 startActivity(intentAttendantReservationHistory)
             }
+
             R.id.menuLogoutEncargado -> {
                 postLogoutAttendant()
             }

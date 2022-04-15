@@ -33,10 +33,16 @@ interface ApiService {
             Call<ScheduleHour>
 
     @GET("attendants/reservations")
-    fun getAttendantReservations(@Header("Authorization") authHeader: String): Call<ArrayList<AttendantReservation>>
+    fun getAttendantReservations(@Header("Authorization") authHeader: String):
+            Call<ArrayList<AttendantReservation>>
 
     @GET("attendants/reservations/history")
-    fun getAttendantReservationsHistory(@Header("Authorization") authHeader: String): Call<ArrayList<AttendantReservation>>
+    fun getAttendantReservationsHistory(@Header("Authorization") authHeader: String):
+            Call<ArrayList<AttendantReservation>>
+
+    @GET("attendants/reservations/accept")
+    fun getAttendantReservationsAccepted(@Header("Authorization") authHeader: String):
+            Call<ArrayList<AttendantReservation>>
 
     @POST("login/student")
     fun postLoginStudent(@Query("num_boleta") boleta: String, @Query("password") password: String):
@@ -59,10 +65,12 @@ interface ApiService {
     fun profileAttendant(@Header("Authorization") authHeader: String): Call<ProfileAttendantResponse>
 
     @GET("students/reservations")
-    fun getStudentReservations(@Header("Authorization") authHeader: String): Call<ArrayList<StudentReservation>>
+    fun getStudentReservations(@Header("Authorization") authHeader: String):
+            Call<ArrayList<StudentReservation>>
 
     @GET("students/reservations/history")
-    fun getStudentReservationsHistory(@Header("Authorization") authHeader: String): Call<ArrayList<StudentReservation>>
+    fun getStudentReservationsHistory(@Header("Authorization") authHeader: String):
+            Call<ArrayList<StudentReservation>>
 
     companion object Factory{
         private const val BASE_URL = "https://labscom.herokuapp.com/api/"

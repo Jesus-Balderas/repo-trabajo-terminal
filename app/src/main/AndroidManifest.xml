@@ -15,7 +15,9 @@
         android:theme="@style/Theme.Prototipo2tt"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-
+        <activity
+            android:name=".activities.attendant.AttendantReservationAcceptActivity"
+            android:exported="false" />
         <activity
             android:name=".activities.student.LoginAlumnoActivity"
             android:exported="false"
@@ -98,8 +100,8 @@
         <activity
             android:name=".activities.attendant.AttendantReservationHistoryActivity"
             android:exported="false"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".activities.attendant.HomeEncargadoActivity"/>
+            android:parentActivityName=".activities.attendant.HomeEncargadoActivity"
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="preloaded_fonts"
