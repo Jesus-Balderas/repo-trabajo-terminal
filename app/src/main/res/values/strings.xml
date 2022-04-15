@@ -47,5 +47,11 @@
     <string name="item_student_reservation_computer">No. de PC: %1$d</string>
     <string name="item_student_reservation_createdAt">Fecha de Creación: %1$s</string>
 
+    <string name="item_attendant_reservation_id">Reservación No.%1$d</string>
+    <string name="item_attendant_reservation_date">Para el día: %1$s</string>
+    <string name="item_attendant_reservation_hour">A las: %1$s</string>
+    <string name="item_attendant_reservation_computer">No. de PC: %1$d</string>
+    <string name="item_attendant_reservation_createdAt">Fecha de Creación: %1$s</string>
+
 
 </resources>

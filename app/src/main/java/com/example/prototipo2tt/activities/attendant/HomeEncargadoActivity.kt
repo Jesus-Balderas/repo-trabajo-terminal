@@ -142,11 +142,11 @@ class HomeEncargadoActivity : AppCompatActivity(), NavigationView.OnNavigationIt
                 "Reservaciones Confirmadas",
                 Toast.LENGTH_LONG
             ).show()
-            R.id.menuReservationsHistory -> Toast.makeText(
-                this,
-                "Historial de Reservaciones",
-                Toast.LENGTH_LONG
-            ).show()
+            R.id.menuReservationsHistory -> {
+                val intentAttendantReservationHistory =
+                    Intent(this, AttendantReservationHistoryActivity::class.java)
+                startActivity(intentAttendantReservationHistory)
+            }
             R.id.menuLogoutEncargado -> {
                 postLogoutAttendant()
             }

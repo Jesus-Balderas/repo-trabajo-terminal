@@ -42,8 +42,7 @@
         <activity
             android:name=".activities.student.StudentReservationHistoryActivity"
             android:exported="false"
-            android:parentActivityName=".activities.student.HomeAlumnoActivity"/>
-
+            android:parentActivityName=".activities.student.HomeAlumnoActivity" />
         <activity
             android:name=".activities.MainActivity"
             android:launchMode="singleInstance"
@@ -96,6 +95,11 @@
             android:exported="false"
             android:parentActivityName=".activities.attendant.HomeEncargadoActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.attendant.AttendantReservationHistoryActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".activities.attendant.HomeEncargadoActivity"/>
 
         <meta-data
             android:name="preloaded_fonts"

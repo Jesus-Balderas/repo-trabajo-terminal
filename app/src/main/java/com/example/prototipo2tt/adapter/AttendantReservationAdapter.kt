@@ -32,7 +32,7 @@ class AttendantReservationAdapter(
         private val student = view.findViewById(R.id.tvStudentReservation) as TextView
         private val boleta = view.findViewById<TextView>(R.id.tvStudentBoleta)
         private val tvCreatedDate = view.findViewById<TextView>(R.id.tvCreatedAtAttendantReservation)
-        val cardView = view.findViewById(R.id.cardViewReservation) as CardView
+        val cardView = view.findViewById(R.id.cvAttendantReservation) as CardView
         val context = view.context
 
         fun bind(attendantReservation: AttendantReservation) {
