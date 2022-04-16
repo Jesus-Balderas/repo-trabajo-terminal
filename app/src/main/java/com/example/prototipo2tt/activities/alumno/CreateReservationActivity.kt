@@ -1,4 +1,4 @@
-package com.example.prototipo2tt.activities
+package com.example.prototipo2tt.activities.alumno
 
 import android.app.AlertDialog
 import android.app.DatePickerDialog

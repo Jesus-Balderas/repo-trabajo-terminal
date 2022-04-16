@@ -1,4 +1,4 @@
-package com.example.prototipo2tt.activities
+package com.example.prototipo2tt.activities.encargado
 
 import android.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -6,15 +6,12 @@ import android.widget.EditText
 import android.os.Bundle
 import com.example.prototipo2tt.R
 import android.content.Intent
-import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import com.example.prototipo2tt.PreferenceHelper
 import com.example.prototipo2tt.PreferenceHelper.get
 import com.example.prototipo2tt.PreferenceHelper.set
-import com.example.prototipo2tt.activities.HomeEncargadoActivity
-import com.example.prototipo2tt.activities.RegistrarEncargadoActivity
 import com.example.prototipo2tt.io.ApiService
 import com.example.prototipo2tt.io.response.LoginAttendantResponse
 import retrofit2.Call

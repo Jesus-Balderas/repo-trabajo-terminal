@@ -1,4 +1,4 @@
-package com.example.prototipo2tt.activities
+package com.example.prototipo2tt.activities.encargado
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.prototipo2tt.adapter.AttendantReservationAdapter
 import com.example.prototipo2tt.models.Reservation
 import com.example.prototipo2tt.R
+import com.example.prototipo2tt.activities.alumno.DescriptionReservationActivity
 import com.example.prototipo2tt.io.ApiService
 import retrofit2.Call
 import retrofit2.Callback

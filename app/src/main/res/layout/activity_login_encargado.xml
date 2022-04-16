@@ -7,7 +7,7 @@
     android:background="@drawable/background_profesor_gradient"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context=".activities.LoginEncargadoActivity"
+    tools:context=".activities.encargado.LoginEncargadoActivity"
     tools:openDrawer="start">
 
     <LinearLayout

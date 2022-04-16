@@ -1,4 +1,4 @@
-package com.example.prototipo2tt.activities
+package com.example.prototipo2tt.activities.alumno
 
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.navigation.NavigationView
@@ -18,9 +18,9 @@ import androidx.appcompat.widget.Toolbar
 import com.example.prototipo2tt.PreferenceHelper
 import com.example.prototipo2tt.PreferenceHelper.set
 import com.example.prototipo2tt.PreferenceHelper.get
+import com.example.prototipo2tt.activities.ScheduleLaboratoryActivity
 import com.example.prototipo2tt.io.ApiService
 import com.example.prototipo2tt.io.response.ProfileStudentResponse
-import com.example.prototipo2tt.models.Student
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

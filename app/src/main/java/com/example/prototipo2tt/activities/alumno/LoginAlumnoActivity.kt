@@ -1,4 +1,4 @@
-package com.example.prototipo2tt.activities
+package com.example.prototipo2tt.activities.alumno
 
 import android.app.AlertDialog
 import android.content.Intent
@@ -14,11 +14,9 @@ import com.example.prototipo2tt.PreferenceHelper.get
 import com.example.prototipo2tt.PreferenceHelper.set
 import com.example.prototipo2tt.io.ApiService
 import com.example.prototipo2tt.io.response.LoginStudentResponse
-import com.example.prototipo2tt.models.Student
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.io.Serializable
 
 class LoginAlumnoActivity : AppCompatActivity() {
 
@@ -143,7 +141,7 @@ class LoginAlumnoActivity : AppCompatActivity() {
 
     private fun goToHomeAlumno() {
 
-        val intentHomeAlumno = Intent(this@LoginAlumnoActivity,HomeAlumnoActivity::class.java )
+        val intentHomeAlumno = Intent(this@LoginAlumnoActivity, HomeAlumnoActivity::class.java )
         startActivity(intentHomeAlumno)
         finish()
     }

@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.prototipo2tt.R;
+import com.example.prototipo2tt.activities.alumno.LoginAlumnoActivity;
+import com.example.prototipo2tt.activities.encargado.LoginEncargadoActivity;
 
 public class MainActivity extends AppCompatActivity {
     Button btnAlumno, btnEncargado;
