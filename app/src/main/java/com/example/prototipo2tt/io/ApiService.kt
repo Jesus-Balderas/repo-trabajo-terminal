@@ -83,6 +83,12 @@ interface ApiService {
         @Query("scheduled_hour") hour: String
     ): Call<StudentReservationResponse>
 
+    @POST("reservation/{reservation}/cancel")
+    fun postCancelReservationStudent(
+        @Header("Authorization") authHeader: String,
+        @Path("reservation") reservationId: Int
+    ): Call<StudentReservationCancelResponse>
+
     companion object Factory{
         private const val BASE_URL = "https://labscom.herokuapp.com/api/"
         fun create():ApiService{

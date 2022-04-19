@@ -13,6 +13,8 @@ import com.example.prototipo2tt.PreferenceHelper.get
 import com.example.prototipo2tt.R
 import com.example.prototipo2tt.adapter.StudentReservationAdapter
 import com.example.prototipo2tt.io.ApiService
+import com.example.prototipo2tt.io.response.StudentReservationCancelResponse
+import com.example.prototipo2tt.io.response.StudentReservationResponse
 import com.example.prototipo2tt.models.StudentReservation
 import retrofit2.Call
 import retrofit2.Callback
@@ -99,10 +101,8 @@ class StudentReservationActivity : AppCompatActivity(),
         val builder = AlertDialog.Builder(this)
         builder.setMessage("¿Estás seguro que deseas cancelar tú reservación No.${studentReservation.id}?")
         builder.setPositiveButton("Si, cancelar") { _, _ ->
-            Toast.makeText(this, "Reservación cancelada exitosamente",
-                Toast.LENGTH_SHORT).show()
-            getStudentReservations()
-
+            val reservationId = studentReservation.id
+            postCancelReservationStudent(reservationId)
         }
         builder.setNegativeButton("Volver") { dialog, _ ->
             dialog.dismiss()
@@ -110,4 +110,44 @@ class StudentReservationActivity : AppCompatActivity(),
         val dialog = builder.create()
         dialog.show()
     }
+
+    private fun postCancelReservationStudent(reservationId : Int){
+        val jwt = preferences["jwt-student",""]
+        val call = apiService.postCancelReservationStudent("Bearer $jwt", reservationId)
+        call.enqueue(object : Callback<StudentReservationCancelResponse>{
+            override fun onResponse(
+                call: Call<StudentReservationCancelResponse>,
+                response: Response<StudentReservationCancelResponse>
+            ) {
+                if (response.isSuccessful){
+                    val reservationCancel = response.body()
+                    if (reservationCancel?.success == true){
+
+                        successCancelReservation()
+                    }
+                    else {
+                        Toast.makeText(this@StudentReservationActivity,
+                            "¡La reservación no se pudo cancelar!", Toast.LENGTH_SHORT).show()
+                    }
+                } 
+            }
+
+            override fun onFailure(call: Call<StudentReservationCancelResponse>, t: Throwable) {
+                Toast.makeText(this@StudentReservationActivity, "No se pudo cancelar la reservación",
+                    Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    private fun successCancelReservation(){
+        val builder = AlertDialog.Builder(this)
+        builder.setMessage("¡La reservación se ha cancelado exitosamente!")
+        builder.setPositiveButton("Ok") { dialog, _ ->
+            getStudentReservations()
+            dialog.dismiss()
+        }
+        val dialog = builder.create()
+        dialog.show()
+    }
+
 }
