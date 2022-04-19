@@ -10,8 +10,11 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
+import com.example.prototipo2tt.PreferenceHelper
+import com.example.prototipo2tt.PreferenceHelper.get
 import com.example.prototipo2tt.R
 import com.example.prototipo2tt.io.ApiService
+import com.example.prototipo2tt.io.response.StudentReservationResponse
 import com.example.prototipo2tt.models.Attendant
 import com.example.prototipo2tt.models.Computer
 import com.example.prototipo2tt.models.Laboratory
@@ -26,6 +29,12 @@ class CreateReservationActivity : AppCompatActivity() {
 
     private val apiService: ApiService by lazy {
         ApiService.create()
+    }
+
+    private val preferences by lazy {
+
+        PreferenceHelper.customPrefs(this,"jwt-student")
+
     }
 
     private lateinit var editTextDate : EditText
@@ -105,6 +114,61 @@ class CreateReservationActivity : AppCompatActivity() {
         listenLaboratoriesChanges()
         listenDateChanges()
 
+        btnCreateReservation.setOnClickListener {
+            performStoreReservation()
+        }
+
+    }
+
+    private fun performStoreReservation(){
+
+        btnCreateReservation.isClickable = false
+        val jwt = preferences["jwt-student",""]
+        val authHeader = "Bearer $jwt"
+        val laboratory = spinnerLaboratories.selectedItem as Laboratory
+        val attendant = spinnerEncargados.selectedItem as Attendant
+        val computer = spinnerComputers.selectedItem as Computer
+        val date = tvConfirmDate.text.toString()
+        val hour = tvConfirmHour.text.toString()
+
+        val call = apiService.storeStudentReservations(
+            authHeader, laboratory.id,
+            attendant.id, computer.id,
+            date, hour)
+
+        call.enqueue(object : Callback<StudentReservationResponse>{
+            override fun onResponse(
+                call: Call<StudentReservationResponse>,
+                response: Response<StudentReservationResponse>
+            ) {
+                if (response.isSuccessful){
+                    isSuccessfulReservation()
+                }
+                else {
+                    Toast.makeText(this@CreateReservationActivity, "Ocurrio un error al registrar la reservación.", Toast.LENGTH_SHORT).show()
+                    btnCreateReservation.isClickable = true
+
+                }
+
+            }
+
+            override fun onFailure(call: Call<StudentReservationResponse>, t: Throwable) {
+                Toast.makeText(this@CreateReservationActivity, t.localizedMessage, Toast.LENGTH_SHORT).show()
+                btnCreateReservation.isClickable = true
+            }
+
+        })
+    }
+
+    private fun isSuccessfulReservation(){
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("¡Reservación registrada exitosamente! ")
+        builder.setMessage("Tu reservación ha sido registrada correctamente, ya puedes verla en tus solicitudes.")
+        builder.setPositiveButton("Ok") { _, _ ->
+            finish()
+        }
+        val dialog = builder.create()
+        dialog.show()
     }
 
     private fun listenDateChanges() {
@@ -139,15 +203,46 @@ class CreateReservationActivity : AppCompatActivity() {
                     tvSelectHours.visibility = View.GONE
                     tvNotFoundHours.visibility = View.GONE
                     val scheduleHours = response.body()
-                    val hoursOptions = arrayOf(
+                    val hourOptions = ArrayList<String>()
+
+                    if (scheduleHours?.one != "00:00"){
+                        scheduleHours?.one?.let { hourOptions.add(it) }
+                    }
+                    if (scheduleHours?.two != "00:00"){
+                        scheduleHours?.two?.let { hourOptions.add(it) }
+                    }
+                    if (scheduleHours?.three != "00:00"){
+                        scheduleHours?.three?.let { hourOptions.add(it) }
+                    }
+                    if (scheduleHours?.four != "00:00"){
+                        scheduleHours?.four?.let { hourOptions.add(it) }
+                    }
+                    if (scheduleHours?.five != "00:00"){
+                        scheduleHours?.five?.let { hourOptions.add(it) }
+                    }
+                    if (scheduleHours?.six != "00:00"){
+                        scheduleHours?.six?.let { hourOptions.add(it) }
+                    }
+                    if (scheduleHours?.seven != "00:00"){
+                        scheduleHours?.seven?.let { hourOptions.add(it) }
+                    }
+                    if (scheduleHours?.eight != "00:00"){
+                        scheduleHours?.eight?.let { hourOptions.add(it) }
+                    }
+                    if (scheduleHours?.nine != "00:00"){
+                        scheduleHours?.nine?.let { hourOptions.add(it) }
+                    }
+
+                    /*val hoursOptions = arrayOf(
                         scheduleHours?.one, scheduleHours?.two, scheduleHours?.three,
                         scheduleHours?.four, scheduleHours?.five, scheduleHours?.six,
                         scheduleHours?.seven, scheduleHours?.eight, scheduleHours?.nine,
-                    )
+                    )*/
+
                     spinnerHours.adapter = ArrayAdapter<String>(
                         this@CreateReservationActivity,
                         android.R.layout.simple_list_item_1,
-                        hoursOptions
+                        hourOptions
                     )
                     spinnerHours.visibility = View.VISIBLE
                     //Toast.makeText(this@CreateReservationActivity, "horas: $hours", Toast.LENGTH_SHORT).show()

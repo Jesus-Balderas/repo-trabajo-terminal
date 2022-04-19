@@ -1,9 +1,6 @@
 package com.example.prototipo2tt.io
 
-import com.example.prototipo2tt.io.response.LoginAttendantResponse
-import com.example.prototipo2tt.io.response.LoginStudentResponse
-import com.example.prototipo2tt.io.response.ProfileAttendantResponse
-import com.example.prototipo2tt.io.response.ProfileStudentResponse
+import com.example.prototipo2tt.io.response.*
 import com.example.prototipo2tt.models.*
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
@@ -71,6 +68,16 @@ interface ApiService {
     @GET("students/reservations/history")
     fun getStudentReservationsHistory(@Header("Authorization") authHeader: String):
             Call<ArrayList<StudentReservation>>
+
+    @POST("reservation")
+    fun storeStudentReservations(
+        @Header("Authorization") authHeader: String,
+        @Query("laboratory_id") laboratoryId: Int,
+        @Query("attendant_id") attendantId: Int,
+        @Query("computer_id") computerId: Int,
+        @Query("scheduled_date") date: String,
+        @Query("scheduled_hour") hour: String
+    ): Call<StudentReservationResponse>
 
     companion object Factory{
         private const val BASE_URL = "https://labscom.herokuapp.com/api/"

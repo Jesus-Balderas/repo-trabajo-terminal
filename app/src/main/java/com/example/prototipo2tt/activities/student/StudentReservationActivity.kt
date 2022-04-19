@@ -1,6 +1,7 @@
 package com.example.prototipo2tt.activities.student
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -81,6 +82,18 @@ class StudentReservationActivity : AppCompatActivity(),
     }
 
     override fun onItemClick(studentReservation: StudentReservation) {
-        Toast.makeText(this, "Cancelar reservación No. ${studentReservation.id}", Toast.LENGTH_SHORT).show()
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("¿Estas seguro de que deseas cancelar la reservación?")
+        builder.setMessage("Estas a punto de cancelar la reservación no. ${studentReservation.id}.")
+        builder.setPositiveButton("Si, cancelar") { _, _ ->
+            Toast.makeText(this, "Reservación cancelada exitosamente",
+                Toast.LENGTH_SHORT).show()
+            finish()
+        }
+        builder.setNegativeButton("Volver") { dialog, _ ->
+            dialog.dismiss()
+        }
+        val dialog = builder.create()
+        dialog.show()
     }
 }
