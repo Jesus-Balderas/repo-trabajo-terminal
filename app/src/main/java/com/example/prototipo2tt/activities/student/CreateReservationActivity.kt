@@ -162,7 +162,6 @@ class CreateReservationActivity : AppCompatActivity() {
 
     private fun isSuccessfulReservation(){
         val builder = AlertDialog.Builder(this)
-        builder.setTitle("¡Reservación registrada exitosamente! ")
         builder.setMessage("Tu reservación ha sido registrada correctamente, ya puedes verla en tus solicitudes.")
         builder.setPositiveButton("Ok") { _, _ ->
             finish()

@@ -21,5 +21,6 @@
     <color name="colorRed">#F44336</color>
     <color name="colorGreen">#16CC1E</color>
     <color name="colorOrange">#FF5722</color>
+    <color name="colorYellow">#FF9800</color>
 
 </resources>

@@ -84,10 +84,9 @@ class AttendantReservationHistoryActivity : AppCompatActivity() {
     private fun emptyReservations() {
 
         val builder = AlertDialog.Builder(this)
-        builder.setTitle("Historial de Reservaciones")
-        builder.setMessage("No hay historial de reservaciones por el momento.")
-        builder.setPositiveButton("Ok") { dialog, _ ->
-            dialog.dismiss()
+        builder.setMessage("Por el momento tu historial de reservaciones está vacío.")
+        builder.setPositiveButton("Ok") { _, _ ->
+            finish()
         }
         val dialog = builder.create()
         dialog.show()

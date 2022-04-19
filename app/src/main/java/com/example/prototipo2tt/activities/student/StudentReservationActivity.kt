@@ -68,6 +68,9 @@ class StudentReservationActivity : AppCompatActivity(),
                         adapter.studentReservation = it
                         adapter.notifyDataSetChanged()
                     }
+                    if (response.body()?.isEmpty() == true) {
+                        emptyReservations()
+                    }
                 }
 
             }
@@ -81,14 +84,25 @@ class StudentReservationActivity : AppCompatActivity(),
 
     }
 
+    private fun emptyReservations(){
+        val builder = AlertDialog.Builder(this)
+        builder.setMessage("Por el momento no tienes solicitudes de reservaciones.")
+        builder.setPositiveButton("Ok") { _, _ ->
+            finish()
+        }
+        val dialog = builder.create()
+        dialog.show()
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
     override fun onItemClick(studentReservation: StudentReservation) {
         val builder = AlertDialog.Builder(this)
-        builder.setTitle("¿Estas seguro de que deseas cancelar la reservación?")
-        builder.setMessage("Estas a punto de cancelar la reservación no. ${studentReservation.id}.")
+        builder.setMessage("¿Estás seguro que deseas cancelar tú reservación No.${studentReservation.id}?")
         builder.setPositiveButton("Si, cancelar") { _, _ ->
             Toast.makeText(this, "Reservación cancelada exitosamente",
                 Toast.LENGTH_SHORT).show()
-            finish()
+            getStudentReservations()
+
         }
         builder.setNegativeButton("Volver") { dialog, _ ->
             dialog.dismiss()
