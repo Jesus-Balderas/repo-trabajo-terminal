@@ -69,6 +69,10 @@ interface ApiService {
     fun getStudentReservationsHistory(@Header("Authorization") authHeader: String):
             Call<ArrayList<StudentReservation>>
 
+    @GET("students/reservations/accept")
+    fun getStudentReservationsAccept(@Header("Authorization") authHeader: String):
+            Call<ArrayList<StudentReservation>>
+
     @POST("reservation")
     fun storeStudentReservations(
         @Header("Authorization") authHeader: String,

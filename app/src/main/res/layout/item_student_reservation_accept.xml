@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/cvStudentReservationAccept"
+    android:animateLayoutChanges="true"
+    app:cardElevation="4dp"
+    app:cardCornerRadius="3dp"
+    app:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:orientation="vertical"
+        android:padding="9dp">
+        <TextView
+            android:id="@+id/tvIdStudentReservationAccept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:textColor="@color/colorBlack"
+            android:textSize="15sp"
+            tools:text="Reservación #1" />
+
+        <TextView
+            android:id="@+id/tvLabStudentReservationAccept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorBlack"
+            style="@style/TextAppearance.AppCompat.Medium"
+            android:layout_gravity="center"
+            tools:text="Laboratorio de Programación 1" />
+
+        <TextView
+            android:id="@+id/tvEncargadoStudentReservationAccept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorBlack"
+            android:layout_gravity="center"
+            tools:text="Marco Antonio" />
+        <TextView
+            android:id="@+id/tvDateStudentReservationAccept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorBlack"
+            android:layout_gravity="center"
+            tools:text="Para el día : 2022-04-11" />
+        <TextView
+            android:id="@+id/tvHourStudentReservationAccept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorBlack"
+            android:layout_gravity="center"
+            tools:text="A las : 13:30:00" />
+        <TextView
+            android:id="@+id/tvStatusStudentReservationAccept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/colorGreen"
+            tools:text="Aceptada" />
+
+        <TextView
+            android:id="@+id/tvPCStudentReservationAccept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorBlack"
+            android:layout_gravity="center"
+            tools:text="No. de PC: 1" />
+
+        <TextView
+            android:id="@+id/tvCreatedAtStudentReservationAccept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorBlack"
+            tools:text="Fecha de Creación: 2022-04-11" />
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

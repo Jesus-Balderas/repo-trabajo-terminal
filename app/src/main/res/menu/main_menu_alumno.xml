@@ -14,6 +14,10 @@
             <menu>
                 <group android:checkableBehavior="single">
                     <item
+                        android:id="@+id/menuMisReservasAceptadasAlumno"
+                        android:icon="@drawable/ic_baseline_event_available"
+                        android:title="Aceptadas"/>
+                    <item
                         android:id="@+id/menuMisReservasHistorialAlumno"
                         android:icon="@drawable/ic_baseline_event"
                         android:title="Historial"/>

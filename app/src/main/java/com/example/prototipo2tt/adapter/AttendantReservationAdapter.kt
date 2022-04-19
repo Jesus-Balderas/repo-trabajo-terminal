@@ -39,8 +39,8 @@ class AttendantReservationAdapter(
             reservationId.text =
                 itemView.context.getString(R.string.item_reservation_id, attendantReservation.id )
             student.text =
-                itemView.context.getString(R.string.item_reservation_alumno, attendantReservation.student.name)
-            boleta.text = itemView.context.getString(R.string.item_reservation_boleta, attendantReservation.student.num_boleta)
+                attendantReservation.student.name
+            boleta.text = attendantReservation.student.num_boleta
             tvCreatedDate.text = itemView.context.getString(R.string.item_student_reservation_createdAt, attendantReservation.createdDate)
             itemView.findViewById<Button>(R.id.btnDetailsReservation).setOnClickListener {
                 itemClickListener.onItemClick(attendantReservation)

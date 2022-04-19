@@ -142,6 +142,12 @@ class HomeAlumnoActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
                 startActivity(intentStudentReservationHistory)
             }
 
+            R.id.menuMisReservasAceptadasAlumno -> {
+                val intentStudentReservationAccept =
+                    Intent(this, StudentReservationAcceptActivity::class.java)
+                startActivity(intentStudentReservationAccept)
+            }
+
             R.id.id_menuLogoutAlumno -> {
 
                 postLogoutStudent()
