@@ -89,6 +89,24 @@ interface ApiService {
         @Path("reservation") reservationId: Int
     ): Call<StudentReservationCancelResponse>
 
+    @POST("reservation/{reservation}/reject")
+    fun postRejectReservationAttendant(
+        @Header("Authorization") authHeader: String,
+        @Path("reservation") reservationId: Int
+    ): Call<AttendantReservationResponse>
+
+    @POST("reservation/{reservation}/accept")
+    fun postAcceptReservationAttendant(
+        @Header("Authorization") authHeader: String,
+        @Path("reservation") reservationId: Int
+    ): Call<AttendantReservationResponse>
+
+    @POST("reservation/{reservation}/finish")
+    fun postFinishReservationAttendant(
+        @Header("Authorization") authHeader: String,
+        @Path("reservation") reservationId: Int
+    ): Call<AttendantReservationResponse>
+
     companion object Factory{
         private const val BASE_URL = "https://labscom.herokuapp.com/api/"
         fun create():ApiService{

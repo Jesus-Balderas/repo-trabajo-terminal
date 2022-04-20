@@ -13,6 +13,7 @@ import com.example.prototipo2tt.PreferenceHelper.get
 import com.example.prototipo2tt.R
 import com.example.prototipo2tt.adapter.AttendantReservationAcceptAdapter
 import com.example.prototipo2tt.io.ApiService
+import com.example.prototipo2tt.io.response.AttendantReservationResponse
 import com.example.prototipo2tt.models.AttendantReservation
 import retrofit2.Call
 import retrofit2.Callback
@@ -94,7 +95,52 @@ class AttendantReservationAcceptActivity : AppCompatActivity(),
     }
 
     override fun onItemClick(attendantReservAccept: AttendantReservation) {
-        Toast.makeText(this, "Finalizar Reservacion: ${attendantReservAccept.id}",
-        Toast.LENGTH_SHORT).show()
+        val reservationId = attendantReservAccept.id
+        val builder = AlertDialog.Builder(this)
+        builder.setMessage("¿Deseas finalizar la reservación No.$reservationId?")
+        builder.setPositiveButton("Si, finalizar") { _, _ ->
+            finishReservation(reservationId)
+        }
+        builder.setNegativeButton("Volver") { dialog, _ ->
+            dialog.dismiss()
+        }
+        val dialog = builder.create()
+        dialog.show()
+    }
+
+    private fun finishReservation(reservationId : Int){
+
+        val jwt = preferences["jwt-attendant",""]
+        val call = apiService.postFinishReservationAttendant("Bearer $jwt", reservationId)
+        call.enqueue(object : Callback<AttendantReservationResponse> {
+            override fun onResponse(
+                call: Call<AttendantReservationResponse>,
+                response: Response<AttendantReservationResponse>
+            ) {
+                if (response.isSuccessful){
+                    val finish = response.body()
+                    if (finish?.success == true){
+                        successFinishReservation()
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<AttendantReservationResponse>, t: Throwable) {
+                Toast.makeText(this@AttendantReservationAcceptActivity, "Ocurrio un problema al finalizar la reservación.",
+                    Toast.LENGTH_LONG).show()
+            }
+
+        })
+    }
+
+    private fun successFinishReservation(){
+        val builder = AlertDialog.Builder(this)
+        builder.setMessage("¡La reservación se ha finalizado exitosamente!")
+        builder.setPositiveButton("Ok") { dialog, _ ->
+            getAttendantReservationsAccepted()
+            dialog.dismiss()
+        }
+        val dialog = builder.create()
+        dialog.show()
     }
 }

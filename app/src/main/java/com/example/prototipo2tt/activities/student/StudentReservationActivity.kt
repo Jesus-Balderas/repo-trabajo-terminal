@@ -129,7 +129,7 @@ class StudentReservationActivity : AppCompatActivity(),
                         Toast.makeText(this@StudentReservationActivity,
                             "¡La reservación no se pudo cancelar!", Toast.LENGTH_SHORT).show()
                     }
-                } 
+                }
             }
 
             override fun onFailure(call: Call<StudentReservationCancelResponse>, t: Throwable) {

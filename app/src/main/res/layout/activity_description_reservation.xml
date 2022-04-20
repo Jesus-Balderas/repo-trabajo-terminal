@@ -43,7 +43,6 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/txtViewDetailsReservation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -57,83 +56,164 @@
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/txtViewIdReservacion"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginLeft="32dp"
-                    android:layout_marginTop="40dp"
-                    android:layout_marginEnd="32dp"
-                    android:layout_marginRight="32dp"
-                    android:textColor="@color/colorBlack"
-                    tools:text="Reservación #1" />
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingRight="20dp"
+                android:paddingLeft="20dp">
 
                 <TextView
-                    android:id="@+id/txtViewAlumnoReservacion"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginLeft="32dp"
-                    android:layout_marginEnd="32dp"
-                    android:layout_marginRight="32dp"
+                    android:text="Reservacion:" />
+                <TextView
+                    android:id="@+id/tvIdReservation"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
                     android:textColor="@color/colorBlack"
-                    tools:text="Alumno: AlumnoTest" />
+                    tools:text="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingRight="20dp"
+                android:paddingLeft="20dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="wrap_content"
+                    android:text="Alumno:" />
+
+                <TextView
+                    android:id="@+id/tvAlumnoReservacion"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorBlack"
+                    tools:text="AlumnoTest" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingRight="20dp"
+                android:paddingLeft="20dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="wrap_content"
+                    android:text="Boleta:" />
 
                 <TextView
                     android:id="@+id/txtViewBoletaReservacion"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginLeft="32dp"
-                    android:layout_marginEnd="32dp"
-                    android:layout_marginRight="32dp"
+                    android:layout_weight="1"
                     android:textColor="@color/colorBlack"
-                    tools:text="Boleta: 123456789" />
+                    tools:text="123456789" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingRight="20dp"
+                android:paddingLeft="20dp">
 
                 <TextView
-                    android:id="@+id/txtViewComputadoraReservacion"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginLeft="32dp"
-                    android:layout_marginEnd="32dp"
-                    android:layout_marginRight="32dp"
-                    android:textColor="@color/colorBlack"
-                    tools:text="Computadora: #1" />
+                    android:text="Computadora:" />
 
                 <TextView
-                    android:id="@+id/txtViewHoraReservacion"
-                    android:layout_width="match_parent"
+                    android:id="@+id/tvComputadoraReservacion"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginLeft="32dp"
-                    android:layout_marginEnd="32dp"
-                    android:layout_marginRight="32dp"
                     android:textColor="@color/colorBlack"
-                    tools:text="Hora: 08:00 AM" />
+                    tools:text="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingRight="20dp"
+                android:paddingLeft="20dp">
 
                 <TextView
-                    android:id="@+id/txtViewFechaReservacion"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginLeft="32dp"
-                    android:layout_marginEnd="32dp"
-                    android:layout_marginRight="32dp"
-                    android:textColor="@color/colorBlack"
-                    tools:text="Fecha: 17/01/2022" />
+                    android:text="Hora:" />
 
                 <TextView
-                    android:id="@+id/txtViewEstadoReservacion"
-                    android:layout_width="match_parent"
+                    android:id="@+id/tvHoraReservacion"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginLeft="32dp"
-                    android:layout_marginEnd="32dp"
-                    android:layout_marginRight="32dp"
+                    android:layout_weight="1"
                     android:textColor="@color/colorBlack"
-                    tools:text="Estado: Reservada" />
+                    tools:text="08:00 AM" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingRight="20dp"
+                android:paddingLeft="20dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="wrap_content"
+                    android:text="Fecha:" />
+
+                <TextView
+                    android:id="@+id/tvFechaReservacion"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorBlack"
+                    tools:text="17/01/2022" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingRight="20dp"
+                android:paddingLeft="20dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="wrap_content"
+                    android:text="Estado:" />
+
+                <TextView
+                    android:id="@+id/tvEstadoReservacion"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorBlack"
+                    tools:text="Reservada" />
+            </LinearLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -153,7 +233,7 @@
                         android:background="@drawable/custom_button_login"
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"
-                        android:text="Confirmar"
+                        android:text="Aceptar"
                         android:textColor="#FFFFFF"
                         android:textSize="15sp" />
 

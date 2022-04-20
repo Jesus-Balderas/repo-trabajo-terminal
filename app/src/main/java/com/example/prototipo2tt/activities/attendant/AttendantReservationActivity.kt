@@ -78,7 +78,6 @@ class AttendantReservationActivity : AppCompatActivity(),
                     }
                 }
 
-
             }
 
             override fun onFailure(call: Call<ArrayList<AttendantReservation>>, t: Throwable) {
@@ -106,6 +105,7 @@ class AttendantReservationActivity : AppCompatActivity(),
         val intent = Intent(this, DescriptionReservationActivity::class.java)
         intent.putExtra("Reservation", attendantReservation as Serializable)
         startActivity(intent)
+        finish()
     }
 
 }

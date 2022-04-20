@@ -83,7 +83,7 @@
         <activity
             android:name=".activities.attendant.DescriptionReservationActivity"
             android:exported="false"
-            android:parentActivityName=".activities.attendant.AttendantReservationActivity"
+            android:parentActivityName=".activities.attendant.HomeEncargadoActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.ScheduleLaboratoryActivity"

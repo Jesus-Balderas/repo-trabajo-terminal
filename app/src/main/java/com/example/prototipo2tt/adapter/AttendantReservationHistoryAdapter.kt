@@ -1,6 +1,7 @@
 package com.example.prototipo2tt.adapter
 
 import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,7 +39,22 @@ class AttendantReservationHistoryAdapter(
                 itemView.context.getString(R.string.item_attendant_reservation_date, attendantReservHistory.date)
             tvAttendantReservationHistory5.text =
                 itemView.context.getString(R.string.item_attendant_reservation_hour, attendantReservHistory.time)
-            tvAttendantReservationHistory6.text = attendantReservHistory.status
+
+            when (attendantReservHistory.status) {
+                "Cancelada" -> {
+                    tvAttendantReservationHistory6.setTextColor(Color.parseColor("#F44336"))
+                    tvAttendantReservationHistory6.text = attendantReservHistory.status
+                }
+                "Rechazada" -> {
+                    tvAttendantReservationHistory6.setTextColor(Color.parseColor("#FF5722"))
+                    tvAttendantReservationHistory6.text = attendantReservHistory.status
+                }
+                "Finalizada" -> {
+                    tvAttendantReservationHistory6.setTextColor(Color.parseColor("#FF9800"))
+                    tvAttendantReservationHistory6.text = attendantReservHistory.status
+                }
+            }
+
             tvAttendantReservationHistory7.text =
                 itemView.context.getString(R.string.item_attendant_reservation_computer, attendantReservHistory.computer.num_pc)
             tvAttendantReservationHistory8.text =
