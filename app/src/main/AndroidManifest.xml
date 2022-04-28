@@ -34,19 +34,28 @@
         <activity
             android:name=".activities.student.CreateReservationActivity"
             android:exported="false"
-            android:parentActivityName=".activities.student.HomeAlumnoActivity" />
+            android:parentActivityName=".activities.student.HomeAlumnoActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.student.StudentReservationActivity"
             android:exported="false"
-            android:parentActivityName=".activities.student.HomeAlumnoActivity" />
+            android:parentActivityName=".activities.student.HomeAlumnoActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.student.StudentReservationHistoryActivity"
             android:exported="false"
-            android:parentActivityName=".activities.student.HomeAlumnoActivity" />
+            android:parentActivityName=".activities.student.HomeAlumnoActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.student.StudentReservationAcceptActivity"
             android:exported="false"
-            android:parentActivityName=".activities.student.HomeAlumnoActivity"/>
+            android:parentActivityName=".activities.student.HomeAlumnoActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".activities.MainActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        
         <activity
             android:name=".splash.SplashActivity"
             android:exported="true"
