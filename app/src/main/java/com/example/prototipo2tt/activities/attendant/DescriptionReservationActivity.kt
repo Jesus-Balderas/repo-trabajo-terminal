@@ -139,7 +139,7 @@ class DescriptionReservationActivity : AppCompatActivity() {
                     val reject = response.body()
                     if (reject?.success == true){
                         Toast.makeText(this@DescriptionReservationActivity, "La reservación se ha rechazado correctamente.",
-                        Toast.LENGTH_SHORT).show()
+                        Toast.LENGTH_LONG).show()
                         val intent = Intent(this@DescriptionReservationActivity, AttendantReservationActivity::class.java)
                         startActivity(intent)
                         finish()

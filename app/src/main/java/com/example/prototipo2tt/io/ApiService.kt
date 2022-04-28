@@ -107,6 +107,18 @@ interface ApiService {
         @Path("reservation") reservationId: Int
     ): Call<AttendantReservationResponse>
 
+    @POST("register/student")
+    fun postRegisterStudent(
+        @Query("num_boleta") boleta: String,
+        @Query("name") name: String,
+        @Query("first_name") firstName: String,
+        @Query("second_name") secondName: String,
+        @Query("email") email: String,
+        @Query("career_id") careerId: Int,
+        @Query("password") password: String
+    ): Call<StudentReservationResponse>
+
+
     companion object Factory{
         private const val BASE_URL = "https://labscom.herokuapp.com/api/"
         fun create():ApiService{
