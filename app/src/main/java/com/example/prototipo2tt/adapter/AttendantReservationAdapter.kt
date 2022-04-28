@@ -12,8 +12,8 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 
 import androidx.recyclerview.widget.RecyclerView
-import com.example.prototipo2tt.models.Reservation
 import com.example.prototipo2tt.R
+import com.example.prototipo2tt.models.AttendantReservation
 
 class AttendantReservationAdapter(
     private val context: Context,
@@ -21,27 +21,29 @@ class AttendantReservationAdapter(
 ) : RecyclerView.Adapter<AttendantReservationAdapter.ViewHolder>() {
 
     interface OnReservationClickListener {
-        fun onItemClick(reservation: Reservation)
+        fun onItemClick(attendantReservation: AttendantReservation)
     }
 
-    var reservation = ArrayList<Reservation>()
+    var attendantReservation = ArrayList<AttendantReservation>()
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         private val reservationId = view.findViewById(R.id.tvReservation) as TextView
         private val student = view.findViewById(R.id.tvStudentReservation) as TextView
         private val boleta = view.findViewById<TextView>(R.id.tvStudentBoleta)
-        val cardView = view.findViewById(R.id.cardViewReservation) as CardView
+        private val tvCreatedDate = view.findViewById<TextView>(R.id.tvCreatedAtAttendantReservation)
+        val cardView = view.findViewById(R.id.cvAttendantReservation) as CardView
         val context = view.context
 
-        fun bind(reservation: Reservation) {
+        fun bind(attendantReservation: AttendantReservation) {
             reservationId.text =
-                itemView.context.getString(R.string.item_reservation_id, reservation.id)
+                itemView.context.getString(R.string.item_reservation_id, attendantReservation.id )
             student.text =
-                itemView.context.getString(R.string.item_reservation_alumno, reservation.student)
-            boleta.text = itemView.context.getString(R.string.item_reservation_boleta, reservation.boleta)
+                attendantReservation.student.name
+            boleta.text = attendantReservation.student.num_boleta
+            tvCreatedDate.text = itemView.context.getString(R.string.item_student_reservation_createdAt, attendantReservation.createdDate)
             itemView.findViewById<Button>(R.id.btnDetailsReservation).setOnClickListener {
-                itemClickListener.onItemClick(reservation)
+                itemClickListener.onItemClick(attendantReservation)
             }
         }
     }
@@ -56,7 +58,7 @@ class AttendantReservationAdapter(
 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = reservation[position]
+        val item = attendantReservation[position]
         holder.bind(item)
         holder.cardView.startAnimation(
             AnimationUtils.loadAnimation(
@@ -67,7 +69,7 @@ class AttendantReservationAdapter(
     }
 
     override fun getItemCount(): Int {
-        return reservation.size
+        return attendantReservation.size
     }
 
 }

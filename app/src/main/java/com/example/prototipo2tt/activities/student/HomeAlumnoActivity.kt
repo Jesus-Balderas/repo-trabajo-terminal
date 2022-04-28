@@ -1,4 +1,4 @@
-package com.example.prototipo2tt.activities
+package com.example.prototipo2tt.activities.student
 
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.navigation.NavigationView
@@ -18,9 +18,9 @@ import androidx.appcompat.widget.Toolbar
 import com.example.prototipo2tt.PreferenceHelper
 import com.example.prototipo2tt.PreferenceHelper.set
 import com.example.prototipo2tt.PreferenceHelper.get
+import com.example.prototipo2tt.activities.ScheduleLaboratoryActivity
 import com.example.prototipo2tt.io.ApiService
 import com.example.prototipo2tt.io.response.ProfileStudentResponse
-import com.example.prototipo2tt.models.Student
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -136,20 +136,21 @@ class HomeAlumnoActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
                     Intent(this@HomeAlumnoActivity, ScheduleLaboratoryActivity::class.java)
                 startActivity(intentScheduleLaboratory)
             }
-            R.id.id_menuMisReservasAlumnoCanceladas -> Toast.makeText(
-                this,
-                "Canceladas",
-                Toast.LENGTH_SHORT
-            ).show()
-            R.id.id_menuMisReservasAlumnoAceptadas -> Toast.makeText(
-                this,
-                "Aceptadas",
-                Toast.LENGTH_SHORT
-            ).show()
+            R.id.menuMisReservasHistorialAlumno -> {
+                val intentStudentReservationHistory =
+                    Intent(this,StudentReservationHistoryActivity::class.java)
+                startActivity(intentStudentReservationHistory)
+            }
+
+            R.id.menuMisReservasAceptadasAlumno -> {
+                val intentStudentReservationAccept =
+                    Intent(this, StudentReservationAcceptActivity::class.java)
+                startActivity(intentStudentReservationAccept)
+            }
+
             R.id.id_menuLogoutAlumno -> {
+
                 postLogoutStudent()
-
-
             }
         }
         drawer.closeDrawer(GravityCompat.START)

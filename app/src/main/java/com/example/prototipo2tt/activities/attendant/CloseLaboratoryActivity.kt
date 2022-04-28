@@ -1,4 +1,4 @@
-package com.example.prototipo2tt.activities
+package com.example.prototipo2tt.activities.attendant
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -36,7 +36,7 @@ class CloseLaboratoryActivity : AppCompatActivity() {
                     messageNotification.error = "Se requiere un mensaje"
                 }
                 else -> {
-                    Toast.makeText(this, "¡Notificación enviada!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "¡Notificación enviada!", Toast.LENGTH_LONG).show()
                     finish()
                 }
             }

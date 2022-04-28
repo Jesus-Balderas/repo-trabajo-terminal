@@ -14,17 +14,13 @@
             <menu>
                 <group android:checkableBehavior="single">
                     <item
-                        android:id="@+id/id_menuMisReservasAlumnoCanceladas"
-                        android:icon="@drawable/ic_baseline_auto_delete"
-                        android:title="Canceladas"/>
-                    <item
-                        android:id="@+id/id_menuMisReservasAlumnoAceptadas"
+                        android:id="@+id/menuMisReservasAceptadasAlumno"
                         android:icon="@drawable/ic_baseline_event_available"
                         android:title="Aceptadas"/>
                     <item
-                        android:id="@+id/id_menuMisReservasAlumnoRechazadas"
-                        android:icon="@drawable/ic_baseline_event_busy"
-                        android:title="Rechazadas"/>
+                        android:id="@+id/menuMisReservasHistorialAlumno"
+                        android:icon="@drawable/ic_baseline_event"
+                        android:title="Historial"/>
 
                 </group>
             </menu>

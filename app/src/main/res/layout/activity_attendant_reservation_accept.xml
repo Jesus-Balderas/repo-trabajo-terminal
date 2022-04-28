@@ -7,7 +7,7 @@
     android:background="@drawable/background_profesor_gradient"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context=".activities.attendant.AttendantReservationActivity"
+    tools:context=".activities.attendant.AttendantReservationHistoryActivity"
     tools:openDrawer="start">
 
     <LinearLayout
@@ -16,7 +16,7 @@
         android:orientation="vertical">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_profesor"
+            android:id="@+id/toolbarAttendantReservationAccept"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
@@ -26,13 +26,12 @@
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/reservationRecyclerView"
+            android:id="@+id/rvAttendantReservationAccept"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="2dp"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
-            tools:listitem="@layout/item_attendant_reservation" />
-
+            tools:listitem="@layout/item_attendant_reservation_accept" />
     </LinearLayout>
 </androidx.drawerlayout.widget.DrawerLayout>

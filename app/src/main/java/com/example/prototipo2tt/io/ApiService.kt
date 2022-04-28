@@ -1,9 +1,6 @@
 package com.example.prototipo2tt.io
 
-import com.example.prototipo2tt.io.response.LoginAttendantResponse
-import com.example.prototipo2tt.io.response.LoginStudentResponse
-import com.example.prototipo2tt.io.response.ProfileAttendantResponse
-import com.example.prototipo2tt.io.response.ProfileStudentResponse
+import com.example.prototipo2tt.io.response.*
 import com.example.prototipo2tt.models.*
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
@@ -33,7 +30,16 @@ interface ApiService {
             Call<ScheduleHour>
 
     @GET("attendants/reservations")
-    fun getAttendantReservations(@Query("attendant_id") id: Int): Call<ArrayList<Reservation>>
+    fun getAttendantReservations(@Header("Authorization") authHeader: String):
+            Call<ArrayList<AttendantReservation>>
+
+    @GET("attendants/reservations/history")
+    fun getAttendantReservationsHistory(@Header("Authorization") authHeader: String):
+            Call<ArrayList<AttendantReservation>>
+
+    @GET("attendants/reservations/accept")
+    fun getAttendantReservationsAccepted(@Header("Authorization") authHeader: String):
+            Call<ArrayList<AttendantReservation>>
 
     @POST("login/student")
     fun postLoginStudent(@Query("num_boleta") boleta: String, @Query("password") password: String):
@@ -56,7 +62,62 @@ interface ApiService {
     fun profileAttendant(@Header("Authorization") authHeader: String): Call<ProfileAttendantResponse>
 
     @GET("students/reservations")
-    fun getStudentReservations(@Header("Authorization") authHeader: String): Call<ArrayList<StudentReservation>>
+    fun getStudentReservations(@Header("Authorization") authHeader: String):
+            Call<ArrayList<StudentReservation>>
+
+    @GET("students/reservations/history")
+    fun getStudentReservationsHistory(@Header("Authorization") authHeader: String):
+            Call<ArrayList<StudentReservation>>
+
+    @GET("students/reservations/accept")
+    fun getStudentReservationsAccept(@Header("Authorization") authHeader: String):
+            Call<ArrayList<StudentReservation>>
+
+    @POST("reservation")
+    fun storeStudentReservations(
+        @Header("Authorization") authHeader: String,
+        @Query("laboratory_id") laboratoryId: Int,
+        @Query("attendant_id") attendantId: Int,
+        @Query("computer_id") computerId: Int,
+        @Query("scheduled_date") date: String,
+        @Query("scheduled_hour") hour: String
+    ): Call<StudentReservationResponse>
+
+    @POST("reservation/{reservation}/cancel")
+    fun postCancelReservationStudent(
+        @Header("Authorization") authHeader: String,
+        @Path("reservation") reservationId: Int
+    ): Call<StudentReservationCancelResponse>
+
+    @POST("reservation/{reservation}/reject")
+    fun postRejectReservationAttendant(
+        @Header("Authorization") authHeader: String,
+        @Path("reservation") reservationId: Int
+    ): Call<AttendantReservationResponse>
+
+    @POST("reservation/{reservation}/accept")
+    fun postAcceptReservationAttendant(
+        @Header("Authorization") authHeader: String,
+        @Path("reservation") reservationId: Int
+    ): Call<AttendantReservationResponse>
+
+    @POST("reservation/{reservation}/finish")
+    fun postFinishReservationAttendant(
+        @Header("Authorization") authHeader: String,
+        @Path("reservation") reservationId: Int
+    ): Call<AttendantReservationResponse>
+
+    @POST("register/student")
+    fun postRegisterStudent(
+        @Query("num_boleta") boleta: String,
+        @Query("name") name: String,
+        @Query("first_name") firstName: String,
+        @Query("second_name") secondName: String,
+        @Query("email") email: String,
+        @Query("career_id") careerId: Int,
+        @Query("password") password: String
+    ): Call<StudentReservationResponse>
+
 
     companion object Factory{
         private const val BASE_URL = "https://labscom.herokuapp.com/api/"

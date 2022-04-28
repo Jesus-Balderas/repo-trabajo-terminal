@@ -14,13 +14,13 @@
         <menu>
             <group android:checkableBehavior="single">
                 <item
-                    android:id="@+id/menuConfirmedReservations"
+                    android:id="@+id/menuReservationsAccepted"
                     android:icon="@drawable/ic_baseline_event_available"
                     android:title="Aceptadas" />
                 <item
-                    android:id="@+id/menuRefusedReservations"
-                    android:icon="@drawable/ic_baseline_event_busy"
-                    android:title="Rechazadas" />
+                    android:id="@+id/menuReservationsHistory"
+                    android:icon="@drawable/ic_baseline_event"
+                    android:title="Historial" />
             </group>
         </menu>
     </item>

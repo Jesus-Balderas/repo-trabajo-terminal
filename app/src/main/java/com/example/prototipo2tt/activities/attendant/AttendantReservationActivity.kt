@@ -1,6 +1,7 @@
-package com.example.prototipo2tt.activities
+package com.example.prototipo2tt.activities.attendant
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,10 +9,12 @@ import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.prototipo2tt.PreferenceHelper
+import com.example.prototipo2tt.PreferenceHelper.get
 import com.example.prototipo2tt.adapter.AttendantReservationAdapter
-import com.example.prototipo2tt.models.Reservation
 import com.example.prototipo2tt.R
 import com.example.prototipo2tt.io.ApiService
+import com.example.prototipo2tt.models.AttendantReservation
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -22,6 +25,12 @@ class AttendantReservationActivity : AppCompatActivity(),
 
     private val apiService: ApiService by lazy {
         ApiService.create()
+    }
+
+    private val preferences by lazy {
+
+        PreferenceHelper.customPrefs(this,"jwt-attendant")
+
     }
     //Configuracion del Adapter
     private val adapter = AttendantReservationAdapter(this, this)
@@ -51,24 +60,27 @@ class AttendantReservationActivity : AppCompatActivity(),
 
     private fun getJSONReservations() {
 
-        val attendantId = 1
-        val call = apiService.getAttendantReservations(attendantId)
-        call.enqueue(object : Callback<ArrayList<Reservation>>{
+        val jwt = preferences["jwt-attendant",""]
+        val call = apiService.getAttendantReservations("Bearer $jwt")
+        call.enqueue(object : Callback<ArrayList<AttendantReservation>>{
             @SuppressLint("NotifyDataSetChanged")
             override fun onResponse(
-                call: Call<ArrayList<Reservation>>,
-                response: Response<ArrayList<Reservation>>
+                call: Call<ArrayList<AttendantReservation>>,
+                response: Response<ArrayList<AttendantReservation>>
             ) {
                 if (response.isSuccessful){
                     response.body()?.let {
-                        adapter.reservation = it
+                        adapter.attendantReservation = it
                         adapter.notifyDataSetChanged()
+                    }
+                    if (response.body()?.isEmpty() == true){
+                        emptyReservations()
                     }
                 }
 
             }
 
-            override fun onFailure(call: Call<ArrayList<Reservation>>, t: Throwable) {
+            override fun onFailure(call: Call<ArrayList<AttendantReservation>>, t: Throwable) {
                 Toast.makeText(this@AttendantReservationActivity, "No se puedieron cargar las reservaciones",
                     Toast.LENGTH_SHORT).show()
             }
@@ -77,11 +89,23 @@ class AttendantReservationActivity : AppCompatActivity(),
 
     }
 
-    override fun onItemClick(reservation: Reservation) {
+    private fun emptyReservations() {
+
+        val builder = AlertDialog.Builder(this)
+        builder.setMessage("Por el momento no tienes buzón de solicitudes de reservaciones.")
+        builder.setPositiveButton("Ok") { _, _ ->
+            finish()
+        }
+        val dialog = builder.create()
+        dialog.show()
+    }
+
+    override fun onItemClick(attendantReservation: AttendantReservation) {
 
         val intent = Intent(this, DescriptionReservationActivity::class.java)
-        intent.putExtra("Reservation", reservation as Serializable)
+        intent.putExtra("Reservation", attendantReservation as Serializable)
         startActivity(intent)
+        finish()
     }
 
 }

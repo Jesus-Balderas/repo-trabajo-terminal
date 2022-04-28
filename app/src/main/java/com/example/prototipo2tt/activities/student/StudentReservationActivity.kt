@@ -1,6 +1,7 @@
-package com.example.prototipo2tt.activities
+package com.example.prototipo2tt.activities.student
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -12,6 +13,8 @@ import com.example.prototipo2tt.PreferenceHelper.get
 import com.example.prototipo2tt.R
 import com.example.prototipo2tt.adapter.StudentReservationAdapter
 import com.example.prototipo2tt.io.ApiService
+import com.example.prototipo2tt.io.response.StudentReservationCancelResponse
+import com.example.prototipo2tt.io.response.StudentReservationResponse
 import com.example.prototipo2tt.models.StudentReservation
 import retrofit2.Call
 import retrofit2.Callback
@@ -48,9 +51,7 @@ class StudentReservationActivity : AppCompatActivity(),
         rvStudentReservation.layoutManager = LinearLayoutManager(this)
         rvStudentReservation.adapter = adapter
         rvStudentReservation.hasFixedSize()
-
         getStudentReservations()
-
 
     }
 
@@ -69,6 +70,9 @@ class StudentReservationActivity : AppCompatActivity(),
                         adapter.studentReservation = it
                         adapter.notifyDataSetChanged()
                     }
+                    if (response.body()?.isEmpty() == true) {
+                        emptyReservations()
+                    }
                 }
 
             }
@@ -82,7 +86,68 @@ class StudentReservationActivity : AppCompatActivity(),
 
     }
 
-    override fun onItemClick(studentReservation: StudentReservation) {
-        Toast.makeText(this, "Cancelar reservación No. ${studentReservation.id}", Toast.LENGTH_SHORT).show()
+    private fun emptyReservations(){
+        val builder = AlertDialog.Builder(this)
+        builder.setMessage("Por el momento no tienes solicitudes de reservaciones.")
+        builder.setPositiveButton("Ok") { _, _ ->
+            finish()
+        }
+        val dialog = builder.create()
+        dialog.show()
     }
+
+    @SuppressLint("NotifyDataSetChanged")
+    override fun onItemClick(studentReservation: StudentReservation) {
+        val builder = AlertDialog.Builder(this)
+        builder.setMessage("¿Estás seguro que deseas cancelar tú reservación No.${studentReservation.id}?")
+        builder.setPositiveButton("Si, cancelar") { _, _ ->
+            val reservationId = studentReservation.id
+            postCancelReservationStudent(reservationId)
+        }
+        builder.setNegativeButton("Volver") { dialog, _ ->
+            dialog.dismiss()
+        }
+        val dialog = builder.create()
+        dialog.show()
+    }
+
+    private fun postCancelReservationStudent(reservationId : Int){
+        val jwt = preferences["jwt-student",""]
+        val call = apiService.postCancelReservationStudent("Bearer $jwt", reservationId)
+        call.enqueue(object : Callback<StudentReservationCancelResponse>{
+            override fun onResponse(
+                call: Call<StudentReservationCancelResponse>,
+                response: Response<StudentReservationCancelResponse>
+            ) {
+                if (response.isSuccessful){
+                    val reservationCancel = response.body()
+                    if (reservationCancel?.success == true){
+
+                        successCancelReservation()
+                    }
+                    else {
+                        Toast.makeText(this@StudentReservationActivity,
+                            "¡La reservación no se pudo cancelar!", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<StudentReservationCancelResponse>, t: Throwable) {
+                Toast.makeText(this@StudentReservationActivity, "No se pudo cancelar la reservación",
+                    Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    private fun successCancelReservation(){
+        val builder = AlertDialog.Builder(this)
+        builder.setMessage("¡La reservación se ha cancelado exitosamente!")
+        builder.setPositiveButton("Ok") { dialog, _ ->
+            getStudentReservations()
+            dialog.dismiss()
+        }
+        val dialog = builder.create()
+        dialog.show()
+    }
+
 }

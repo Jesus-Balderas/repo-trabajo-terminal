@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context=".activities.LoginAlumnoActivity"
+    tools:context=".activities.student.LoginAlumnoActivity"
     tools:openDrawer="start">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
