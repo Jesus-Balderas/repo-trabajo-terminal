@@ -1,11 +1,12 @@
 package com.example.prototipo2tt.activities;
 
 import android.content.Intent;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.prototipo2tt.R;
 import com.example.prototipo2tt.activities.attendant.LoginEncargadoActivity;
