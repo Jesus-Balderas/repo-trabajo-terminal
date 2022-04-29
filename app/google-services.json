@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1092383321134",
+    "project_id": "labscom-1c961",
+    "storage_bucket": "labscom-1c961.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1092383321134:android:897dd9c3383dc1a7b983bf",
+        "android_client_info": {
+          "package_name": "com.example.prototipo2tt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1092383321134-oiscv7u45dspc3im4800mduj0g76f88c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDi57UyDhwYefCAIgSqS5BO0sG_DkNoW8c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1092383321134-oiscv7u45dspc3im4800mduj0g76f88c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

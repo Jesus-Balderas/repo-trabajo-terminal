@@ -38,6 +38,7 @@
         <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/layout/activity_home_alumno.xml" value="0.264" />
         <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/layout/activity_home_encargado.xml" value="0.4" />
         <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/layout/activity_invitado_home.xml" value="0.2504528985507246" />
+        <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/layout/activity_laboratories_pdfactivity.xml" value="0.264" />
         <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/layout/activity_login_alumno.xml" value="0.22592592592592592" />
         <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/layout/activity_login_encargado.xml" value="0.264" />
         <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/layout/activity_main.xml" value="0.225" />
@@ -54,6 +55,7 @@
         <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/layout/item_attendant_reservation_accept.xml" value="0.264" />
         <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/layout/item_attendant_reservation_history.xml" value="0.264" />
         <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/layout/item_laboratory.xml" value="0.22592592592592592" />
+        <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/layout/item_laboratory_pdf.xml" value="0.264" />
         <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/layout/item_student_reservation.xml" value="0.264" />
         <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/layout/item_student_reservation_accept.xml" value="0.4" />
         <entry key="..\:/Users/Jesus/Desktop/ProyectoTrabajoTerminal2/repo-trabajo-terminal/app/src/main/res/layout/item_student_reservation_history.xml" value="0.264" />

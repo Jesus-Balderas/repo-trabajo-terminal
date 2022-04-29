@@ -43,6 +43,7 @@ class HomeAlumnoActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
     private lateinit var toolbar: Toolbar
     private lateinit var cardViewCreateReservation: CardView
     private lateinit var cvMyReservations: CardView
+    private lateinit var cvLaboratoriesPDF: CardView
     private lateinit var tvNumBoleta: TextView
     private lateinit var tvName: TextView
     private lateinit var tvFirstName: TextView
@@ -84,6 +85,13 @@ class HomeAlumnoActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
                 Intent(this, StudentReservationActivity::class.java)
             startActivity(intentMyReservations)
         }
+
+        cvLaboratoriesPDF.setOnClickListener {
+            val intentLaboratoriesPDF =
+                Intent(this, LaboratoriesPDFActivity::class.java)
+            startActivity(intentLaboratoriesPDF)
+        }
+
     }
 
     private fun getProfileStudent(){
@@ -113,6 +121,7 @@ class HomeAlumnoActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
     private fun bindUI(){
         cardViewCreateReservation = findViewById(R.id.cvCreateReservation)
         cvMyReservations = findViewById(R.id.cvMyReservations)
+        cvLaboratoriesPDF = findViewById(R.id.cvLaboratoriesPDF)
         tvNumBoleta = findViewById(R.id.tvNumBoleta)
         tvName = findViewById(R.id.tvNombreAlumno)
         tvFirstName = findViewById(R.id.tvPrimerApellidoAlumno)

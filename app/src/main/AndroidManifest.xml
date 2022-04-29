@@ -15,7 +15,16 @@
         android:theme="@style/Theme.Prototipo2tt"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-
+        <activity
+            android:name=".activities.student.VisorPDFActivity"
+            android:exported="false"
+            android:parentActivityName=".activities.student.LaboratoriesPDFActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activities.student.LaboratoriesPDFActivity"
+            android:parentActivityName=".activities.student.HomeAlumnoActivity"
+            android:screenOrientation="portrait"
+            android:exported="false" />
         <activity
             android:name=".activities.student.LoginAlumnoActivity"
             android:exported="false"
@@ -34,19 +43,23 @@
         <activity
             android:name=".activities.student.CreateReservationActivity"
             android:exported="false"
-            android:parentActivityName=".activities.student.HomeAlumnoActivity" />
+            android:parentActivityName=".activities.student.HomeAlumnoActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.student.StudentReservationActivity"
             android:exported="false"
-            android:parentActivityName=".activities.student.HomeAlumnoActivity" />
+            android:parentActivityName=".activities.student.HomeAlumnoActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.student.StudentReservationHistoryActivity"
             android:exported="false"
-            android:parentActivityName=".activities.student.HomeAlumnoActivity" />
+            android:parentActivityName=".activities.student.HomeAlumnoActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.student.StudentReservationAcceptActivity"
             android:exported="false"
-            android:parentActivityName=".activities.student.HomeAlumnoActivity"/>
+            android:parentActivityName=".activities.student.HomeAlumnoActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.MainActivity"
             android:launchMode="singleInstance"
