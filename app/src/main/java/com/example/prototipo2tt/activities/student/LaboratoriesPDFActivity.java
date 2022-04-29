@@ -43,7 +43,7 @@ public class LaboratoriesPDFActivity extends AppCompatActivity {
         Toolbar toolbarLaboratoriesPDF = findViewById(R.id.toolbarLaboratoriesPDF);
         toolbarLaboratoriesPDF.setTitle(R.string.app_name);
         setSupportActionBar(toolbarLaboratoriesPDF);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
 
 
 

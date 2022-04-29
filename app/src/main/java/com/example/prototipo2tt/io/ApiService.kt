@@ -101,6 +101,11 @@ interface ApiService {
         @Path("reservation") reservationId: Int
     ): Call<AttendantReservationResponse>
 
+    @GET("reservations/chart")
+    fun getReservationsChart(
+        @Header("Authorization") authHeader: String,
+    ): Call<Chart>
+
     @POST("reservation/{reservation}/finish")
     fun postFinishReservationAttendant(
         @Header("Authorization") authHeader: String,

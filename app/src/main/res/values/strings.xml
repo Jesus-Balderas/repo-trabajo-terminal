@@ -53,5 +53,11 @@
     <string name="item_attendant_reservation_computer">No. de PC: %1$d</string>
     <string name="item_attendant_reservation_createdAt">Fecha de Creación: %1$s</string>
 
+    <string name="salon_chart">Salon: %1$s</string>
+    <string name="finalizadas_chart">Finalizadas: %1$d</string>
+    <string name="edificio_chart">Edificio: %1$s</string>
+    <string name="rechazadas_chart">Rechazadas: %1$d</string>
+    <string name="canceladas_chart">Canceladas: %1$d</string>
+
 
 </resources>
