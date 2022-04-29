@@ -17,13 +17,13 @@ import retrofit2.Response
 import java.lang.Exception
 
 
-class ScheduleLaboratoryActivity : AppCompatActivity(), ScheduleLaboratoryAdapter.OnLaboratoryClickListener {
+class ScheduleLaboratoryActivity : AppCompatActivity(){
 
     private val apiService: ApiService by lazy {
         ApiService.create()
     }
 
-    private val adapter = ScheduleLaboratoryAdapter(this,this)
+    private val adapter = ScheduleLaboratoryAdapter(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,7 +71,4 @@ class ScheduleLaboratoryActivity : AppCompatActivity(), ScheduleLaboratoryAdapte
 
     }
 
-    override fun onItemClick(laboratory: Laboratory) {
-        Toast.makeText(this, laboratory.name, Toast.LENGTH_SHORT).show()
-    }
 }
