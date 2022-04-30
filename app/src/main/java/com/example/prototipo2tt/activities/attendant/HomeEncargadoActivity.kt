@@ -21,6 +21,7 @@ import com.example.prototipo2tt.PreferenceHelper.get
 import com.example.prototipo2tt.activities.ScheduleLaboratoryActivity
 import com.example.prototipo2tt.io.ApiService
 import com.example.prototipo2tt.io.response.ProfileAttendantResponse
+import com.example.prototipo2tt.models.LoadingDialogBar
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -49,12 +50,15 @@ class HomeEncargadoActivity : AppCompatActivity(), NavigationView.OnNavigationIt
     private lateinit var tvSegundoApellidoEncargado: TextView
     private lateinit var tvLaboratorioEncargado: TextView
 
+    private lateinit var progressBar:LoadingDialogBar
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_encargado)
         toolbar = findViewById(R.id.toolbarHomeEncargado)
         toolbar.setTitle(R.string.app_name)
         setSupportActionBar(toolbar)
+        progressBar = LoadingDialogBar(this)
 
         drawer = findViewById(R.id.drawer_layout_profesor)
         val tg = ActionBarDrawerToggle(
@@ -93,6 +97,7 @@ class HomeEncargadoActivity : AppCompatActivity(), NavigationView.OnNavigationIt
 
     private fun getProfileAttendant(){
 
+        progressBar.ShowDialog("Cargando...")
         val jwt = preferences["jwt-attendant",""]
         val call = apiService.profileAttendant("Bearer $jwt")
         call.enqueue(object : Callback<ProfileAttendantResponse> {
@@ -106,10 +111,12 @@ class HomeEncargadoActivity : AppCompatActivity(), NavigationView.OnNavigationIt
                     tvPrimerApellidoEncargado.text = profileAttendant?.attendant?.first_name
                     tvSegundoApellidoEncargado.text = profileAttendant?.attendant?.second_name
                     tvLaboratorioEncargado.text = profileAttendant?.attendant?.laboratories?.get(0)?.name
+                    progressBar.HideDialog()
                 }
             }
 
             override fun onFailure(call: Call<ProfileAttendantResponse>, t: Throwable) {
+                progressBar.HideDialog()
                 Toast.makeText(this@HomeEncargadoActivity,
                     "Error al cargar la información del encargado.",
                     Toast.LENGTH_SHORT).show()
@@ -161,10 +168,12 @@ class HomeEncargadoActivity : AppCompatActivity(), NavigationView.OnNavigationIt
 
     private fun postLogoutAttendant(){
 
+        progressBar.ShowDialog("Cerrando sesión...")
         val jwt = preferences["jwt-attendant", ""]
         val call = apiService.postLogoutAttendant("Bearer $jwt")
         call.enqueue(object : Callback<Void>{
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                progressBar.HideDialog()
                 clearSessionPreference()
                 val intent = Intent(this@HomeEncargadoActivity, LoginEncargadoActivity::class.java)
                 startActivity(intent)
@@ -172,6 +181,7 @@ class HomeEncargadoActivity : AppCompatActivity(), NavigationView.OnNavigationIt
             }
 
             override fun onFailure(call: Call<Void>, t: Throwable) {
+                progressBar.HideDialog()
                 Toast.makeText(this@HomeEncargadoActivity,
                     t.localizedMessage,
                     Toast.LENGTH_SHORT).show()

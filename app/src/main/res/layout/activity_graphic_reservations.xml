@@ -82,7 +82,7 @@
                                 android:id="@+id/textViewLaboratorio"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Laboratorio Test"
+                                tools:text="Laboratorio Test"
                                 android:textColor="@color/colorBlack"
                                 android:textSize="15sp" />
                         </LinearLayout>
@@ -97,7 +97,7 @@
                                 android:layout_width="60sp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="@string/salon_chart"
+                                tools:text="@string/salon_chart"
                                 android:textColor="@color/colorBlack"
                                 android:textSize="15sp" />
 
@@ -106,7 +106,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="@string/finalizadas_chart"
+                                tools:text="@string/finalizadas_chart"
                                 android:textColor="@color/colorBlack"
                                 android:textSize="15sp" />
                         </LinearLayout>
@@ -121,7 +121,7 @@
                                 android:layout_width="65sp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="@string/edificio_chart"
+                                tools:text="@string/edificio_chart"
                                 android:textColor="@color/colorBlack"
                                 android:textSize="15sp" />
 
@@ -130,7 +130,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="@string/rechazadas_chart"
+                                tools:text="@string/rechazadas_chart"
                                 android:textColor="@color/colorBlack"
                                 android:textSize="15sp" />
 
@@ -146,7 +146,7 @@
                                 android:layout_width="58sp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Abierto"
+                                tools:text="Abierto"
                                 android:textColor="@color/colorBlack" />
 
                             <TextView
@@ -154,7 +154,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="@string/canceladas_chart"
+                                tools:text="@string/canceladas_chart"
                                 android:textColor="@color/colorBlack" />
                         </LinearLayout>
                     </LinearLayout>

@@ -12,6 +12,7 @@ import androidx.appcompat.widget.Toolbar
 import com.example.prototipo2tt.io.ApiService
 import com.example.prototipo2tt.io.response.StudentReservationResponse
 import com.example.prototipo2tt.models.Career
+import com.example.prototipo2tt.models.LoadingDialogBar
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -33,6 +34,8 @@ class RegistrarAlumnoActivity : AppCompatActivity() {
     private lateinit var editTextConfPasswordAlumno: EditText
     private lateinit var spinnerCarreras: Spinner
 
+    private lateinit var progressBar:LoadingDialogBar
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registrar_alumno)
@@ -44,6 +47,9 @@ class RegistrarAlumnoActivity : AppCompatActivity() {
         //Desplegando el boton hacia atras
         val actionBar = supportActionBar
         actionBar?.setDisplayHomeAsUpEnabled(true)
+
+        progressBar = LoadingDialogBar(this)
+
         bindUI()
 
         loadCareers()
@@ -113,6 +119,8 @@ class RegistrarAlumnoActivity : AppCompatActivity() {
     private fun postRegisterStudent(
         boleta : String, name: String, firstName: String, secondName: String, email:String, careerId: Int, password: String ){
 
+        progressBar.ShowDialog("Registrando...")
+
         val call = apiService.postRegisterStudent(boleta, name, firstName, secondName, email, careerId, password)
         call.enqueue(object: Callback<StudentReservationResponse>{
             override fun onResponse(
@@ -121,14 +129,17 @@ class RegistrarAlumnoActivity : AppCompatActivity() {
             ) {
                 if (response.isSuccessful){
                     if (response.body()?.success == true){
+                        progressBar.HideDialog()
                         successRegister()
                     } else {
+                        progressBar.HideDialog()
                         failRegister()
                     }
                 }
             }
 
             override fun onFailure(call: Call<StudentReservationResponse>, t: Throwable) {
+                progressBar.HideDialog()
                 Toast.makeText(this@RegistrarAlumnoActivity,
                     "Ocurrio un problema al realizar el registro.", Toast.LENGTH_SHORT).show()
             }
@@ -164,6 +175,8 @@ class RegistrarAlumnoActivity : AppCompatActivity() {
     }
 
     private fun loadCareers(){
+        progressBar.ShowDialog("Cargando...")
+
         val call = apiService.getCareers()
         call.enqueue(object: Callback<ArrayList<Career>>{
             override fun onResponse(
@@ -177,9 +190,11 @@ class RegistrarAlumnoActivity : AppCompatActivity() {
                         careers as MutableList<Career>
                     )
                 }
+                progressBar.HideDialog()
             }
 
             override fun onFailure(call: Call<ArrayList<Career>>, t: Throwable) {
+                progressBar.HideDialog()
                 Toast.makeText(this@RegistrarAlumnoActivity,
                     "No se pudieron cargar las carreras", Toast.LENGTH_SHORT).show()
             }

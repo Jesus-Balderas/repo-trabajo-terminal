@@ -15,6 +15,7 @@ import com.example.prototipo2tt.adapter.AttendantReservationAcceptAdapter
 import com.example.prototipo2tt.io.ApiService
 import com.example.prototipo2tt.io.response.AttendantReservationResponse
 import com.example.prototipo2tt.models.AttendantReservation
+import com.example.prototipo2tt.models.LoadingDialogBar
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -34,6 +35,8 @@ class AttendantReservationAcceptActivity : AppCompatActivity(),
 
     private val adapter = AttendantReservationAcceptAdapter(this, this)
 
+    private lateinit var progressBar: LoadingDialogBar
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_attendant_reservation_accept)
@@ -46,6 +49,8 @@ class AttendantReservationAcceptActivity : AppCompatActivity(),
         val actionBar = supportActionBar
         actionBar?.setDisplayHomeAsUpEnabled(true)
 
+        progressBar = LoadingDialogBar(this)
+
         val recyclerView : RecyclerView = findViewById(R.id.rvAttendantReservationAccept)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
@@ -57,6 +62,7 @@ class AttendantReservationAcceptActivity : AppCompatActivity(),
 
     private fun getAttendantReservationsAccepted(){
 
+        progressBar.ShowDialog("Cargando...")
         val jwt = preferences["jwt-attendant",""]
         val call = apiService.getAttendantReservationsAccepted("Bearer $jwt")
         call.enqueue(object : Callback<ArrayList<AttendantReservation>>{
@@ -69,14 +75,17 @@ class AttendantReservationAcceptActivity : AppCompatActivity(),
                     response.body()?.let {
                         adapter.attendantReservAccept = it
                         adapter.notifyDataSetChanged()
+                        progressBar.HideDialog()
                     }
                     if (response.body()?.isEmpty() == true){
+                        progressBar.HideDialog()
                         emptyReservationsAccept()
                     }
                 }
             }
 
             override fun onFailure(call: Call<ArrayList<AttendantReservation>>, t: Throwable) {
+                progressBar.HideDialog()
                 Toast.makeText(this@AttendantReservationAcceptActivity, "No se pudo cargar tu historial de reservaciones aceptadas",
                     Toast.LENGTH_SHORT).show()
             }
@@ -110,6 +119,7 @@ class AttendantReservationAcceptActivity : AppCompatActivity(),
 
     private fun finishReservation(reservationId : Int){
 
+        progressBar.ShowDialog("Finalizando...")
         val jwt = preferences["jwt-attendant",""]
         val call = apiService.postFinishReservationAttendant("Bearer $jwt", reservationId)
         call.enqueue(object : Callback<AttendantReservationResponse> {
@@ -120,12 +130,14 @@ class AttendantReservationAcceptActivity : AppCompatActivity(),
                 if (response.isSuccessful){
                     val finish = response.body()
                     if (finish?.success == true){
+                        progressBar.HideDialog()
                         successFinishReservation()
                     }
                 }
             }
 
             override fun onFailure(call: Call<AttendantReservationResponse>, t: Throwable) {
+                progressBar.HideDialog()
                 Toast.makeText(this@AttendantReservationAcceptActivity, "Ocurrio un problema al finalizar la reservación.",
                     Toast.LENGTH_LONG).show()
             }

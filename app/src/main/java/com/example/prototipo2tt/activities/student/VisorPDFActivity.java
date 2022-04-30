@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.example.prototipo2tt.R;
+import com.example.prototipo2tt.models.LoadingDialogBar;
 import com.github.barteksc.pdfviewer.PDFView;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -23,6 +24,7 @@ public class VisorPDFActivity extends AppCompatActivity {
     public final static long ONE_MEGABYTE = 1024 * 1024*20;
     private String laboratorioNombre;
     private PDFView pdfView;
+    private LoadingDialogBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +34,9 @@ public class VisorPDFActivity extends AppCompatActivity {
         toolbarLaboratoriesPDF.setTitle(R.string.app_name);
         setSupportActionBar(toolbarLaboratoriesPDF);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
+        progressBar = new LoadingDialogBar(this);
+        progressBar.ShowDialog("Cargando...");
 
         laboratorioNombre = getIntent().getStringExtra("laboratorioPDF");
         pdfView = findViewById(R.id.pdfView);
@@ -43,6 +48,7 @@ public class VisorPDFActivity extends AppCompatActivity {
         mFirebaseStorageRef.child(laboratorioNombre).getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
             @Override
             public void onSuccess(byte[] bytes) {
+                progressBar.HideDialog();
                 pdfView.fromBytes(bytes).load();
             }
         }).addOnFailureListener(new OnFailureListener() {

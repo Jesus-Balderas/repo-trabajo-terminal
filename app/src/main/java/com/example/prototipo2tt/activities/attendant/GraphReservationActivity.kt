@@ -11,6 +11,7 @@ import com.example.prototipo2tt.PreferenceHelper.get
 import com.example.prototipo2tt.R
 import com.example.prototipo2tt.io.ApiService
 import com.example.prototipo2tt.models.Chart
+import com.example.prototipo2tt.models.LoadingDialogBar
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.components.Legend
@@ -41,6 +42,8 @@ class GraphReservationActivity : AppCompatActivity() {
     private lateinit var cancel: TextView
     private lateinit var finish: TextView
 
+    private lateinit var progressBar: LoadingDialogBar
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,6 +58,7 @@ class GraphReservationActivity : AppCompatActivity() {
         val actionBar = supportActionBar
         actionBar?.setDisplayHomeAsUpEnabled(true)
 
+        progressBar = LoadingDialogBar(this)
         bindUi()
         getReservationsChart()
 
@@ -71,6 +75,7 @@ class GraphReservationActivity : AppCompatActivity() {
     }
 
     private fun getReservationsChart(){
+        progressBar.ShowDialog("Cargando...")
         var countReject: Int = 0
         var countCancel: Int = 0
         var countFinish: Int = 0
@@ -94,11 +99,13 @@ class GraphReservationActivity : AppCompatActivity() {
                         countFinish = chart.finish
                         setPieChart(countReject, countCancel, countFinish)
                     }
+                    progressBar.HideDialog()
 
                 }
             }
 
             override fun onFailure(call: Call<Chart>, t: Throwable) {
+                progressBar.HideDialog()
                 Toast.makeText(this@GraphReservationActivity, "No se puedieron cargar los datos  de la bitacora.",
                     Toast.LENGTH_SHORT).show()
             }

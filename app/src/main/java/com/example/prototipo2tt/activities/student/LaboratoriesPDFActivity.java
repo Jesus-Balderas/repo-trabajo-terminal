@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.prototipo2tt.R;
 import com.example.prototipo2tt.adapter.LaboratoryPDFAdapter;
 import com.example.prototipo2tt.models.LaboratoryPDF;
+import com.example.prototipo2tt.models.LoadingDialogBar;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
@@ -20,20 +21,17 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+
 
 public class LaboratoriesPDFActivity extends AppCompatActivity {
 
     private RecyclerView listPDFView;
     private ArrayList<LaboratoryPDF> laboratories;
     private StorageReference mStorageRef;
+    private LoadingDialogBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +42,8 @@ public class LaboratoriesPDFActivity extends AppCompatActivity {
         toolbarLaboratoriesPDF.setTitle(R.string.app_name);
         setSupportActionBar(toolbarLaboratoriesPDF);
 
-
-
+        progressBar = new LoadingDialogBar(this);
+        progressBar.ShowDialog("Cargando...");
 
         listPDFView = findViewById(R.id.rvLaboratoriesPDF);
 
@@ -78,6 +76,8 @@ public class LaboratoriesPDFActivity extends AppCompatActivity {
                     }
                 });
 
+                progressBar.HideDialog();
+
                 //muestro el adaptador de la vista
                 listPDFView.setHasFixedSize(true);
                 listPDFView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
@@ -87,6 +87,8 @@ public class LaboratoriesPDFActivity extends AppCompatActivity {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
+                progressBar.HideDialog();
+
                 AlertDialog.Builder builder = new AlertDialog.Builder(LaboratoriesPDFActivity.this);
                 builder.setMessage("Ha ocurrido un error al cargar los PDF's de los laboratorios.");
                 builder.setCancelable(true);

@@ -11,6 +11,7 @@ import com.example.prototipo2tt.R
 import com.example.prototipo2tt.adapter.ScheduleLaboratoryAdapter
 import com.example.prototipo2tt.io.ApiService
 import com.example.prototipo2tt.models.Laboratory
+import com.example.prototipo2tt.models.LoadingDialogBar
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -48,6 +49,9 @@ class ScheduleLaboratoryActivity : AppCompatActivity(){
 
     private fun getJSONLaboratories(){
 
+        val progressBar = LoadingDialogBar(this)
+        progressBar.ShowDialog("Cargando ...")
+
         val call = apiService.getLaboratories()
         call.enqueue(object: Callback<ArrayList<Laboratory>>{
             @SuppressLint("NotifyDataSetChanged")
@@ -56,14 +60,18 @@ class ScheduleLaboratoryActivity : AppCompatActivity(){
                 response: Response<ArrayList<Laboratory>>
             ) {
                 if (response.isSuccessful){
+
+
                     response.body()?.let {
                         adapter.laboratory = it
                         adapter.notifyDataSetChanged()
+                        progressBar.HideDialog()
                     }
                 }
+
             }
             override fun onFailure(call: Call<ArrayList<Laboratory>>, t: Throwable) {
-
+                progressBar.HideDialog()
                 Toast.makeText(this@ScheduleLaboratoryActivity, "No se puedieron cargar los horarios", Toast.LENGTH_SHORT).show()
             }
 
