@@ -11,19 +11,20 @@ import com.example.prototipo2tt.R
 import com.example.prototipo2tt.adapter.ScheduleLaboratoryAdapter
 import com.example.prototipo2tt.io.ApiService
 import com.example.prototipo2tt.models.Laboratory
+import com.example.prototipo2tt.models.LoadingDialogBar
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.lang.Exception
 
 
-class ScheduleLaboratoryActivity : AppCompatActivity(), ScheduleLaboratoryAdapter.OnLaboratoryClickListener {
+class ScheduleLaboratoryActivity : AppCompatActivity(){
 
     private val apiService: ApiService by lazy {
         ApiService.create()
     }
 
-    private val adapter = ScheduleLaboratoryAdapter(this,this)
+    private val adapter = ScheduleLaboratoryAdapter(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +49,9 @@ class ScheduleLaboratoryActivity : AppCompatActivity(), ScheduleLaboratoryAdapte
 
     private fun getJSONLaboratories(){
 
+        val progressBar = LoadingDialogBar(this)
+        progressBar.ShowDialog("Cargando ...")
+
         val call = apiService.getLaboratories()
         call.enqueue(object: Callback<ArrayList<Laboratory>>{
             @SuppressLint("NotifyDataSetChanged")
@@ -56,14 +60,18 @@ class ScheduleLaboratoryActivity : AppCompatActivity(), ScheduleLaboratoryAdapte
                 response: Response<ArrayList<Laboratory>>
             ) {
                 if (response.isSuccessful){
+
+
                     response.body()?.let {
                         adapter.laboratory = it
                         adapter.notifyDataSetChanged()
+                        progressBar.HideDialog()
                     }
                 }
+
             }
             override fun onFailure(call: Call<ArrayList<Laboratory>>, t: Throwable) {
-
+                progressBar.HideDialog()
                 Toast.makeText(this@ScheduleLaboratoryActivity, "No se puedieron cargar los horarios", Toast.LENGTH_SHORT).show()
             }
 
@@ -71,7 +79,4 @@ class ScheduleLaboratoryActivity : AppCompatActivity(), ScheduleLaboratoryAdapte
 
     }
 
-    override fun onItemClick(laboratory: Laboratory) {
-        Toast.makeText(this, laboratory.name, Toast.LENGTH_SHORT).show()
-    }
 }

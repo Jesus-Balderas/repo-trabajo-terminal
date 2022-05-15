@@ -13,6 +13,7 @@ import com.example.prototipo2tt.PreferenceHelper.get
 import com.example.prototipo2tt.R
 import com.example.prototipo2tt.adapter.StudentReservationHistoryAdapter
 import com.example.prototipo2tt.io.ApiService
+import com.example.prototipo2tt.models.LoadingDialogBar
 import com.example.prototipo2tt.models.StudentReservation
 import retrofit2.Call
 import retrofit2.Callback
@@ -32,6 +33,9 @@ class StudentReservationHistoryActivity : AppCompatActivity() {
 
     private val adapter = StudentReservationHistoryAdapter(this)
 
+    private lateinit var progressBar: LoadingDialogBar
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_student_reservation_history)
@@ -44,6 +48,8 @@ class StudentReservationHistoryActivity : AppCompatActivity() {
         val actionBar = supportActionBar
         actionBar?.setDisplayHomeAsUpEnabled(true)
 
+        progressBar = LoadingDialogBar(this)
+
         val rvStudentReservationHistory : RecyclerView = findViewById(R.id.rvStudentReservationHistory)
         rvStudentReservationHistory.layoutManager = LinearLayoutManager(this)
         rvStudentReservationHistory.adapter = adapter
@@ -54,6 +60,8 @@ class StudentReservationHistoryActivity : AppCompatActivity() {
 
     private fun getStudentReservationsHistory() {
 
+        progressBar.ShowDialog("Cargando...")
+
         val jwt = preferences["jwt-student",""]
         val call = apiService.getStudentReservationsHistory("Bearer $jwt")
         call.enqueue(object : Callback<ArrayList<StudentReservation>> {
@@ -63,17 +71,21 @@ class StudentReservationHistoryActivity : AppCompatActivity() {
                 response: Response<ArrayList<StudentReservation>>
             ) {
                 if (response.isSuccessful){
+
                     response.body()?.let {
                         adapter.stdReservationHistory = it
                         adapter.notifyDataSetChanged()
+                        progressBar.HideDialog()
                     }
                     if (response.body()?.isEmpty() == true){
+                        progressBar.HideDialog()
                         emptyReservations()
                     }
                 }
             }
 
             override fun onFailure(call: Call<ArrayList<StudentReservation>>, t: Throwable) {
+                progressBar.HideDialog()
                 Toast.makeText(this@StudentReservationHistoryActivity, "No se pudo cargar tu historial de reservaciones",
                     Toast.LENGTH_SHORT).show()
             }

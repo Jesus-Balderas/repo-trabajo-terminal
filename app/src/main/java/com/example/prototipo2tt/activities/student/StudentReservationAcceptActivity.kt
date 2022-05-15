@@ -15,6 +15,7 @@ import com.example.prototipo2tt.PreferenceHelper.get
 import com.example.prototipo2tt.R
 import com.example.prototipo2tt.adapter.StudentReservationAcceptAdapter
 import com.example.prototipo2tt.io.ApiService
+import com.example.prototipo2tt.models.LoadingDialogBar
 import com.example.prototipo2tt.models.StudentReservation
 import retrofit2.Call
 import retrofit2.Callback
@@ -34,6 +35,8 @@ class StudentReservationAcceptActivity : AppCompatActivity() {
 
     private val adapter = StudentReservationAcceptAdapter(this)
 
+    private lateinit var progressBar: LoadingDialogBar
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_student_reservation_accept)
@@ -46,6 +49,8 @@ class StudentReservationAcceptActivity : AppCompatActivity() {
         val actionBar = supportActionBar
         actionBar?.setDisplayHomeAsUpEnabled(true)
 
+        progressBar = LoadingDialogBar(this)
+
         val rvStudentReservationAccept : RecyclerView = findViewById(R.id.rvStudentReservationAccept)
         rvStudentReservationAccept.layoutManager = LinearLayoutManager(this)
         rvStudentReservationAccept.adapter = adapter
@@ -55,6 +60,8 @@ class StudentReservationAcceptActivity : AppCompatActivity() {
     }
 
     private fun getStudentReservationsAccept(){
+        progressBar.ShowDialog("Cargando...")
+
         val jwt = preferences["jwt-student",""]
         val call = apiService.getStudentReservationsAccept("Bearer $jwt")
         call.enqueue(object : Callback<ArrayList<StudentReservation>>{
@@ -67,14 +74,17 @@ class StudentReservationAcceptActivity : AppCompatActivity() {
                     response.body()?.let {
                         adapter.stdReservationAccept = it
                         adapter.notifyDataSetChanged()
+                        progressBar.HideDialog()
                     }
                     if (response.body()?.isEmpty() == true){
+                        progressBar.HideDialog()
                         emptyReservationsAccept()
                     }
                 }
             }
 
             override fun onFailure(call: Call<ArrayList<StudentReservation>>, t: Throwable) {
+                progressBar.HideDialog()
                 Toast.makeText(this@StudentReservationAcceptActivity, "No se pudo cargar tus reservaciones aceptadas",
                     Toast.LENGTH_SHORT).show()
             }

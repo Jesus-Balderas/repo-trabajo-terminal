@@ -22,6 +22,7 @@ import com.example.prototipo2tt.PreferenceHelper.get
 import com.example.prototipo2tt.activities.ScheduleLaboratoryActivity
 import com.example.prototipo2tt.io.ApiService
 import com.example.prototipo2tt.io.response.ProfileStudentResponse
+import com.example.prototipo2tt.models.LoadingDialogBar
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -44,6 +45,7 @@ class HomeAlumnoActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
     private lateinit var toolbar: Toolbar
     private lateinit var cardViewCreateReservation: CardView
     private lateinit var cvMyReservations: CardView
+    private lateinit var cvLaboratoriesPDF: CardView
     private lateinit var tvNumBoleta: TextView
     private lateinit var tvName: TextView
     private lateinit var tvFirstName: TextView
@@ -85,9 +87,18 @@ class HomeAlumnoActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
                 Intent(this, StudentReservationActivity::class.java)
             startActivity(intentMyReservations)
         }
+
+        cvLaboratoriesPDF.setOnClickListener {
+            val intentLaboratoriesPDF =
+                Intent(this, LaboratoriesPDFActivity::class.java)
+            startActivity(intentLaboratoriesPDF)
+        }
+
     }
 
     private fun getProfileStudent(){
+        val progressBar = LoadingDialogBar(this)
+        progressBar.ShowDialog("Cargando...")
         val jwt = preferences["jwt-student",""]
         val call = apiService.profileStudent("Bearer $jwt")
         call.enqueue(object : Callback<ProfileStudentResponse>{
@@ -99,10 +110,12 @@ class HomeAlumnoActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
                     tvFirstName.text = profileStudent?.student?.first_name
                     tvSecondName.text = profileStudent?.student?.second_name
                     tvCarrera.text = profileStudent?.student?.career?.name
+                    progressBar.HideDialog()
                 }
             }
 
             override fun onFailure(call: Call<ProfileStudentResponse>, t: Throwable) {
+                progressBar.HideDialog()
                 Toast.makeText(this@HomeAlumnoActivity,
                     "Error al cargar la información del estudiante.",
                     Toast.LENGTH_SHORT).show()
@@ -114,6 +127,7 @@ class HomeAlumnoActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
     private fun bindUI(){
         cardViewCreateReservation = findViewById(R.id.cvCreateReservation)
         cvMyReservations = findViewById(R.id.cvMyReservations)
+        cvLaboratoriesPDF = findViewById(R.id.cvLaboratoriesPDF)
         tvNumBoleta = findViewById(R.id.tvNumBoleta)
         tvName = findViewById(R.id.tvNombreAlumno)
         tvFirstName = findViewById(R.id.tvPrimerApellidoAlumno)
@@ -159,11 +173,14 @@ class HomeAlumnoActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
     }
 
     private fun postLogoutStudent(){
+        val progressBar = LoadingDialogBar(this)
+        progressBar.ShowDialog("Cerrando sesión...")
         val jwt = preferences["jwt-student",""]
 
         val call = apiService.postLogoutStudent("Bearer $jwt")
         call.enqueue(object : Callback<Void>{
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                progressBar.HideDialog()
                 clearSessionPreference()
                 val intent = Intent(this@HomeAlumnoActivity, LoginAlumnoActivity::class.java)
                 startActivity(intent)

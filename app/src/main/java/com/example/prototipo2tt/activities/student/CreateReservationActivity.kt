@@ -15,10 +15,7 @@ import com.example.prototipo2tt.PreferenceHelper.get
 import com.example.prototipo2tt.R
 import com.example.prototipo2tt.io.ApiService
 import com.example.prototipo2tt.io.response.StudentReservationResponse
-import com.example.prototipo2tt.models.Attendant
-import com.example.prototipo2tt.models.Computer
-import com.example.prototipo2tt.models.Laboratory
-import com.example.prototipo2tt.models.ScheduleHour
+import com.example.prototipo2tt.models.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -59,6 +56,8 @@ class CreateReservationActivity : AppCompatActivity() {
     private lateinit var tvSelectHours : TextView
     private lateinit var tvNotFoundHours : TextView
 
+    private lateinit var progressBar : LoadingDialogBar
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,10 +67,10 @@ class CreateReservationActivity : AppCompatActivity() {
         val toolbar = findViewById<Toolbar>(R.id.toolbarCreateReservation)
         toolbar.setTitle(R.string.app_name)
         setSupportActionBar(toolbar)
-        //Desplegando el boton hacia atras
-        val actionBar = supportActionBar
-        actionBar?.setDisplayHomeAsUpEnabled(true)
+
         bindUI()
+
+        progressBar = LoadingDialogBar(this)
 
         btnStep1.setOnClickListener {
             cvStep1.visibility = View.GONE
@@ -122,6 +121,8 @@ class CreateReservationActivity : AppCompatActivity() {
 
     private fun performStoreReservation(){
 
+        progressBar.ShowDialog("Cargando...")
+
         btnCreateReservation.isClickable = false
         val jwt = preferences["jwt-student",""]
         val authHeader = "Bearer $jwt"
@@ -142,9 +143,11 @@ class CreateReservationActivity : AppCompatActivity() {
                 response: Response<StudentReservationResponse>
             ) {
                 if (response.isSuccessful){
+                    progressBar.HideDialog()
                     isSuccessfulReservation()
                 }
                 else {
+                    progressBar.HideDialog()
                     Toast.makeText(this@CreateReservationActivity, "Ocurrio un error al registrar la reservación.", Toast.LENGTH_SHORT).show()
                     btnCreateReservation.isClickable = true
 
@@ -153,6 +156,7 @@ class CreateReservationActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<StudentReservationResponse>, t: Throwable) {
+                progressBar.HideDialog()
                 Toast.makeText(this@CreateReservationActivity, t.localizedMessage, Toast.LENGTH_SHORT).show()
                 btnCreateReservation.isClickable = true
             }
@@ -332,6 +336,8 @@ class CreateReservationActivity : AppCompatActivity() {
     }
 
     private fun loadLaboratories() {
+
+        progressBar.ShowDialog("Cargando...")
         val call = apiService.getLaboratories()
         //ObjectExpression
         call.enqueue(object: Callback<ArrayList<Laboratory>>{
@@ -345,9 +351,11 @@ class CreateReservationActivity : AppCompatActivity() {
                         this@CreateReservationActivity, android.R.layout.simple_list_item_1,
                         laboratories as MutableList<Laboratory>)
                 }
+                progressBar.HideDialog()
 
             }
             override fun onFailure(call: Call<ArrayList<Laboratory>>, t: Throwable) {
+                progressBar.HideDialog()
                 Toast.makeText(this@CreateReservationActivity,
                     "No se pudieron cargar los laboratorios", Toast.LENGTH_SHORT).show()
                 finish()

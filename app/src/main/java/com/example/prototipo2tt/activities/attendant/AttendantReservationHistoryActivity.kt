@@ -14,6 +14,7 @@ import com.example.prototipo2tt.R
 import com.example.prototipo2tt.adapter.AttendantReservationHistoryAdapter
 import com.example.prototipo2tt.io.ApiService
 import com.example.prototipo2tt.models.AttendantReservation
+import com.example.prototipo2tt.models.LoadingDialogBar
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -32,6 +33,8 @@ class AttendantReservationHistoryActivity : AppCompatActivity() {
 
     private val adapter = AttendantReservationHistoryAdapter(this)
 
+    private lateinit var progressBar: LoadingDialogBar
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_attendant_reservation_history)
@@ -44,6 +47,8 @@ class AttendantReservationHistoryActivity : AppCompatActivity() {
         val actionBar = supportActionBar
         actionBar?.setDisplayHomeAsUpEnabled(true)
 
+        progressBar = LoadingDialogBar(this)
+
         val rvAttendantReservationHistory : RecyclerView = findViewById(R.id.rvAttendantReservationHistory)
         rvAttendantReservationHistory.layoutManager = LinearLayoutManager(this)
         rvAttendantReservationHistory.adapter = adapter
@@ -53,6 +58,8 @@ class AttendantReservationHistoryActivity : AppCompatActivity() {
     }
 
     private fun getAttendantReservationsHistory(){
+
+        progressBar.ShowDialog("Cargando")
 
         val jwt = preferences["jwt-attendant",""]
         val call = apiService.getAttendantReservationsHistory("Bearer $jwt")
@@ -66,14 +73,17 @@ class AttendantReservationHistoryActivity : AppCompatActivity() {
                     response.body()?.let {
                         adapter.attendantReservHistory = it
                         adapter.notifyDataSetChanged()
+                        progressBar.HideDialog()
                     }
                     if (response.body()?.isEmpty() == true){
+                        progressBar.HideDialog()
                         emptyReservations()
                     }
                 }
             }
 
             override fun onFailure(call: Call<ArrayList<AttendantReservation>>, t: Throwable) {
+                progressBar.HideDialog()
                 Toast.makeText(this@AttendantReservationHistoryActivity, "No se pudo cargar tu historial de reservaciones",
                     Toast.LENGTH_SHORT).show()
             }

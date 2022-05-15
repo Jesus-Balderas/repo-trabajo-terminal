@@ -15,6 +15,7 @@ import com.example.prototipo2tt.PreferenceHelper.get
 import com.example.prototipo2tt.PreferenceHelper.set
 import com.example.prototipo2tt.io.ApiService
 import com.example.prototipo2tt.io.response.LoginAttendantResponse
+import com.example.prototipo2tt.models.LoadingDialogBar
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -31,6 +32,8 @@ class LoginEncargadoActivity : AppCompatActivity() {
     private lateinit var btnForgetPasswordEncargado: Button
     private lateinit var toolbar: Toolbar
 
+    private lateinit var progressBar:LoadingDialogBar
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_encargado)
@@ -41,6 +44,8 @@ class LoginEncargadoActivity : AppCompatActivity() {
         //Desplegando el boton hacia atras
         val actionBar = supportActionBar
         actionBar?.setDisplayHomeAsUpEnabled(true)
+
+        progressBar = LoadingDialogBar(this)
 
         bindUi()
 
@@ -68,6 +73,7 @@ class LoginEncargadoActivity : AppCompatActivity() {
             errorEmptyCredentials()
             return
         }
+        progressBar.ShowDialog("Iniciando sesión...")
         val call = apiService.postLoginAttendant(numEmpleado,password)
         call.enqueue(object:Callback<LoginAttendantResponse>{
             override fun onResponse(
@@ -77,6 +83,7 @@ class LoginEncargadoActivity : AppCompatActivity() {
                 if (response.isSuccessful){
                     val loginAttendantResponse = response.body()
                     if (loginAttendantResponse == null) {
+                        progressBar.HideDialog()
                         Toast.makeText(this@LoginEncargadoActivity,
                             "Se obtuvo una respuesta inesperada del servidor",
                             Toast.LENGTH_SHORT).show()
@@ -84,14 +91,17 @@ class LoginEncargadoActivity : AppCompatActivity() {
                     }
 
                     if (loginAttendantResponse.success) {
+                        progressBar.HideDialog()
                         createSessionPreference(loginAttendantResponse.token)
                         goToHomeEncargado()
 
                     } else {
+                        progressBar.HideDialog()
                         errorInvalidCredencials()
                     }
 
                 } else {
+                    progressBar.HideDialog()
                     Toast.makeText(this@LoginEncargadoActivity,
                         "Se obtuvo una respuesta inesperada del servidor",
                         Toast.LENGTH_SHORT).show()
@@ -100,6 +110,7 @@ class LoginEncargadoActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<LoginAttendantResponse>, t: Throwable) {
+                progressBar.HideDialog()
                 Toast.makeText(this@LoginEncargadoActivity,
                     t.localizedMessage,
                     Toast.LENGTH_SHORT).show()

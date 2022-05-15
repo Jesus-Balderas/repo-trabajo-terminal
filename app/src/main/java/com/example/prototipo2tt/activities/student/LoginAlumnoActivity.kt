@@ -15,6 +15,7 @@ import com.example.prototipo2tt.PreferenceHelper.get
 import com.example.prototipo2tt.PreferenceHelper.set
 import com.example.prototipo2tt.io.ApiService
 import com.example.prototipo2tt.io.response.LoginStudentResponse
+import com.example.prototipo2tt.models.LoadingDialogBar
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -70,6 +71,7 @@ class LoginAlumnoActivity : AppCompatActivity() {
     {
         val numBoleta = editTextBoleta.text.toString()
         val password = editTextPasswordAlumno.text.toString()
+        val progressBar = LoadingDialogBar(this)
 
         if (numBoleta.trim().isEmpty() || password.trim().isEmpty()) {
 
@@ -83,6 +85,8 @@ class LoginAlumnoActivity : AppCompatActivity() {
             return
         }
 
+        progressBar.ShowDialog("Iniciando sesión...")
+
         val call = apiService.postLoginStudent(numBoleta, password)
         call.enqueue(object : Callback<LoginStudentResponse>{
             override fun onResponse(
@@ -92,6 +96,8 @@ class LoginAlumnoActivity : AppCompatActivity() {
                 if (response.isSuccessful){
                     val loginStudentResponse = response.body()
                     if (loginStudentResponse == null) {
+
+                        progressBar.HideDialog()
                         Toast.makeText(this@LoginAlumnoActivity,
                             "Se obtuvo una respuesta inesperada del servidor",
                             Toast.LENGTH_SHORT).show()
@@ -99,14 +105,17 @@ class LoginAlumnoActivity : AppCompatActivity() {
                     }
 
                     if (loginStudentResponse.success) {
+                        progressBar.HideDialog()
                         createSessionPreference(loginStudentResponse.token)
                         goToHomeAlumno()
 
                     } else {
+                        progressBar.HideDialog()
                         errorInvalidCredencials()
                     }
 
                 } else {
+                    progressBar.HideDialog()
                     Toast.makeText(this@LoginAlumnoActivity,
                         "Se obtuvo una respuesta inesperada del servidor",
                         Toast.LENGTH_SHORT).show()
@@ -115,6 +124,7 @@ class LoginAlumnoActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<LoginStudentResponse>, t: Throwable) {
+                progressBar.HideDialog()
                 Toast.makeText(this@LoginAlumnoActivity,
                     t.localizedMessage,
                     Toast.LENGTH_SHORT).show()

@@ -15,13 +15,9 @@ import com.example.prototipo2tt.models.Laboratory
 class ScheduleLaboratoryAdapter(
 
     private val context: Context,
-    private val itemClickListener: OnLaboratoryClickListener
 
 ): RecyclerView.Adapter<ScheduleLaboratoryAdapter.ViewHolder>() {
 
-    interface OnLaboratoryClickListener {
-        fun onItemClick(laboratory: Laboratory)
-    }
 
     var laboratory = ArrayList<Laboratory>()
 
@@ -40,9 +36,6 @@ class ScheduleLaboratoryAdapter(
             classroom.text = itemView.context.getString(R.string.item_laboratory_classroom, laboratory.classroom)
             status.text = itemView.context.getString(R.string.item_reservation_status, laboratory.status)
             edifice.text = itemView.context.getString(R.string.item_laboratory_edifice, laboratory.edifice)
-            itemView.findViewById<Button>(R.id.btnVerHorarioLab).setOnClickListener {
-                itemClickListener.onItemClick(laboratory)
-            }
         }
     }
 

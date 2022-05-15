@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/cardViewLaboratory"
+    android:id="@+id/cvItemLaboratoryPDF"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:animateLayoutChanges="true"
@@ -24,60 +24,37 @@
 
             <ImageView
                 android:id="@+id/iconImageViewReservation"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:paddingLeft="14dp"
                 android:paddingRight="14dp"
-                android:src="@drawable/ic_baseline_desktop_windows_24">
+                android:src="@drawable/icon_pdf">
             </ImageView>
 
             <LinearLayout
                 android:id="@+id/linearLayout"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="4dp"
-                android:layout_marginLeft="4dp"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="20dp"
                 android:layout_toEndOf="@+id/iconImageViewReservation"
-                android:layout_toRightOf="@+id/iconImageViewReservation"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textViewLaboratorio"
+                    android:id="@+id/tvLaboratorioPDF"
+                    android:layout_gravity="center_horizontal"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:layout_marginBottom="2dp"
                     android:textColor="@color/colorBlack"
-                    android:textSize="15sp"
-                    tools:text="Laboratorio Test" />
-
-                <TextView
-                    android:id="@+id/textViewLabSalon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="15sp"
-                    tools:text="Salon: 1001" />
-
-                <TextView
-                    android:id="@+id/textViewLabEdificio"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="15sp"
-                    tools:text="Edificio: 1" />
-
-                <TextView
-                    android:id="@+id/textViewLabEstado"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorBlack"
-                    tools:text="Estado: Abierto" />
+                    android:textSize="20sp"
+                    tools:text="LP - 1001.pdf" />
             </LinearLayout>
+
         </RelativeLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

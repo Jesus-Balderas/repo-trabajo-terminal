@@ -14,6 +14,7 @@ import com.example.prototipo2tt.R
 import com.example.prototipo2tt.io.ApiService
 import com.example.prototipo2tt.io.response.AttendantReservationResponse
 import com.example.prototipo2tt.models.AttendantReservation
+import com.example.prototipo2tt.models.LoadingDialogBar
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -38,6 +39,8 @@ class DescriptionReservationActivity : AppCompatActivity() {
     private lateinit var date : TextView
     private lateinit var status : TextView
 
+    private lateinit var progressBar: LoadingDialogBar
+
 
     private lateinit var btnRefuseRervation: Button
     private lateinit var btnConfirmReservation: Button
@@ -53,6 +56,8 @@ class DescriptionReservationActivity : AppCompatActivity() {
         //Desplegando el boton hacia atras
         val actionBar = supportActionBar
         actionBar?.setDisplayHomeAsUpEnabled(true)
+
+        progressBar = LoadingDialogBar(this)
 
         bindUI()
         var attendantReservation: AttendantReservation? = null
@@ -128,6 +133,7 @@ class DescriptionReservationActivity : AppCompatActivity() {
     }
 
     private fun rejectReservation(reservationId: Int){
+        progressBar.ShowDialog("Rechazando...")
         val jwt = preferences["jwt-attendant",""]
         val call = apiService.postRejectReservationAttendant("Bearer $jwt", reservationId)
         call.enqueue(object : Callback<AttendantReservationResponse>{
@@ -138,6 +144,7 @@ class DescriptionReservationActivity : AppCompatActivity() {
                 if (response.isSuccessful){
                     val reject = response.body()
                     if (reject?.success == true){
+                        progressBar.HideDialog()
                         Toast.makeText(this@DescriptionReservationActivity, "La reservación se ha rechazado correctamente.",
                         Toast.LENGTH_LONG).show()
                         val intent = Intent(this@DescriptionReservationActivity, AttendantReservationActivity::class.java)
@@ -148,6 +155,7 @@ class DescriptionReservationActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<AttendantReservationResponse>, t: Throwable) {
+                progressBar.HideDialog()
                 Toast.makeText(this@DescriptionReservationActivity, "Ocurrio un problema al rechazar la reservación",
                     Toast.LENGTH_SHORT).show()
             }
@@ -156,6 +164,7 @@ class DescriptionReservationActivity : AppCompatActivity() {
     }
 
     private fun acceptReservation(reservationId: Int){
+        progressBar.ShowDialog("Aceptando...")
         val jwt = preferences["jwt-attendant",""]
         val call = apiService.postAcceptReservationAttendant("Bearer $jwt", reservationId)
         call.enqueue(object: Callback<AttendantReservationResponse>{
@@ -166,6 +175,7 @@ class DescriptionReservationActivity : AppCompatActivity() {
                 if (response.isSuccessful){
                     val accept = response.body()
                     if (accept?.success == true){
+                        progressBar.HideDialog()
                         Toast.makeText(this@DescriptionReservationActivity, "La reservación se ha aceptado correctamente.",
                             Toast.LENGTH_LONG).show()
                         val intent = Intent(this@DescriptionReservationActivity, AttendantReservationActivity::class.java)
@@ -176,6 +186,7 @@ class DescriptionReservationActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<AttendantReservationResponse>, t: Throwable) {
+                progressBar.HideDialog()
                 Toast.makeText(this@DescriptionReservationActivity, "Ocurrio un problema al aceptar la reservación",
                     Toast.LENGTH_LONG).show()
             }

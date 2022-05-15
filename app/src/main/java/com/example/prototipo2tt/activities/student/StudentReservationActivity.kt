@@ -14,7 +14,7 @@ import com.example.prototipo2tt.R
 import com.example.prototipo2tt.adapter.StudentReservationAdapter
 import com.example.prototipo2tt.io.ApiService
 import com.example.prototipo2tt.io.response.StudentReservationCancelResponse
-import com.example.prototipo2tt.io.response.StudentReservationResponse
+import com.example.prototipo2tt.models.LoadingDialogBar
 import com.example.prototipo2tt.models.StudentReservation
 import retrofit2.Call
 import retrofit2.Callback
@@ -23,6 +23,7 @@ import retrofit2.Response
 class StudentReservationActivity : AppCompatActivity(),
     StudentReservationAdapter.OnStudentReservationClickListener {
 
+    private lateinit var progressBar: LoadingDialogBar
     private val apiService: ApiService by lazy {
         ApiService.create()
     }
@@ -47,6 +48,8 @@ class StudentReservationActivity : AppCompatActivity(),
         val actionBar = supportActionBar
         actionBar?.setDisplayHomeAsUpEnabled(true)
 
+        progressBar = LoadingDialogBar(this)
+
         val rvStudentReservation : RecyclerView = findViewById(R.id.rvStudentReservation)
         rvStudentReservation.layoutManager = LinearLayoutManager(this)
         rvStudentReservation.adapter = adapter
@@ -57,6 +60,8 @@ class StudentReservationActivity : AppCompatActivity(),
 
     private fun getStudentReservations() {
 
+        progressBar.ShowDialog("Cargando...")
+
         val jwt = preferences["jwt-student",""]
         val call = apiService.getStudentReservations("Bearer $jwt")
         call.enqueue(object : Callback<ArrayList<StudentReservation>>{
@@ -66,11 +71,14 @@ class StudentReservationActivity : AppCompatActivity(),
                 response: Response<ArrayList<StudentReservation>>
             ) {
                 if (response.isSuccessful){
+
                     response.body()?.let {
                         adapter.studentReservation = it
                         adapter.notifyDataSetChanged()
+                        progressBar.HideDialog()
                     }
                     if (response.body()?.isEmpty() == true) {
+                        progressBar.HideDialog()
                         emptyReservations()
                     }
                 }
@@ -78,6 +86,7 @@ class StudentReservationActivity : AppCompatActivity(),
             }
 
             override fun onFailure(call: Call<ArrayList<StudentReservation>>, t: Throwable) {
+                progressBar.HideDialog()
                 Toast.makeText(this@StudentReservationActivity, "No se puedieron cargar tus reservaciones",
                     Toast.LENGTH_SHORT).show()
             }
@@ -112,6 +121,8 @@ class StudentReservationActivity : AppCompatActivity(),
     }
 
     private fun postCancelReservationStudent(reservationId : Int){
+        progressBar.ShowDialog("Cargando...")
+
         val jwt = preferences["jwt-student",""]
         val call = apiService.postCancelReservationStudent("Bearer $jwt", reservationId)
         call.enqueue(object : Callback<StudentReservationCancelResponse>{
@@ -122,10 +133,11 @@ class StudentReservationActivity : AppCompatActivity(),
                 if (response.isSuccessful){
                     val reservationCancel = response.body()
                     if (reservationCancel?.success == true){
-
+                        progressBar.HideDialog()
                         successCancelReservation()
                     }
                     else {
+                        progressBar.HideDialog()
                         Toast.makeText(this@StudentReservationActivity,
                             "¡La reservación no se pudo cancelar!", Toast.LENGTH_SHORT).show()
                     }
@@ -133,6 +145,7 @@ class StudentReservationActivity : AppCompatActivity(),
             }
 
             override fun onFailure(call: Call<StudentReservationCancelResponse>, t: Throwable) {
+                progressBar.HideDialog()
                 Toast.makeText(this@StudentReservationActivity, "No se pudo cancelar la reservación",
                     Toast.LENGTH_SHORT).show()
             }

@@ -101,6 +101,11 @@ interface ApiService {
         @Path("reservation") reservationId: Int
     ): Call<AttendantReservationResponse>
 
+    @GET("reservations/chart")
+    fun getReservationsChart(
+        @Header("Authorization") authHeader: String,
+    ): Call<Chart>
+
     @POST("reservation/{reservation}/finish")
     fun postFinishReservationAttendant(
         @Header("Authorization") authHeader: String,
@@ -120,7 +125,7 @@ interface ApiService {
 
 
     companion object Factory{
-        private const val BASE_URL = "https://labscom.herokuapp.com/api/"
+        private const val BASE_URL = "http://20.92.93.194/api/"
         fun create():ApiService{
             val interceptor = HttpLoggingInterceptor()
             interceptor.apply { interceptor.level = HttpLoggingInterceptor.Level.BODY }
