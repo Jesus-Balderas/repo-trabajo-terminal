@@ -95,7 +95,7 @@ class AttendantReservationAcceptActivity : AppCompatActivity(),
 
     private fun emptyReservationsAccept(){
         val builder = AlertDialog.Builder(this)
-        builder.setMessage("Por el momento no tienes solicitudes de reservacions aceptadas.")
+        builder.setMessage("Por el momento no tienes solicitudes de reservaciones aceptadas.")
         builder.setPositiveButton("Ok") { _, _ ->
             finish()
         }
