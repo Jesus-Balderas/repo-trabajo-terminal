@@ -198,7 +198,7 @@ class CreateReservationActivity : AppCompatActivity() {
         if (date.isEmpty()) {
             return
         }
-
+        progressBar.ShowDialog("Cargando...")
         val call = apiService.getHours(laboratoryId, date)
         call.enqueue(object : Callback<ScheduleHour> {
             override fun onResponse(call: Call<ScheduleHour>, response: Response<ScheduleHour>) {
@@ -250,11 +250,13 @@ class CreateReservationActivity : AppCompatActivity() {
                     spinnerHours.visibility = View.VISIBLE
                     //Toast.makeText(this@CreateReservationActivity, "horas: $hours", Toast.LENGTH_SHORT).show()
                 }
+                progressBar.HideDialog()
 
             }
             //Toast.makeText(this, "laboratory: ${laboratoryId}, date: $date", Toast.LENGTH_SHORT).show()
 
             override fun onFailure(call: Call<ScheduleHour>, t: Throwable) {
+                progressBar.HideDialog()
                 tvSelectHours.visibility = View.GONE
                 tvNotFoundHours.visibility = View.VISIBLE
                 spinnerHours.visibility = View.GONE
@@ -286,6 +288,7 @@ class CreateReservationActivity : AppCompatActivity() {
     }
 
     private fun loadAttendants(laboratoryId: Int) {
+        progressBar.ShowDialog("Cargando...")
         val call = apiService.getAttendants(laboratoryId)
         call.enqueue(object: Callback<ArrayList<Attendant>>{
             override fun onResponse(
@@ -298,10 +301,12 @@ class CreateReservationActivity : AppCompatActivity() {
                         this@CreateReservationActivity, android.R.layout.simple_list_item_1,
                         attendants as MutableList<Attendant>)
                 }
+                progressBar.HideDialog()
 
             }
 
             override fun onFailure(call: Call<ArrayList<Attendant>>, t: Throwable) {
+                progressBar.HideDialog()
                 Toast.makeText(this@CreateReservationActivity,
                     "Ocurrió un problema al cargar los encargados", Toast.LENGTH_SHORT).show()
             }
@@ -311,7 +316,7 @@ class CreateReservationActivity : AppCompatActivity() {
     }
 
     private fun loadComputers(laboratoryId: Int){
-
+        
         val call = apiService.getComputers(laboratoryId)
         call.enqueue(object : Callback<ArrayList<Computer>>
         {
@@ -320,14 +325,18 @@ class CreateReservationActivity : AppCompatActivity() {
                 response: Response<ArrayList<Computer>>
             ) {
                 if (response.isSuccessful){
+
                     val computers = response.body()
                     spinnerComputers.adapter = ArrayAdapter<Computer>(
                         this@CreateReservationActivity, android.R.layout.simple_list_item_1,
                         computers as MutableList<Computer>)
+
                 }
+
             }
 
             override fun onFailure(call: Call<ArrayList<Computer>>, t: Throwable) {
+                progressBar.HideDialog()
                 Toast.makeText(this@CreateReservationActivity,
                     "Ocurrió un problema al cargar las computadoras", Toast.LENGTH_SHORT).show()
             }
