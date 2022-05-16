@@ -107,7 +107,7 @@ class LoginAlumnoActivity : AppCompatActivity() {
                     if (loginStudentResponse.success) {
                         progressBar.HideDialog()
                         createSessionPreference(loginStudentResponse.token)
-                        goToHomeAlumno()
+                        goToHomeAlumno(true)
 
                     } else {
                         progressBar.HideDialog()
@@ -150,9 +150,13 @@ class LoginAlumnoActivity : AppCompatActivity() {
         editTextPasswordAlumno = findViewById(R.id.editTextPasswordAlumno)
     }
 
-    private fun goToHomeAlumno() {
+    private fun goToHomeAlumno(isStudentInput:Boolean = false) {
 
         val intentHomeAlumno = Intent(this@LoginAlumnoActivity, HomeAlumnoActivity::class.java )
+
+        if (isStudentInput){
+            intentHomeAlumno.putExtra("store_token_student", true)
+        }
         startActivity(intentHomeAlumno)
         finish()
     }

@@ -9,6 +9,7 @@ import com.example.prototipo2tt.R
 import android.content.Intent
 import androidx.core.view.GravityCompat
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
@@ -20,9 +21,12 @@ import com.example.prototipo2tt.PreferenceHelper.set
 import com.example.prototipo2tt.PreferenceHelper.get
 import com.example.prototipo2tt.activities.ScheduleLaboratoryActivity
 import com.example.prototipo2tt.activities.*
+import com.example.prototipo2tt.activities.student.HomeAlumnoActivity
 import com.example.prototipo2tt.io.ApiService
 import com.example.prototipo2tt.io.response.ProfileAttendantResponse
 import com.example.prototipo2tt.models.LoadingDialogBar
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -78,6 +82,10 @@ class HomeEncargadoActivity : AppCompatActivity(), NavigationView.OnNavigationIt
 
         bindUI()
 
+        val storeToken = intent.getBooleanExtra("store_token_attendant", false)
+        if (storeToken){
+            storeToken()
+        }
         getProfileAttendant()
 
         cardViewReservation.setOnClickListener(View.OnClickListener {
@@ -93,6 +101,36 @@ class HomeEncargadoActivity : AppCompatActivity(), NavigationView.OnNavigationIt
             val intentGraphReservation =
                 Intent(this@HomeEncargadoActivity, GraphReservationActivity::class.java)
             startActivity(intentGraphReservation)
+        })
+    }
+
+    private fun storeToken(){
+        val jwt = preferences["jwt-attendant",""]
+        val authHeader = "Bearer $jwt"
+        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Log.e("FCM", "Fetching FCM registration token failed", task.exception)
+                return@OnCompleteListener
+            }
+
+            // Get new FCM registration token
+            val deviceToken = task.result
+            //Log.d("FCMService", deviceToken)
+            val call = apiService.postTokenAttendant(authHeader, deviceToken)
+            call.enqueue(object : Callback<Void>{
+                override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                    if (response.isSuccessful){
+                        Log.d(HomeEncargadoActivity.TAG, "Token registrado correctamente")
+                    } else {
+                        Log.d(HomeEncargadoActivity.TAG, "Hubo un problema al registrar el token")
+                    }
+                }
+
+                override fun onFailure(call: Call<Void>, t: Throwable) {
+                    Toast.makeText(this@HomeEncargadoActivity, t.localizedMessage, Toast.LENGTH_SHORT).show()
+                }
+
+            })
         })
     }
 
@@ -204,5 +242,9 @@ class HomeEncargadoActivity : AppCompatActivity(), NavigationView.OnNavigationIt
         tvPrimerApellidoEncargado = findViewById(R.id.tvPrimerApellidoEncargado)
         tvSegundoApellidoEncargado = findViewById(R.id.tvSegundoApellidoEncargado)
         tvLaboratorioEncargado = findViewById(R.id.tvLaboratorioEncargado)
+    }
+
+    companion object {
+        private const val TAG = "HomeEncargadoActivity"
     }
 }

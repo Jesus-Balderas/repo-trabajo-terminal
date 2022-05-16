@@ -93,7 +93,7 @@ class LoginEncargadoActivity : AppCompatActivity() {
                     if (loginAttendantResponse.success) {
                         progressBar.HideDialog()
                         createSessionPreference(loginAttendantResponse.token)
-                        goToHomeEncargado()
+                        goToHomeEncargado(true)
 
                     } else {
                         progressBar.HideDialog()
@@ -142,8 +142,11 @@ class LoginEncargadoActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    private fun goToHomeEncargado() {
+    private fun goToHomeEncargado(isAttendantInput:Boolean = false) {
         val intent1 = Intent(this@LoginEncargadoActivity, HomeEncargadoActivity::class.java)
+        if (isAttendantInput){
+            intent1.putExtra("store_token_attendant", true)
+        }
         startActivity(intent1)
         finish()
     }

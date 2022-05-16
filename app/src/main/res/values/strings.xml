@@ -34,7 +34,7 @@
     <string name="label_send_notification">Enviar notificación</string>
     <string name="text_message_notiification">Mensaje:</string>
     <string name="text_title_notification">Título:</string>
-    <string name="label_send_users_notification">Enviar a todos lo usuarios</string>
+    <string name="label_send_users_notification">Enviar a todos los Alumnos</string>
     <string name="title_layout_close_lab_notification">Notificación Cierre de Laboratorio</string>
     <string name="texto_ver_reporte">Ver Reporte</string>
     <string name="text_ver_horario">Ver Horario</string>
@@ -58,6 +58,8 @@
     <string name="edificio_chart">Edificio: %1$s</string>
     <string name="rechazadas_chart">Rechazadas: %1$d</string>
     <string name="canceladas_chart">Canceladas: %1$d</string>
+    <string name="default_notification_channel_id">default_channel</string>
+    <string name="fcm_message">LABSCOM</string>
 
 
 </resources>

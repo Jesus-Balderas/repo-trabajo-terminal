@@ -10,6 +10,7 @@ import com.example.prototipo2tt.R
 import android.content.Intent
 import androidx.core.view.GravityCompat
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
@@ -23,6 +24,8 @@ import com.example.prototipo2tt.activities.ScheduleLaboratoryActivity
 import com.example.prototipo2tt.io.ApiService
 import com.example.prototipo2tt.io.response.ProfileStudentResponse
 import com.example.prototipo2tt.models.LoadingDialogBar
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -74,6 +77,11 @@ class HomeAlumnoActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
         navigationView.setNavigationItemSelectedListener(this)
         bindUI()
 
+        val storeToken = intent.getBooleanExtra("store_token_student", false)
+        if (storeToken){
+            storeToken()
+        }
+
         getProfileStudent()
 
         cardViewCreateReservation.setOnClickListener(View.OnClickListener {
@@ -93,6 +101,37 @@ class HomeAlumnoActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
                 Intent(this, LaboratoriesPDFActivity::class.java)
             startActivity(intentLaboratoriesPDF)
         }
+
+    }
+
+    private fun storeToken(){
+        val jwt = preferences["jwt-student",""]
+        val authHeader = "Bearer $jwt"
+        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Log.e("FCM", "Fetching FCM registration token failed", task.exception)
+                return@OnCompleteListener
+            }
+
+            // Get new FCM registration token
+            val deviceToken = task.result
+            //Log.d("FCMService", deviceToken)
+            val call = apiService.postTokenStudent(authHeader, deviceToken)
+            call.enqueue(object : Callback<Void>{
+                override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                    if (response.isSuccessful){
+                        Log.d(Companion.TAG, "Token registrado correctamente")
+                    } else {
+                        Log.d(Companion.TAG, "Hubo un problema al registrar el token")
+                    }
+                }
+
+                override fun onFailure(call: Call<Void>, t: Throwable) {
+                    Toast.makeText(this@HomeAlumnoActivity, t.localizedMessage, Toast.LENGTH_SHORT).show()
+                }
+
+            })
+        })
 
     }
 
@@ -200,5 +239,9 @@ class HomeAlumnoActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
     private fun clearSessionPreference() {
         //Modificamos la variable session de la Preferencias para desactivar la sesion del usuario Alumno
         preferences["jwt-student"] = ""
+    }
+
+    companion object {
+        private const val TAG = "HomeAlumnoActivity"
     }
 }

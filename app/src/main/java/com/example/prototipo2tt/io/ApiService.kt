@@ -123,6 +123,24 @@ interface ApiService {
         @Query("password") password: String
     ): Call<StudentReservationResponse>
 
+    @POST("student/fcm/token")
+    fun postTokenStudent(
+        @Header("Authorization") authHeader: String,
+        @Query("device_token") token : String,
+    ): Call<Void>
+
+    @POST("attendant/fcm/token")
+    fun postTokenAttendant(
+        @Header("Authorization") authHeader: String,
+        @Query("device_token") token : String,
+    ): Call<Void>
+
+    @POST("attendant/fcm/sendNotification")
+    fun postSendNotification(
+        @Header("Authorization") authHeader: String,
+        @Query("title") title : String,
+        @Query("body") body : String,
+    ): Call<AttendantReservationResponse>
 
     companion object Factory{
         private const val BASE_URL = "http://20.92.93.194/api/"
