@@ -143,13 +143,17 @@ class CreateReservationActivity : AppCompatActivity() {
                 response: Response<StudentReservationResponse>
             ) {
                 if (response.isSuccessful){
-                    progressBar.HideDialog()
-                    isSuccessfulReservation()
-                }
-                else {
-                    progressBar.HideDialog()
-                    Toast.makeText(this@CreateReservationActivity, "Ocurrio un error al registrar la reservación.", Toast.LENGTH_SHORT).show()
-                    btnCreateReservation.isClickable = true
+                    val reservation = response.body()
+                    if (reservation?.success == true){
+                        progressBar.HideDialog()
+                        isSuccessfulReservation()
+
+                    } else {
+
+                        progressBar.HideDialog()
+                        showMessageReservation()
+                        btnCreateReservation.isClickable = true
+                    }
 
                 }
 
@@ -162,6 +166,17 @@ class CreateReservationActivity : AppCompatActivity() {
             }
 
         })
+    }
+
+    private fun showMessageReservation(){
+        val builder = AlertDialog.Builder(this)
+        builder.setMessage("Ya tienes una reservación para ese día en el laboratorio que seleccionaste." +
+                "Selecciona otra fecha distinta.")
+        builder.setPositiveButton("Ok") { dialog, _ ->
+            dialog.dismiss()
+        }
+        val dialog = builder.create()
+        dialog.show()
     }
 
     private fun isSuccessfulReservation(){
