@@ -316,7 +316,7 @@ class CreateReservationActivity : AppCompatActivity() {
     }
 
     private fun loadComputers(laboratoryId: Int){
-        
+
         val call = apiService.getComputers(laboratoryId)
         call.enqueue(object : Callback<ArrayList<Computer>>
         {

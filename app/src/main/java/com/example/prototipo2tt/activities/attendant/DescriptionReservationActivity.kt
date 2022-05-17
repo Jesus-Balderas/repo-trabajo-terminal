@@ -145,11 +145,7 @@ class DescriptionReservationActivity : AppCompatActivity() {
                     val reject = response.body()
                     if (reject?.success == true){
                         progressBar.HideDialog()
-                        Toast.makeText(this@DescriptionReservationActivity, "La reservación se ha rechazado correctamente.",
-                        Toast.LENGTH_LONG).show()
-                        val intent = Intent(this@DescriptionReservationActivity, AttendantReservationActivity::class.java)
-                        startActivity(intent)
-                        finish()
+                        showDialogRejectReservation()
                     }
                 }
             }
@@ -161,6 +157,19 @@ class DescriptionReservationActivity : AppCompatActivity() {
             }
 
         })
+    }
+
+    private fun showDialogRejectReservation(){
+        val builder = AlertDialog.Builder(this)
+        builder.setMessage("¡Haz rechazado la reservación exitosamente!")
+        builder.setPositiveButton("Ok") { dialog, _ ->
+            dialog.dismiss()
+            val intent = Intent(this@DescriptionReservationActivity, AttendantReservationActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+        val dialog = builder.create()
+        dialog.show()
     }
 
     private fun acceptReservation(reservationId: Int){
@@ -176,11 +185,7 @@ class DescriptionReservationActivity : AppCompatActivity() {
                     val accept = response.body()
                     if (accept?.success == true){
                         progressBar.HideDialog()
-                        Toast.makeText(this@DescriptionReservationActivity, "La reservación se ha aceptado correctamente.",
-                            Toast.LENGTH_LONG).show()
-                        val intent = Intent(this@DescriptionReservationActivity, AttendantReservationActivity::class.java)
-                        startActivity(intent)
-                        finish()
+                        showDialogAcceptReservation()
                     }
                 }
             }
@@ -192,6 +197,19 @@ class DescriptionReservationActivity : AppCompatActivity() {
             }
 
         })
+    }
+
+    private fun showDialogAcceptReservation(){
+        val builder = AlertDialog.Builder(this)
+        builder.setMessage("¡Haz aceptado la reservación exitosamente!")
+        builder.setPositiveButton("Ok") { dialog, _ ->
+            dialog.dismiss()
+            val intent = Intent(this@DescriptionReservationActivity, AttendantReservationActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+        val dialog = builder.create()
+        dialog.show()
     }
 
 }
