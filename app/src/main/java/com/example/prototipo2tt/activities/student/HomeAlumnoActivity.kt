@@ -60,6 +60,7 @@ class HomeAlumnoActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
         setContentView(R.layout.activity_home_alumno)
         toolbar = findViewById(R.id.toolbarHomeAlumno)
         setSupportActionBar(toolbar)
+        toolbar.setTitle(R.string.app_name)
 
         drawer = findViewById(R.id.drawer_layout)
         val toggle = ActionBarDrawerToggle(
